@@ -1,5 +1,5 @@
 //18.03.05(2주차)
-//변수 - 변수선언
+//변수 - 메모리 선언방법
 package step02;
 
 public class Exam03_1{
