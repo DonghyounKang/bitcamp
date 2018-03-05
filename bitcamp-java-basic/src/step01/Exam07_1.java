@@ -23,7 +23,7 @@ public class Exam07_1{
 
         // 특수문자를 입력할 수 없는 경우
         // 다음과 같이 해당 특수문자의 유니코드 값을 작은 따옴표에 넣어도 된다.
-        // 단 코드값 앞에 \u를 붙여야 한다.
+        // 단 코드값 앞에 \ u를 붙여야 한다.
 
         System.out.println('\u3182');
         System.out.println((char)0x3182);

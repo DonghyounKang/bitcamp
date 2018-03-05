@@ -21,10 +21,7 @@ public class Exam05_3{
         //    보통 대문자 사용(소문자는 숫자와 혼동)
         System.out.println(2147483648L);
         System.out.println(-2147483649L);
-
-        // 8바이트의 정수 최대값 및 최소값
-        // => 자바에서는 각 데이터 유형에 따라 최대/최소값을 확인할 수 있도록
-        //특별한 명령을 제공 
+        
         System.out.println(Integer.MAX_VALUE); // 4바이트 표현 가능 정수 최대값
         System.out.println(Integer.MIN_VALUE); // 4바이트 표현 가능 정수 최소값
         System.out.println(Long.MAX_VALUE); // 8바이트로 표현 가능 정수 최대값
