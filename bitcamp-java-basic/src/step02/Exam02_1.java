@@ -2,7 +2,7 @@
 //키보드 입력 받기
 package step02;
 
-public class Exam02{
+public class Exam02_1{
     public static void main(String[] args){
         //키보드 정보를 가져온다
         java.io.InputStream keyboard = System.in;
@@ -13,14 +13,13 @@ public class Exam02{
         System.out.print("팀명? ");  //print() : 문자열 출력 후 줄바꿈 X
 
         /*
-        nextline()
+        nextline()up
         -Scanner 도구를 사용하여 키보드로부터 한 줄의 문자열을 가져올 때 사용하는 명령어
         -동작은?
         사용자가 한줄 입력할 때 까지
         즉 입력 데이터에 줄바꿈을 의미하는 ODOA 2바이트가 들어올 때까지 대기한다.
         사용자가 엔터키를 누르면
         입력값으로 0D0A 2바이트 값이 들어오고 
-
         */
 
         System.out.println(keyScan.nextLine());
