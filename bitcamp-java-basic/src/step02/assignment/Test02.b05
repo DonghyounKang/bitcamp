@@ -1,12 +1,14 @@
 package step02.assignment;
 
 
-//6단계 형식을 갖춘 문자열 출력하기
+//5단계 반복문을 사용하여 입력과 출력을 간단하게 하라
 public class Test02{
     public static void main(String[] args){
 
         /*
-
+        사용할 변수를 먼저 선언
+        배열을 사용하면 같은 종류의 메모리를 아주 간단하게 만들 수 있다.
+        Index : 배열 번호!!!
         */
         String[] name = new String[5];
         int[] kor = new int[5];
@@ -32,9 +34,19 @@ public class Test02{
 
         
         System.out.println("------------------------------");
-        for (int i = 0; i < 5; i++) {
-            System.out.printf("%s %d %d %d %d %f\n",
-                name[i], kor[i], eng[i], math[i], sum[i], average[i]);
+        for (int i = 0; i < 5; i++){
+            System.out.print(name[i]);
+            System.out.print(" ");
+            System.out.print(kor[i]);
+            System.out.print(" ");
+            System.out.print(eng[i]);
+            System.out.print(" ");
+            System.out.print(math[i]);
+            System.out.print(" ");
+            System.out.print(sum[i]);
+            System.out.print(" ");
+            System.out.print(average[i]);
+            System.out.println();
         }        
 
 
