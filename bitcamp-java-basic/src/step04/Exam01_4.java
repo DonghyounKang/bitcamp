@@ -6,7 +6,7 @@ public class Exam01_4{
 
         int i = 5;
         int j = 2;
-        float r = i / j;
+        float r = (float)i / (float)j;
         System.out.println(r);
 
     }

@@ -1,36 +1,56 @@
 package bitcamp.java106.pms;
 
+import bitcamp.java106.pms.domain.Information;
+
 public class App{
     public static void main(String[] args){
 
-        String name, para, start, end;
-        int num;
-    
-        java.io.InputStream keyboard = System.in;
-        java.util.Scanner keyScan = new java.util.Scanner(keyboard);
+        java.util.Scanner keyScan = new java.util.Scanner(System.in);
 
-        System.out.print("팀명? ");
-        name = keyScan.nextLine();
 
-        System.out.print("설명? ");
-        para = keyScan.nextLine();
+        int i;
+        Information[] infos  = new Information[5];
 
-        System.out.print("최대 인원? ");
-        num = keyScan.nextInt();      
+        for(i = 0; i < info.length; i++){
+            
+            infos[i] = new Information();
+
+            System.out.print("팀명? ");
+            infos[i].teamName = keyScan.nextLine();
+
+            System.out.print("설명? ");
+            infos[i].description = keyScan.nextLine();
+
+            System.out.print("최대인원? ");
+            infos[i].maxQty = keyScan.nextInt();
+
+            keyScan.nextLine();
+            System.out.print("시작일? ");
+            infos[i].startDate = keyScan.nextLine();
+
+            System.out.print("종료일? ");
+            infos[i].endDate = keyScan.nextLine();
+            
+            System.out.println("계속 입력하시겠습니까?");
+            String ch = keyScan.nextLine();
+                if(ch.toLowerCase().equals("n")){
+                    i += 1;
+                    break;
+                } else if(ch.toLowerCase()("y")){
+                    
+                } else
+            }     
+            System.out.println("--------------------------");
+            for (int j = 0; j < i; j++){
+                System.out.printf("팀명: %s, %d 명, 기간: %s ~ %s\n",
+                    infos[j].teamName, infos[j].maxQty, 
+                    infos[j].startDate, infos[j].endDate);
+            }
         
-        keyScan.nextLine();
-
-        System.out.print("시작일? ");
-        start = keyScan.nextLine();  
-        
-        System.out.print("종료일? ");
-        end = keyScan.nextLine();  
-
-        System.out.println("---------------------------");
-        System.out.println("팀명: " + name);
-        System.out.println("설명: \n" + para);
-        System.out.println("최대인원:" + num + "명");
-        System.out.println("일자: " + start + " ~ " + end);
-
     }
 }
+
+
+
+/*System.out.printf("팀명: %s, %d 명, 기간: %s ~ %s\n",
+info[i].teamName, info[i].maxQty, info[i].startDate, info[i].endDate);*/
