@@ -84,7 +84,8 @@ public class App_b{
                 System.out.println();
             
                 count2++;
-            }if (str1.toLowerCase().equals("member/list")){
+            }
+            if (str1.toLowerCase().equals("member/list")){
                 for (i2 = 0; i2 < count2; i2++){
                 
                 System.out.printf("%s, %s, %s\n",
@@ -108,7 +109,8 @@ public class App_b{
                 System.out.println("해당 아이디의 회원이 없습니다.");
                 System.out.println();
             }
-            }if(str1.toLowerCase().equals("quit")){
+            }
+            if(str1.toLowerCase().equals("quit")){
                 System.out.println("안녕히가세요!");
                 System.out.println();
                 break;

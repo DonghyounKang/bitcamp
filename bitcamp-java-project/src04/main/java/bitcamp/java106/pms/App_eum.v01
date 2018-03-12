@@ -1,0 +1,17 @@
+package bitcamp.java106.pms;
+
+import bitcamp.java106.pms.domain.Team;
+import bitcamp.java106.pms.domain.Member;
+import java.util.Scanner;
+
+//ver0.1 : 명령입력 프롬프트를 출력
+public class App_eum{
+
+    public static void main(String[] args){
+
+        Scanner keyScan = new Scanner(System.in);
+        
+        System.out.println("명령> ");
+    
+    }
+}
