@@ -20,14 +20,14 @@ public class Exam04_1 {
      
         System.out.println("------------------");
     
-        int i = 1
+        int i = 1;
         for(; i <= 5;){
             System.out.println(i);
             i++;
         }
         
         System.out.println("------------------");
-        int i = 1
+         i = 1;
         for(; ;){
             if(i <= 5)
                 break;
