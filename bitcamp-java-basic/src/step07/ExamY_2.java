@@ -2,7 +2,7 @@
 package step07;
 
     
-public class Exam02_2 {
+public class ExamY_2 {
 
     public static void main (String[] args) {
         //계산결과를 보관할 변수는 더이상 필요없다 (Calculator2에서 계산결과를 관라한다.)

@@ -1,11 +1,11 @@
-//클래스의 용도 사용자 정의 데이터 타입을 만들 때 사용
+//클래스의 용도 - 사용자 정의 데이터 타입을 만들 때 사용
 package step07;
 
-public class Exam01_1 {
+public class ExamX_1 {
 
     public static void main (String[] args) {
         //사용자 정의 데이터 타입 사용방법
-        // new 명령을 사용하여 설계도에 기술된대로 메모리를 준비
+        // new 명령을 사용하여 설계도에 기술된 대로 메모리를 준비
         // 메모리는 Heap영역에 생성
         // 메모리 주소를 레퍼런스(주소변수)에 저장한다.
         Score score = new Score();//클래스 이름 대문자 / score가 가리키는 인스턴스 변수
