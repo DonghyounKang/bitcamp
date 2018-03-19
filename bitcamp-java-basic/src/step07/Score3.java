@@ -8,7 +8,6 @@ public class Score3 {
     int math;
     int sum;
     float average;
-    
     //다음 메서드는 계산을 수행할 때마다 인스턴스의 주소를 파라미터로 받아야한다.
     public static void calculate(Score3 score) {
         score.sum = score.kor + score.eng + score.math;
