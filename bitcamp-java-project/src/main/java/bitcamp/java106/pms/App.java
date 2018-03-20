@@ -110,7 +110,7 @@ public class App{
     }
 
     static void onBoardDelete() {
-        System.out.println("[ 게시글 삭제 ]");
+        System.out.println("[ 게시글  삭제 ]");
         if(search == null){
             System.out.println("번호를 입력하세요");
             return;
