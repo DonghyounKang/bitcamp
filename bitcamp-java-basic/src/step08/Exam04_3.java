@@ -20,6 +20,7 @@ public class Exam04_3 {
         
         Score(String name) {
             System.out.println("Score(String)");
+            this.name = name;
         }
         
         Score(String name, int kor, int eng, int math) {
