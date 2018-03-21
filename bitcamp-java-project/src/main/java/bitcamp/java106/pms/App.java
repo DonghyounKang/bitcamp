@@ -1,179 +1,65 @@
 package bitcamp.java106.pms;
 
 import java.util.Scanner;
-import bitcamp.java106.pms.domain.Post;
 
-public class App{
+import bitcamp.java106.pms.controller.BoardController;
+import bitcamp.java106.pms.controller.MemberController;
+import bitcamp.java106.pms.controller.TeamController;
+import bitcamp.java106.pms.util.Console;
+
+// ver 0.2 - member 메뉴를 처리하는 코드를 관련 클래스인 MemberController로 옮긴다.
+// ver 0.1 - team 메뉴를 처리하는 코드를 TeamController로 옮긴다.
+public class App {
     static Scanner keyScan = new Scanner(System.in);
-    static Post[] posts = new Post[200];
-    static int boardIndex = 0;
-    static String search = null;
-
-    static String[] prompt() {
-        System.out.print("order> ");
-        return keyScan.nextLine().toLowerCase().split(" ");
+    public static String option = null; 
+    
+    static void onQuit() {
+        System.out.println("안녕히 가세요!");
     }
 
     static void onHelp() {
-        System.out.println("[ 도움말  ]");
+        System.out.println("[도움말]");
+        System.out.println("팀 등록 명령 : team/add");
+        System.out.println("팀 조회 명령 : team/list");
+        System.out.println("팀 상세조회 명령 : team/view 팀명");
+        System.out.println("회원 등록 명령 : member/add");
+        System.out.println("회원 조회 명령 : member/list");
+        System.out.println("회원 상세조회 명령 : member/view 아이디");
+        System.out.println("종료 : quit");
     }
 
-    static void onQuit() {
-        System.out.println("bye");
-    }
+    public static void main(String[] args) {
+        // 클래스를 사용하기 전에 필수 값을 설정한다.
+        TeamController.keyScan = keyScan;
+        MemberController.keyScan = keyScan;
+        BoardController.keyScan = keyScan;
+        Console.keyScan = keyScan;
 
-    static void onBoardAdd() {
-        System.out.println("[ 게시글 등록 ]");
-        Post post = new Post();
+        while (true) {
+            String[] arr = Console.prompt();
 
-        System.out.print("제목? ");
-        post.name = keyScan.nextLine();
-
-        System.out.print("내용? ");
-        post.content = keyScan.nextLine();
-
-        System.out.print("등록일? ");
-        post.registDate = keyScan.nextLine();
-
-        post.count = boardIndex;
-
-        posts[boardIndex++] = post;      
-    }
-
-    static void onBoardList() {
-        System.out.println("[ 게시글 목록 ]");
-        for (int i = 0; i < boardIndex; i++) {
-            if(posts[i] == null) 
-                continue;
-            System.out.printf("%d, %s, %s\n", 
-                    posts[i].count, posts[i].name,
-                    posts[i].registDate);
-        }
-    }
-
-    static void onBoardView() {
-        System.out.println("[ 게시글 조회 ]"); 
-        if(search == null){
-            System.out.println("번호를 입력하세요");
-            return;
-        } 
-        Post post = null;
-        for(int i = 0; i < boardIndex; i++){
-            if(posts[i] == null)
-                continue;
-            if(search.equals(Integer.toString(posts[i].count))){
-                post = posts[i];
-                break;
+            String menu = arr[0];
+            if (arr.length == 2) {
+                option = arr[1];
+            } else {
+                option = null;
             }
-        }
-        if (post == null){
-            System.out.println("해당 게시물이 존재하지 않습니다.");
-        } else {
-            System.out.printf("제목: %s\n", post.name);
-            System.out.printf("내용: %s \n", post.content);
-            System.out.printf("등록일: %s \n", post.registDate);
-        }
-    }
 
-    static void onBoardUpdate() {
-        System.out.println("[ 게시글 수정 ]");
-        if(search == null){
-            System.out.println("번호를 입력하세요");
-            return;
-        } 
-        Post post = null;
-        for(int i = 0; i < boardIndex; i++){
-            if(posts[i] == null)
-                continue;
-            if(search.equals(Integer.toString(posts[i].count))){
-                post = posts[i];
-                break;
-            }
-        }
-        if (post == null){
-            System.out.println("해당 게시물이 존재하지 않습니다.");
-        } else {
-            Post uppost = new  Post();
-
-            System.out.printf("제목(%s)? ", post.name);
-            post.name = keyScan.nextLine();
-
-            System.out.printf("내용(%s)? ", post.content);
-            post.content = keyScan.nextLine();
-
-            uppost.registDate = post.registDate;
-
-            uppost.count = post.count;
-
-            System.out.println();
-        }
-    }
-
-    static void onBoardDelete() {
-        System.out.println("[ 게시글  삭제 ]");
-        if(search == null){
-            System.out.println("번호를 입력하세요");
-            return;
-        } 
-        Post post = null;
-        int i;
-        for (i = 0; i < boardIndex; i++) {
-            if (posts[i] == null)
-                continue;
-            if (search.equals(Integer.toString(posts[i].count))){
-                post = posts[i];
-                break;
-            }
-        }
-        if (post == null) {
-            System.out.println("해당 게시물이 존재하지 않습니다.");
-        } else {
-            System.out.println("정말 삭제하시겠습니까?(y/N)");
-            String ans = keyScan.nextLine().toLowerCase();
-            System.out.println(post.name);
-            if (ans.equals("y")) {
-                posts[i] = null;
-                System.out.println("삭제 완료"); 
-            }
-        }
-    }
-
-    public static void main(String[] args){
-
-        while(true){
-            String[] arr = prompt();
-
-            String order = arr[0];
-            if(arr.length == 2){
-                search = arr[1];
-            }   
-
-            if(order.equals("quit")){
+            if (menu.equals("quit")) {
                 onQuit();
                 break;
-
-            } else if(order.equals("help")) {
+            } else if (menu.equals("help")) {
                 onHelp();
-
-            } else if (order.equals("board/add")) {
-                onBoardAdd();
-
-            } else if (order.equals("board/list")) {
-                onBoardList();
-
-            } else if (order.equals("board/view")) {
-                onBoardView();
-
-            } else if (order.equals("board/update")) {
-                onBoardUpdate();
-
-            } else if (order.equals("board/delete")) {
-                onBoardDelete();
-
-            } else {
-                System.out.println("잘못된 명령어입니다.");
-
+            } else if (menu.startsWith("team/")) {
+                TeamController.service(menu, option);
+            } else if (menu.startsWith("member/")) {
+                MemberController.service(menu, option);
+            } else if (menu.startsWith("board/")) {
+                BoardController.service(menu, option);
+            }else {
+                System.out.println("명령어가 올바르지 않습니다.");
             }
+
             System.out.println();
         }
     }
