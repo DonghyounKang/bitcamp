@@ -8,16 +8,14 @@ import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.util.Console;
 
 public class BoardController {
-
     Scanner keyScan;
 
     BoardDao boardDao = new BoardDao();
-
+    
     public BoardController(Scanner scanner) {
-
         this.keyScan = scanner;
     }
-
+    
     public void service(String menu, String option) {
         if (menu.equals("board/add")) {
             this.onBoardAdd();
@@ -56,7 +54,7 @@ public class BoardController {
         for (int i = 0; i < list.length; i++) {
             if (list[i] == null) continue;
             System.out.printf("%d, %s, %s\n",
-                    i, list[i].title, list[i].createdDate);
+                i, list[i].title, list[i].createdDate);
         }
     }
 
@@ -66,7 +64,7 @@ public class BoardController {
             System.out.println("번호를 입력하시기 바랍니다.");
             return;
         }
-
+        
         Board board = boardDao.get(Integer.parseInt(option));
         
         if (board == null) {
@@ -85,9 +83,8 @@ public class BoardController {
             return;
         }
         
-        
         Board board = boardDao.get(Integer.parseInt(option));
-
+        
         if (board == null) {
             System.out.println("유효하지 않은 게시물 번호입니다.");
         } else {
@@ -109,7 +106,7 @@ public class BoardController {
             System.out.println("번호를 입력하시기 바랍니다.");
             return; 
         }
-
+        
         int i = Integer.parseInt(option);
         Board board = boardDao.get(i);
         
@@ -122,8 +119,8 @@ public class BoardController {
             }
         }
     }
-
+    
 }
 
-//ver 14 - BoardDao를 사용하여 BoardController의 데이터를 다룬다
-//ver 13 line 51 - 게시물 등록시 등록일 문자열 String -> Date 객체로 변환하여 저장
+// ver 14 - BoardDao를 사용하여 게시물 데이터를 관리한다.
+// ver 13 - 게시물 등록할 때 등록일의 문자열을 Date 객체로 만들어 저장.
