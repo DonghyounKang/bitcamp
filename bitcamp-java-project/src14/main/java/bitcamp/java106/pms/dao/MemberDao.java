@@ -6,7 +6,7 @@ public class MemberDao {
     Member[] members = new Member[1000];
     int memberIndex = 0;
     
-    public void insert(Member member) {
+    public void menu(Member member) {
         // 회원 정보가 담겨있는 객체의 주소를 배열에 보관한다.
         this.members[this.memberIndex++] = member;
     }

@@ -6,7 +6,7 @@ public class BoardDao {
     Board[] boards = new Board[1000];
     int boardIndex = 0;
     
-    public void insert(Board board) {
+    public void menu(Board board) {
         board.no = boardIndex;
         this.boards[this.boardIndex++] = board;
     }

@@ -63,7 +63,7 @@ public class MemberController{
         System.out.print("암호? ");
         member.password = this.keyScan.nextLine();
 
-        memberDao.insert(member);
+        memberDao.menu(member);
     }
 
     void onMemberList() {

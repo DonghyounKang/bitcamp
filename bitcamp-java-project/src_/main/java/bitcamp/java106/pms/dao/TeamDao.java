@@ -6,7 +6,7 @@ public class TeamDao {
     Team[] teams = new Team[1000];
     int teamIndex = 0;
     
-    public void insert(Team team) {
+    public void menu(Team team) {
         // 팀 정보가 담겨있는 객체의 주소를 배열에 보관한다.
         this.teams[this.teamIndex++] = team;
     }

@@ -54,7 +54,7 @@ public class TeamController {
         System.out.print("종료일? ");
         team.endDate = Date.valueOf(this.keyScan.nextLine());
 
-        teamDao.insert(team);
+        teamDao.menu(team);
     }
 
     void onTeamList() {
