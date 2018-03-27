@@ -54,7 +54,7 @@ public class TeamController {
         System.out.print("종료일? ");
         team.setEndDate(Date.valueOf(this.keyScan.nextLine()));
 
-        teamDao.menu(team);
+        teamDao.insert(team);
     }
 
     void onTeamList() {
@@ -104,8 +104,6 @@ public class TeamController {
             Team updateTeam = new Team();
             System.out.printf("팀명 : %s\n", team.getName());
             updateTeam.setName(team.getName());
-            
-            
             System.out.printf("설명(%s)? ", team.getDescription());
             updateTeam.setDescription(this.keyScan.nextLine());
             System.out.printf("최대인원(%d)? ", team.getMaxQty());
@@ -142,6 +140,7 @@ public class TeamController {
     
 }
 
-//ver 15 - teamDao를 생성자로 부터 받을 수 있도록 함
-//ver 14 - TeamDao를 사용하여 팀 데이터를 관리한다.
+//ver 16 - 인스턴스 변수를 직접 사용하는 대신 겟터, 셋터 사용.
+// ver 15 - TeamDao를 생성자에서 주입 받도록 변경.
+// ver 14 - TeamDao를 사용하여 팀 데이터를 관리한다.
 // ver 13 - 시작일, 종료일을 문자열로 입력 받아 Date 객체로 변환하여 저장.
