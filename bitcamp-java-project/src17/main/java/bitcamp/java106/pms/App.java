@@ -11,7 +11,6 @@ import bitcamp.java106.pms.controller.TeamMemberController;
 import bitcamp.java106.pms.dao.MemberDao;
 import bitcamp.java106.pms.dao.TaskDao;
 import bitcamp.java106.pms.dao.TeamDao;
-import bitcamp.java106.pms.dao.TeamMemberDao;
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.util.Console;
@@ -26,41 +25,27 @@ public class App {
 
     static void onHelp() {
         System.out.println("[도움말]");
-        
-        System.out.println("----팀 관련 명령 : team----");
         System.out.println("팀 등록 명령 : team/add");
         System.out.println("팀 조회 명령 : team/list");
         System.out.println("팀 상세조회 명령 : team/view 팀명");
-        System.out.println("팀 정보 변경 명령 : team/update 팀명");
-        System.out.println("팀 정보 삭제명령 : team/delete 팀명");
-       
-        System.out.println("----회원 관련 명령: member----");
+        //team/update
+        //team/delete
         System.out.println("회원 등록 명령 : member/add");
         System.out.println("회원 조회 명령 : member/list");
         System.out.println("회원 상세조회 명령 : member/view 아이디");
-        System.out.println("회원 정보 수정 명령 : member/update 아이디");
-        System.out.println("회원 삭제 명령 : member/delete 아이디");
-        
-        System.out.println("----게시판 관련 명령: board----");
-        System.out.println("게시판 등록 명령: board/add");
-        System.out.println("게시판 조회 명령: board/list");
-        System.out.println("게시판 상세조회 명령: board/view 게시판 번호");
-        System.out.println("게시판 정보 변경 명령: board/update 게시판 번호");
-        System.out.println("게시판 삭제 명령: board/delete 게시판 번호");
-        
-        System.out.println("----팀 소속 회원 관련 명령: team/member----");
-        System.out.println("팀 멤버 정보 등록 명령: team/member/add");
-        System.out.println("팀 맴버 정보 조회 명령: team/member/list");
-        System.out.println("팀 멤버 삭제 명령: team/member/delete");
-        
-        System.out.println("----작업 관련 명령: task----");
-        System.out.println("작업 등록 명령: task/add");
-        System.out.println("작업 목록 조회 명령: task/list");
-        System.out.println("작업 목록 상세조회 명령: task/view");
-        System.out.println("작업 수정 명령: task/update");
-        System.out.println("작업 목록 삭제 명령: task/delete");
-        System.out.println("작업 상태 수정 명령: task/state");
-        
+        //member/update
+        //member/delete
+        //board/add
+        //board/list
+        //board/view
+        //board/update
+        //board/delete
+        //team/member/add
+        //team/member/list
+        //team/member/delete
+        //task/add
+        //task/list
+        //task/view
         System.out.println("종료 : quit");
 
     }
@@ -71,19 +56,16 @@ public class App {
         TeamDao teamDao = new TeamDao();
         MemberDao memberDao = new MemberDao();
         TaskDao taskDao = new TaskDao();
-        TeamMemberDao teamMemberDao = new TeamMemberDao();
         
         //테스트용 데이터 준비
         prepareMemebrData(memberDao);
-        prepareTeamData(teamDao, teamMemberDao);
+        prepareTeamData(teamDao, memberDao);
         
         TeamController teamController = new TeamController(keyScan, teamDao);
-        TeamMemberController teamMemberController = new TeamMemberController(
-                keyScan, teamDao, memberDao, teamMemberDao);
+        TeamMemberController teamMemberController = new TeamMemberController(keyScan, teamDao, memberDao);
         MemberController memberController = new MemberController(keyScan, memberDao);
         BoardController boardController = new BoardController(keyScan);
-        TaskController taskController = new TaskController(
-                keyScan, teamDao, taskDao, teamMemberDao, memberDao);
+        TaskController taskController = new TaskController(keyScan, teamDao, taskDao);
         
         Console.keyScan = keyScan;
 
@@ -157,27 +139,26 @@ public class App {
         memberDao.insert(member);
     }
     
-    static void prepareTeamData(TeamDao teamDao, TeamMemberDao teamMemberDao) {
+    static void prepareTeamData(TeamDao teamDao, MemberDao memberDao) {
         Team team = new Team();
         team.setName("t1");
         team.setMaxQty(5);
         team.setStartDate(Date.valueOf("2018-1-1"));
         team.setEndDate(Date.valueOf("2018-5-30"));
+        team.addMember(memberDao.get("aaa"));
+        team.addMember(memberDao.get("bbb"));
+        team.addMember(memberDao.get("ccc"));
         teamDao.insert(team);
-        teamMemberDao.addMember("t1", "aaa");
-        teamMemberDao.addMember("t1", "bbb");
-        teamMemberDao.addMember("t1", "ccc");
-        
         
         team = new Team();
         team.setName("t2");
         team.setMaxQty(5);
         team.setStartDate(Date.valueOf("2018-2-1"));
         team.setEndDate(Date.valueOf("2018-6-30"));
+        team.addMember(memberDao.get("ccc"));
+        team.addMember(memberDao.get("ddd"));
+        team.addMember(memberDao.get("eee"));
         teamDao.insert(team);
-        teamMemberDao.addMember("t2", "ccc");
-        teamMemberDao.addMember("t2", "ddd");
-        teamMemberDao.addMember("t2", "eee");
     }
 }
 
