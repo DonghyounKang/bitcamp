@@ -7,6 +7,8 @@ public class Task {
     public static final int WORKING = 1;
     public static final int COMPLETE = 9; // 고정된 상수(대문자) 값(static 변수 선언), 바뀌지 않는다(final) , 외부에서 사용가능(public)
     
+    private static int count = 1;
+
     private int no;
     private String title;
     private Date startDate;
@@ -17,10 +19,13 @@ public class Task {
    
     public Task(Team team) {
         this.team = team;
+        this.no = count++;
     }
     
     public Task(Team team, String title, Date startDate, Date endDate) {
-        this.team = team;
+        this(team);
+        //this.team = team;
+        //this.no = count++;
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;

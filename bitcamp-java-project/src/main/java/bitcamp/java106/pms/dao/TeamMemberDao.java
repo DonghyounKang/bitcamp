@@ -1,24 +1,23 @@
 
 package bitcamp.java106.pms.dao;
 
-import bitcamp.java106.pms.domain.Member;
-import bitcamp.java106.pms.domain.Team;
+import bitcamp.java106.pms.util.ArrayList;
 
 //1. Team 클래스 내의 연산자를 그대로 가져온다.
 public class TeamMemberDao {
     
     //2. 내부적으로 사용할 변수 선언
-    private Object[][] teamMembers = new Object[1000][2];
-    private int rowIndex;
+    private ArrayList teamCollection = new ArrayList();
+    private ArrayList memberCollection = new ArrayList();
+    
     
     private int getIndex(String teamName, String memberId) {
         String ptn = teamName.toLowerCase();
         String pmi = memberId.toLowerCase();
-        for (int i = 0; i < this.rowIndex; i++) {
-            if (this.teamMembers[i][0] == null) continue;
+        for (int i = 0; i < this.teamCollection.size(); i++) {
             
-            String tn = ((String)this.teamMembers[i][0]).toLowerCase();
-            String mi = ((String)this.teamMembers[i][1]).toLowerCase();
+            String tn = ((String)this.teamCollection.get(i)).toLowerCase();
+            String mi = ((String)this.memberCollection.get(i)).toLowerCase();
             if (tn.equals(ptn) && mi.equals(pmi)) {
                 return i;
             }
@@ -35,9 +34,8 @@ public class TeamMemberDao {
         if (this.isExist(teamName, memberId)) { 
             return 0;
         }
-        this.teamMembers[rowIndex][0] = teamName;
-        this.teamMembers[rowIndex][1] = memberId;
-        rowIndex++; //가독성 
+        this.teamCollection.add(teamName);
+        this.memberCollection.add(memberId);
         return 1;
     }
     
@@ -47,8 +45,8 @@ public class TeamMemberDao {
             return 0;
         }
         
-        this.teamMembers[index][0] = null;
-        this.teamMembers[index][1] = null;
+        this.teamCollection.remove(index);;
+        this.memberCollection.remove(index);
         return 1;
     }
     
@@ -64,11 +62,9 @@ public class TeamMemberDao {
         int cnt = 0; //로컬변수는 반드시 초기화시켜야 한다.
         String ptn = teamName.toLowerCase();
         
-        for (int i = 0; i < this.rowIndex; i++) {
-            if (this.teamMembers[i][0] == null)
-                continue;
+        for (int i = 0; i < this.teamCollection.size(); i++) {
 
-            String tn = ((String)this.teamMembers[i][0]).toLowerCase();
+            String tn = ((String)this.teamCollection.get(i)).toLowerCase();
             if (tn.equals(ptn)) {
                 cnt++;
             }
@@ -80,13 +76,11 @@ public class TeamMemberDao {
         String ptn = teamName.toLowerCase();
         String[] members = new String[this.getMemberCount(teamName)];
         
-        for (int i = 0, x = 0; i < this.rowIndex; i++) {
-            if (this.teamMembers[i][0] == null)
-                continue;
+        for (int i = 0, x = 0; i < this.teamCollection.size(); i++) {
 
-            String tn = ((String)this.teamMembers[i][0]).toLowerCase();
+            String tn = ((String)this.teamCollection.get(i)).toLowerCase();
             if (tn.equals(ptn)) {
-                members[x++] = ((String)this.teamMembers[i][1]);
+                members[x++] = ((String)this.memberCollection.get(i));
             }
         }
         return members;

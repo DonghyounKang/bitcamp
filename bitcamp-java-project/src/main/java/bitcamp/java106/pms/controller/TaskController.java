@@ -8,7 +8,6 @@ import bitcamp.java106.pms.dao.MemberDao;
 import bitcamp.java106.pms.dao.TaskDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.dao.TeamMemberDao;
-import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Task;
 import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.util.Console;
@@ -133,7 +132,7 @@ public class TaskController {
         System.out.print("작업번호?");
         int taskNo = Integer.parseInt(keyScan.nextLine());
 
-        Task task = taskDao.get(team.getName(), taskNo);
+        Task task = taskDao.get(taskNo);
         
         if(task == null) {
             System.out.printf("'%s' 팀의 '%d' 번 작업을 찾을 수 없습니다", team.getName(), taskNo);
@@ -155,7 +154,7 @@ public class TaskController {
         System.out.print("변경할 작업번호? ");
         int taskNo = Integer.parseInt(keyScan.nextLine());
         
-        Task originTask = taskDao.get(team.getName(), taskNo);
+        Task originTask = taskDao.get(taskNo);
         if(originTask == null) {
             System.out.printf("'%s' 팀의 '%d' 번 작업을 찾을 수 없습니다", team.getName(), taskNo);
             return;
@@ -228,7 +227,7 @@ public class TaskController {
         System.out.print("삭제할 작업 번호? ");
         int taskNo = Integer.parseInt(keyScan.nextLine());
         
-        Task task = taskDao.get(team.getName(), taskNo);
+        Task task = taskDao.get(taskNo);
         if(task == null) {
             System.out.printf("'%s' 팀의 '%d' 번 작업을 찾을 수 없습니다", team.getName(), taskNo);
             return;
@@ -249,7 +248,7 @@ public class TaskController {
         System.out.print("상태를 변경할 작업 번호?");
         int taskNo = Integer.parseInt(keyScan.nextLine());
 
-        Task task = taskDao.get(team.getName(), taskNo);
+        Task task = taskDao.get(taskNo);
         
         if(task == null) {
             System.out.printf("'%s' 팀의 '%d' 번 작업을 찾을 수 없습니다", team.getName(), taskNo);

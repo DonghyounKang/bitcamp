@@ -52,10 +52,9 @@ public class MemberController {
     void onMemberList() {
         System.out.println("[회원 목록]");
         Member[] list = memberDao.list();
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] == null) continue;
+        for (Member member : list) {
             System.out.printf("%s, %s, %s\n", 
-                list[i].getId(), list[i].getEmail(), list[i].getPassword());
+                member.getId(), member.getEmail(), member .getPassword());
         }
     }
 
