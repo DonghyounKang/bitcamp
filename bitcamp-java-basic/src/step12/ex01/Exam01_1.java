@@ -9,7 +9,7 @@
 
 package step12.ex01;
 
-public class Exam01 {
+public class Exam01_1 {
 
     public static void main(String[] args) {
         //ArrayList list = new ArrayList(100);

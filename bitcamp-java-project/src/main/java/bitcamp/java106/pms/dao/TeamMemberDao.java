@@ -17,10 +17,9 @@ public class TeamMemberDao {
         for (int i = 0; i < this.teamCollection.size(); i++) {
             
             String tn = ((String)this.teamCollection.get(i)).toLowerCase();
-            
-            
-            
+            //String tn = this.teamCollection.get(i).toString().toLowerCase();
             String mi = ((String)this.memberCollection.get(i)).toLowerCase();
+            //String mi = this.memberCollection.get(i).toString().toLowerCase();
             if (tn.equals(ptn) && mi.equals(pmi)) {
                 return i;
             }
@@ -47,7 +46,6 @@ public class TeamMemberDao {
         if (index < 0) { //존재하지 않는 맴버라면
             return 0;
         }
-        
         this.teamCollection.remove(index);;
         this.memberCollection.remove(index);
         return 1;
@@ -64,10 +62,8 @@ public class TeamMemberDao {
     private int getMemberCount(String teamName) {
         int cnt = 0; //로컬변수는 반드시 초기화시켜야 한다.
         String ptn = teamName.toLowerCase();
-        
         for (int i = 0; i < this.teamCollection.size(); i++) {
-
-            String tn = ((String)this.teamCollection.get(i)).toLowerCase();
+            String tn = (this.teamCollection.get(i)).toString().toLowerCase();
             if (tn.equals(ptn)) {
                 cnt++;
             }
@@ -89,9 +85,7 @@ public class TeamMemberDao {
         return members;
     }      
 }
-//용어정리
-//Method Signature = 함수 프로토타입(function prototype)
-//메서드의 이름과 파라미터 형식, 리턴 타입에 대한 정보를 말한다.
 
+//ver 18- ArrayList를 적용하여 객체(의 주소)목록을 관리한다.
 //ver 17 - 클래스 추가
 

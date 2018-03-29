@@ -27,7 +27,7 @@ public class Exam03_1 {
         }
         
         System.out.println(m1.equals(m2));
-        // Member 클래스에것 equals를 적용한 적이 없다 -> 컴파일 오류가 발생하지 않는 이유 
+        // Member 클래스에 equals()를 적용한 적이 없다 -> 컴파일 오류가 발생하지 않는 이유 
         
         // => 클래스를 만들 때 수퍼 클래스를 지정하지 않으면
         //    자동으로 Object를 상속받게 된다.

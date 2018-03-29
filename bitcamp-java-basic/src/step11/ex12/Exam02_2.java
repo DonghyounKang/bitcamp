@@ -20,7 +20,7 @@ public class Exam02_2 {
             this.aver = this.sum / 3f;
             
         }
-        //인스턴스가 다르더라도 값이 다르면 같은 해시갑을 리턴하도록 오버라이딩
+        //인스턴스가 다르더라도 값이 같으면 같은 해시갑을 리턴하도록 오버라이딩
         @Override
         public int hashCode() {
             // 가장 간단한 방법: 모든 값을 문자열로 만들어 붙인다음에 
