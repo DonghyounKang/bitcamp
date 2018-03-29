@@ -7,7 +7,7 @@
 - 작업내용
    - 수업 정보의 등록/조회/변경/삭제할 수 있는 기능을 만든다.
 
-
+```
 > java -classpath bin bitcamp.java106.pms.App
 
 명령> classroom/add
@@ -48,7 +48,7 @@
 삭제하였습니다.
 변경하시겠습니까?(y/N) n
 취소하였습니다.
-
+```
 
 ## src18 - 컬렉션 클래스 적용
 - 학습목표
@@ -72,7 +72,8 @@
    - "high cohesion"을 유지하기 위해 Team클래스를 리팩토링한다.
    - (팀 회원 관리 기능을 TeamMemberDao로 분리)
    - 이렇게 함으로써 Team클래스가 좀더 high cohesion을 유지하게 만든다.
-    
+   
+```    
  > java -classpath bin bitcamp.java106.pms.App
 명령> team/add
 팀명? 비트비트
@@ -138,7 +139,7 @@
 명령> task/state 비트비트
 상태를 변경할 작업의 번호? 8
 해당 작업이 없습니다.
-
+```
 
 ## src16 - 캡슐화 적용
 - 학습목표

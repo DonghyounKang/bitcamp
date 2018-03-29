@@ -17,9 +17,6 @@ public class TeamMemberDao {
         for (int i = 0; i < this.teamCollection.size(); i++) {
             
             String tn = ((String)this.teamCollection.get(i)).toLowerCase();
-            
-            
-            
             String mi = ((String)this.memberCollection.get(i)).toLowerCase();
             if (tn.equals(ptn) && mi.equals(pmi)) {
                 return i;
