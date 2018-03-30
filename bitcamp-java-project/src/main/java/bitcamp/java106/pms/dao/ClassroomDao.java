@@ -1,7 +1,8 @@
 package bitcamp.java106.pms.dao;
 
+import java.util.ArrayList;
+
 import bitcamp.java106.pms.domain.Classroom;
-import bitcamp.java106.pms.util.ArrayList;
 
 public class ClassroomDao {
     private ArrayList collection = new ArrayList();

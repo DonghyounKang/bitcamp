@@ -90,7 +90,7 @@ public class App {
         BoardController boardController = new BoardController(keyScan);
         TaskController taskController = new TaskController(
                 keyScan, teamDao, taskDao, teamMemberDao, memberDao);
-        ClassroomController classroomController = new ClassroomController(keyScan);
+        //ClassroomController classroomController = new ClassroomController(keyScan);
         
         
         Console.keyScan = keyScan;
@@ -121,7 +121,7 @@ public class App {
             } else if (menu.startsWith("task/")) {
                 taskController.service(menu, option);
             } else if (menu.startsWith("classroom/")) {
-                classroomController.service(menu, option);
+                //classroomController.service(menu, option);
             } else {
                 System.out.println("명령어가 올바르지 않습니다.");
             }

@@ -1,10 +1,11 @@
 package bitcamp.java106.pms.dao;
 
+import java.util.LinkedList;
+
 import bitcamp.java106.pms.domain.Member;
-import bitcamp.java106.pms.util.ArrayList;
 
 public class MemberDao {
-    private ArrayList collection = new ArrayList();
+    private LinkedList<Member> collection = new LinkedList<>();
     
     public void insert(Member member) {
         // 회원 정보가 담겨있는 객체의 주소를 배열에 보관한다.
@@ -14,7 +15,7 @@ public class MemberDao {
     public Member[] list() {
         Member[] arr = new Member[this.collection.size()];
         for (int i = 0; i < this.collection.size(); i++)
-            arr[i] = (Member)this.collection.get(i);
+            arr[i] = this.collection.get(i);
         return arr;
     }
     
@@ -22,7 +23,7 @@ public class MemberDao {
         int index = this.getMemberIndex(id);
         if (index < 0)
             return null;
-        return (Member)collection.get(index);
+        return collection.get(index);
       /*  for(int i = 0; i < collection.size(); i++) {
             Member member = (Member) this.collection.get(i);
             if(member.getId().equals(id))
@@ -49,14 +50,13 @@ public class MemberDao {
     // 다음 메서드는 내부에서만 사용할 것이기 때문에 공개하지 않는다.
     private int getMemberIndex(String id) {
         for(int i = 0; i < collection.size(); i++) {
-            Member originMember = (Member) this.collection.get(i);
+            Member originMember = this.collection.get(i);
             if(originMember.getId().toLowerCase().equals(id.toLowerCase())) {
                 return i;
             }
         }
         return -1;
     }
-    
 }
 
 //ver 16 - 인스턴스 변수를 직접 사용하는 대신 겟터, 셋터 사용.

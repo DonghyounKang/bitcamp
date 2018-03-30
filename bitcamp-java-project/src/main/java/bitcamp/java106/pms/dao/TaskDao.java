@@ -1,33 +1,34 @@
 package bitcamp.java106.pms.dao;
 
+import java.util.LinkedList;
+
 import bitcamp.java106.pms.domain.Task;
-import bitcamp.java106.pms.util.ArrayList;
 
 public class TaskDao {
-    private ArrayList collection = new ArrayList();
-    
+    private LinkedList<Task> collection = new LinkedList<>();
+
     public void insert(Task task) {
         this.collection.add(task);
-//        this.tasks[this.taskIndex++] = task;
     }
 
     private int count(String teamName) {
-        
         int cnt = 0;
         for (int i = 0; i < collection.size(); i++) {
-            Task task = (Task)collection.get(i);
-            if(task.getTeam().getName().toLowerCase().equals(teamName.toLowerCase())) {
+            Task task = collection.get(i);
+            if (task.getTeam().getName().toLowerCase().equals(
+                    teamName.toLowerCase())) {
                 cnt++;
             }
         }
         return cnt;
     }
-    
+
     public Task[] list(String teamName) {
         Task[] arr = new Task[this.count(teamName)];
         for (int i = 0, x = 0; i < collection.size(); i++) {
-            Task task = (Task) collection.get(i);
-            if(task.getTeam().getName().toLowerCase().equals(teamName.toLowerCase())) {
+            Task task = collection.get(i);
+            if (task.getTeam().getName().toLowerCase().equals(
+                    teamName.toLowerCase())) {
                 arr[x++] = task;
             }
         }
@@ -36,52 +37,39 @@ public class TaskDao {
 
     public Task get(int taskNo) {
         int index = this.getTaskIndex(taskNo);
-        if( index < 0) {
+        if (index < 0)
             return null;
-        }
-        return (Task)collection.get(index);
-//        for (int i = 0; i < taskIndex; i++) {
-//            if(tasks[i]== null) continue;
-//            if(tasks[i].getTeam().getName().toLowerCase().equals(teamName) &&
-//                    tasks[i].getNo()==taskNo) {
-//                return tasks[i];
-//            }
-//        }
-//        return null;
+        return (Task) collection.get(index);
     }
 
     public void update(Task task) {
-        int index = this. getTaskIndex(task.getNo());
-        if(index < 0)
+        int index = this.getTaskIndex(task.getNo());
+        if (index < 0)
             return;
         collection.set(index, task);
     }
 
     public void delete(int taskNo) {
-        int index = this. getTaskIndex(taskNo);
-        if(index < 0)
+        int index = this.getTaskIndex(taskNo);
+        if (index < 0)
             return;
         collection.remove(index);
     }
 
-    
     private int getTaskIndex(int taskNo) {
-        for (int i = 0; i < this.collection.size(); i++) {
-            Task task = (Task) collection.get(i);
+        for (int i = 0; i < collection.size(); i++) {
+            Task task = collection.get(i);
             if (task.getNo() == taskNo) {
                 return i;
-        }
+            }
         }
         return -1;
-
     }
-
 }
 
-//
+//ver 18 - ArrayList 클래스를 적용하여 객체(의 주소) 목록을 관리한다.
 // ver 17 - 클래스 생성
-// ver 16 - Task 인스턴스 변수를 직접 사용하는 대신 겟터, 셋터 사용
-// ver 14 - TaskController로부터 데이터 관리 기능을 분리하여 TaskDao 생성.
+
 
 
 
