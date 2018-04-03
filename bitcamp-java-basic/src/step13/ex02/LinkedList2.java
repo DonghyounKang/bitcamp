@@ -110,6 +110,16 @@ public class LinkedList2<E> {
         }
     }
     
+    public E[] toArray(E[] arr) {
+        Bucket cursor = head;
+        int count = 0;
+        
+        while (cursor != tail) {
+            arr[count++] = cursor.value;
+            cursor = cursor.next;
+        }
+        return arr; // 받은 배열을 그대로 리턴(사용시 선택/ 쓰려면 쓰고 아님 말고)
+    }
 }
 
 
