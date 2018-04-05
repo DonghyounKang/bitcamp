@@ -1,4 +1,4 @@
-//메서드 : 개념 및 기본문법
+ //메서드 : 개념 및 기본문법
 package step06;
 
 import java.util.Scanner;

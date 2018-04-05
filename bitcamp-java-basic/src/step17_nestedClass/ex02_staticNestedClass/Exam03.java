@@ -1,0 +1,12 @@
+// 상수 코드를 스테틱 중첩 클래스로 분리하여 다루기
+package step17_nestedClass.ex02_staticNestedClass;
+
+public class Exam03 {
+    public static void main(String[] args) {
+        Product2 p = new Product2();
+        p.category = Category2.appliance.TV;
+        p.name = "울트랴비전 뷰";
+        p.price = 2000000;
+        
+    }
+}
