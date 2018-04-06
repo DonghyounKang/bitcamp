@@ -4,6 +4,7 @@ package step16.ex01;
 import java.io.File;
 
 public class Exam01 {
+    
     public static void main(String[] args) throws Exception {
         //file 클래스
         // => 파일이나 디렉토리 정보를 관리

@@ -26,7 +26,7 @@ public class Exam03 {
         //생성자를 준비한다.
         Constructor c = clazz.getConstructor(int.class);
         
-        //생성자 객체를 통해 인스턴스 생성
+        //생성자 객체를 통해 인스턴스 생성 
         Exam03 obj = (Exam03) c.newInstance(200);
         obj.print();
         
