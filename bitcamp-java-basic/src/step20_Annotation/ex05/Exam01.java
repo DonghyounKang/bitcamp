@@ -1,0 +1,14 @@
+//Annotation property 값 추출
+package step20_Annotation.ex05;
+
+public class Exam01 {
+    public static void main(String[] args) {
+        Class clazz = MyClass.class;
+        MyAnnotation obj = (MyAnnotation) clazz.getAnnotation(MyAnnotation.class);
+        
+        System.out.println(obj.v1());
+        System.out.println(obj.v2());
+        System.out.println(obj.v3());
+        
+    }
+}
