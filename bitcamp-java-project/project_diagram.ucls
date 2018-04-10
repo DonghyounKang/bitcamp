@@ -136,8 +136,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="bitcamp.java106.pms.controller.TaskController" project="bitcamp-java-project" 
-    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/TaskController.java" binary="false" 
+  <class id="16" language="java" name="bitcamp.java106.pms.controller.task.TaskController" 
+    project="bitcamp-java-project" 
+    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/task/TaskController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1122" y="1332"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -146,8 +147,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="bitcamp.java106.pms.controller.TeamController" project="bitcamp-java-project" 
-    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/TeamController.java" binary="false" 
+  <class id="17" language="java" name="bitcamp.java106.pms.controller.team.TeamController" 
+    project="bitcamp-java-project" 
+    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/team/TeamController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1412" y="1315"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -156,9 +158,10 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="bitcamp.java106.pms.controller.MemberController" project="bitcamp-java-project" 
-    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/MemberController.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <class id="18" language="java" name="bitcamp.java106.pms.controller.member.MemberController" 
+    project="bitcamp-java-project" 
+    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/member/MemberController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="433" y="1311"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -176,10 +179,10 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="20" language="java" name="bitcamp.java106.pms.controller.TeamMemberController" 
+  <class id="20" language="java" name="bitcamp.java106.pms.controller.teamMember.TeamMemberController" 
     project="bitcamp-java-project" 
-    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/TeamMemberController.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/teamMember/TeamMemberController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="735" y="1294"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -187,8 +190,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="bitcamp.java106.pms.controller.BoardController" project="bitcamp-java-project" 
-    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/BoardController.java" binary="false" 
+  <class id="21" language="java" name="bitcamp.java106.pms.controller.Board.BoardController" 
+    project="bitcamp-java-project" 
+    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/Board/BoardController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1594" y="1315"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -197,10 +201,10 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="bitcamp.java106.pms.controller.ClassroomController" 
+  <class id="22" language="java" name="bitcamp.java106.pms.controller.classroom.ClassroomController" 
     project="bitcamp-java-project" 
-    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/ClassroomController.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+    file="/bitcamp-java-project/src/main/java/bitcamp/java106/pms/controller/classroom/ClassroomController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="207" y="1302"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -223,136 +227,136 @@
     <position height="-1" width="-1" x="690" y="-50"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <association id="26">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="27" name="taskDao">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="28" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="30" name="teamDao">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="31" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="32">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="33" name="teamDao">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="34" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="35">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="19"/>  
-  </realization>  
-  <realization id="36">    
+  <realization id="26">    
     <end type="SOURCE" refId="20"/>    
     <end type="TARGET" refId="19"/>  
   </realization>  
-  <association id="37">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="38" name="teamMemberDao">        
-        <position height="18" width="90" x="987" y="1046"/>      
+  <association id="27">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="28" name="classroomDao">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="39" minimum="0" maximum="1">        
+      <multiplicity id="29" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="30">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="31" name="teamDao">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="32" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="33">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="34" name="teamMemberDao">        
+        <position height="18" width="90" x="880" y="1046"/>      
+      </attribute>      
+      <multiplicity id="35" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="41" name="memberDao">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="42" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="43">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="44" name="worker">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="45" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
+  <association id="36">    
     <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="47" name="memberDao">        
+      <attribute id="37" name="memberDao">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="48" minimum="0" maximum="1">        
+      <multiplicity id="38" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="49">    
+  <association id="39">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="50" name="team">        
+      <attribute id="40" name="team">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="51" minimum="0" maximum="1">        
+      <multiplicity id="41" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="52">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="53" name="teamMemberDao">        
-        <position height="18" width="90" x="880" y="1046"/>      
+  <association id="42">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="43" name="teamDao">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="54" minimum="0" maximum="1">        
+      <multiplicity id="44" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="46" name="worker">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="47" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="48">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="49">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="50" name="taskDao">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="51" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="52">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="53">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="54" name="teamMemberDao">        
+        <position height="18" width="90" x="987" y="1046"/>      
+      </attribute>      
+      <multiplicity id="55" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="55">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="19"/>  
-  </realization>  
   <association id="56">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="57" name="classroomDao">        
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="57" name="memberDao">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="58" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

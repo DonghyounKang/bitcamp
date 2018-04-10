@@ -6,7 +6,7 @@ public class Exam01_3 {
         
         int result = Calculator2.compute("#", 100, 200);
         
-        //작업실행중 오류 발생시 희휘한 값을 리턴하여 알려줬다.
+        //작업실행중 오류 발생시 희귀한 값을 리턴하여 알려줬다.
         if(result == -1212121212) {
             System.out.println("유효하지 않은 연산자");
             
