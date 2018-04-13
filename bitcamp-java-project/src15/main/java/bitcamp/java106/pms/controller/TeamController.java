@@ -54,7 +54,7 @@ public class TeamController {
         System.out.print("종료일? ");
         team.endDate = Date.valueOf(this.keyScan.nextLine());
 
-        teamDao.menu(team);
+        teamDao.insert(team);
     }
 
     void onTeamList() {
@@ -140,6 +140,6 @@ public class TeamController {
     
 }
 
-//ver 15 - teamDao를 생성자로 부터 받을 수 있도록 함
-//ver 14 - TeamDao를 사용하여 팀 데이터를 관리한다.
+// ver 15 - TeamDao를 생성자에서 주입 받도록 변경.
+// ver 14 - TeamDao를 사용하여 팀 데이터를 관리한다.
 // ver 13 - 시작일, 종료일을 문자열로 입력 받아 Date 객체로 변환하여 저장.

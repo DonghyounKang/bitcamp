@@ -1,20 +1,19 @@
-//팀관련기능 클래스
+// 팀 관련 기능을 모아 둔 클래스
 package bitcamp.java106.pms.controller;
 
 import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.util.Console;
 import java.util.Scanner;
 
-public class TeamController{
-
-    // 이 클래스를 사용하기 전에 App 클래스에서 준비한 Scanner객체를
-    //  keyScan변수에 저장
-    public Scanner keyScan;//외부 접근만 public
+public class TeamController {
+    // 이 클래스를 사용하기 전에 App 클래스에서 준비한 Scanner 객체를
+    // keyScan 변수에 저장하라!
+    public Scanner keyScan;
 
     Team[] teams = new Team[1000];
     int teamIndex = 0;
 
-    public void service(String menu, String option){
+    public void service(String menu, String option) {
         if (menu.equals("team/add")) {
             this.onTeamAdd();
         } else if (menu.equals("team/list")) {
@@ -28,7 +27,6 @@ public class TeamController{
         } else {
             System.out.println("명령어가 올바르지 않습니다.");
         }
-
     }
 
     int getTeamIndex(String name) {
@@ -40,7 +38,7 @@ public class TeamController{
         }
         return -1;
     }
-    
+
     void onTeamAdd() {
         System.out.println("[팀 정보 입력]");
         Team team = new Team();
@@ -53,7 +51,7 @@ public class TeamController{
 
         System.out.print("최대인원? ");
         team.maxQty = this.keyScan.nextInt();
-        keyScan.nextLine(); 
+        this.keyScan.nextLine(); 
 
         System.out.print("시작일? ");
         team.startDate = this.keyScan.nextLine();
@@ -117,7 +115,7 @@ public class TeamController{
             updateTeam.description = this.keyScan.nextLine();
             System.out.printf("최대인원(%d)? ", team.maxQty);
             updateTeam.maxQty = this.keyScan.nextInt();
-            keyScan.nextLine();
+            this.keyScan.nextLine();
             System.out.printf("시작일(%s)? ", team.startDate);
             updateTeam.startDate = this.keyScan.nextLine();
             System.out.printf("종료일(%s)? ", team.endDate);
@@ -126,7 +124,7 @@ public class TeamController{
             System.out.println("변경하였습니다.");
         }
     }
-    
+
     void onTeamDelete(String name) {
         System.out.println("[팀 정보 삭제]");
         if (name == null) {
@@ -145,5 +143,5 @@ public class TeamController{
             }
         }
     }
-
+    
 }

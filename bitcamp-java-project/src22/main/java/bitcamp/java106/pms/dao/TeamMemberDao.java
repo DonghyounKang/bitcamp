@@ -35,7 +35,7 @@ public class TeamMemberDao {
         String memberIdLC = memberId.toLowerCase();
         
         ArrayList<String> members = collection.get(teamNameLC);
-        if (members == null || !members.contains(memberIdLC))
+        if (members == null || !members.contains(memberIdLC)) 
             return 0;
 
         members.remove(memberIdLC);

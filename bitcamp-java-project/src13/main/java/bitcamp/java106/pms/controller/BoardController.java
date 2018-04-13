@@ -1,26 +1,21 @@
-// 컨트롤러가 작업하는데 필요한 객체를 반드시 준비하도록 생성자를 추가한다.
-// => 생성자를 통해 필수 입력 값을 반드시 설정하도록 강제시킬 수 있다. 
-// => 즉, 생성자란 객체를 사용하기 전에 유효한 값으로 설정하게 만드는 문법이다.
-
 package bitcamp.java106.pms.controller;
 
-import java.util.Scanner;
 import java.sql.Date;
+import java.util.Scanner;
+
 import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.util.Console;
 
 public class BoardController {
-
     Scanner keyScan;
 
     Board[] boards = new Board[1000];
     int boardIndex = 0;
 
     public BoardController(Scanner scanner) {
-
         this.keyScan = scanner;
     }
-
+    
     public void service(String menu, String option) {
         if (menu.equals("board/add")) {
             this.onBoardAdd();
@@ -58,7 +53,7 @@ public class BoardController {
         for (int i = 0; i < this.boardIndex; i++) {
             if (this.boards[i] == null) continue;
             System.out.printf("%d, %s, %s\n",
-                    i, this.boards[i].title, this.boards[i].createdDate);
+                i, this.boards[i].title, this.boards[i].createdDate);
         }
     }
 
@@ -68,9 +63,9 @@ public class BoardController {
             System.out.println("번호를 입력하시기 바랍니다.");
             return;
         }
-
+        
         int i = Integer.parseInt(option);
-
+        
         if (i < 0 || i >= this.boardIndex) {
             System.out.println("유효하지 않은 게시물 번호입니다.");
         } else {
@@ -87,9 +82,9 @@ public class BoardController {
             System.out.println("번호를 입력하시기 바랍니다.");
             return;
         }
-
+        
         int i = Integer.parseInt(option);
-
+        
         if (i < 0 || i >= this.boardIndex) {
             System.out.println("유효하지 않은 게시물 번호입니다.");
         } else {
@@ -100,7 +95,7 @@ public class BoardController {
             System.out.printf("설명(%s)? ", board.content);
             updateBoard.content = this.keyScan.nextLine();
             updateBoard.createdDate = board.createdDate;
-            boards[i] = updateBoard;
+            this.boards[i] = updateBoard;
             System.out.println("변경하였습니다.");
         }
     }
@@ -111,10 +106,10 @@ public class BoardController {
             System.out.println("번호를 입력하시기 바랍니다.");
             return; 
         }
-
+        
         int i = Integer.parseInt(option);
-
-        if (i < 0 || i >= this. boardIndex) {
+        
+        if (i < 0 || i >= this.boardIndex) {
             System.out.println("유효하지 않은 게시물 번호입니다.");
         } else {
             if (Console.confirm("정말 삭제하시겠습니까?")) {
@@ -123,7 +118,7 @@ public class BoardController {
             }
         }
     }
-
+    
 }
 
-//ver 13 line 51 - 게시물 등록시 등록일 문자열 String -> Date 객체로 변환하여 저장
+// ver 13 - 게시물 등록할 때 등록일의 문자열을 Date 객체로 만들어 저장.

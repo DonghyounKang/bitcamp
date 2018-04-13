@@ -3,7 +3,6 @@ package bitcamp.java106.pms.domain;
 import java.sql.Date;
 
 public class Classroom {
-    
     private static int count;
     
     private int no;
@@ -12,18 +11,16 @@ public class Classroom {
     private Date endDate;
     private String room;
     
-    
     public Classroom() {
         this.no = ++count;
-        
     }
     
     @Override
     public String toString() {
         return "Classroom [no=" + no + ", title=" + title + ", startDate=" + startDate + ", endDate=" + endDate
                 + ", room=" + room + "]";
-        
     }
+    
     public int getNo() {
         return no;
     }
@@ -51,11 +48,9 @@ public class Classroom {
     public String getRoom() {
         return room;
     }
-    public void setRoom(String classNo) {
-        this.room = classNo;
+    public void setRoom(String room) {
+        this.room = room;
     }
-
-
+    
+    
 }
-
-//ver.20 클래스 생성

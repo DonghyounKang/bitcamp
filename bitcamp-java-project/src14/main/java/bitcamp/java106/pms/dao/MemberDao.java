@@ -6,7 +6,7 @@ public class MemberDao {
     Member[] members = new Member[1000];
     int memberIndex = 0;
     
-    public void menu(Member member) {
+    public void insert(Member member) {
         // 회원 정보가 담겨있는 객체의 주소를 배열에 보관한다.
         this.members[this.memberIndex++] = member;
     }
@@ -52,3 +52,9 @@ public class MemberDao {
 }
 
 //ver 14 - MemberController로부터 데이터 관리 기능을 분리하여 MemberDao 생성.
+
+
+
+
+
+

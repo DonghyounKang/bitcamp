@@ -1,20 +1,19 @@
-//회원관련 기능을 모아둔 클래스
+// 이 클래스는 회원 관련 기능을 모두 둔 클래스이다.
 package bitcamp.java106.pms.controller;
 
-import java.util.Scanner;
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.util.Console;
+import java.util.Scanner;
 
-public class MemberController{
-    //이 클래스를 사용하려면 keyboard Scanner필요
-    //클래스 사용 전에 Scanner를 설정한다.
+public class MemberController {
+    // 이 클래스를 사용하려면 keyboard 스캐너가 있어야 한다.
+    // 이 클래스를 사용하기 전에 스캐너를 설정하라!
     public static Scanner keyScan;
-    
+
     static Member[] members = new Member[1000];
     static int memberIndex = 0;
 
-    public static void service(String menu, String option){
-
+    public static void service(String menu, String option) {
         if (menu.equals("member/add")) {
             onMemberAdd();
         } else if (menu.equals("member/list")) {
@@ -25,11 +24,10 @@ public class MemberController{
             onMemberUpdate(option);                
         } else if (menu.equals("member/delete")) {
             onMemberDelete(option);                
-        } else {System.out.println("명령어가 올바르지 않습니다.");}
+        } else {
+            System.out.println("명령어가 올바르지 않습니다.");
+        }
     }
-
-
-
 
     static int getMemberIndex(String id) {
         for (int i = 0; i < memberIndex; i++) {
@@ -129,6 +127,5 @@ public class MemberController{
             }
         }
     }
-
-
+    
 }

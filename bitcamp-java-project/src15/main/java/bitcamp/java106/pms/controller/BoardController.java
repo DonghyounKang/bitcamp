@@ -45,7 +45,7 @@ public class BoardController {
         System.out.print("등록일? ");
         board.createdDate = Date.valueOf(this.keyScan.nextLine());
 
-        boardDao.menu(board);
+        boardDao.insert(board);
     }
 
     void onBoardList() {

@@ -9,4 +9,5 @@ public class Board {
     public String content;
     public Date createdDate;
 }
-//ver13 - 등록일 String -> Date로 변경
+
+//ver 13 - 등록일의 데이터 타입을 String에서 Date으로 변경

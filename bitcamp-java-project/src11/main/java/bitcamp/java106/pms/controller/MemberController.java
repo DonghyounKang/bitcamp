@@ -1,20 +1,19 @@
-//회원관련 기능을 모아둔 클래스
+// 이 클래스는 회원 관련 기능을 모두 둔 클래스이다.
 package bitcamp.java106.pms.controller;
 
-import java.util.Scanner;
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.util.Console;
+import java.util.Scanner;
 
-public class MemberController{
-    //이 클래스를 사용하려면 keyboard Scanner필요
-    //클래스 사용 전에 Scanner를 설정한다.
-    public  Scanner keyScan;
-    
-     Member[] members = new Member[1000];
-     int memberIndex = 0;
+public class MemberController {
+    // 이 클래스를 사용하려면 keyboard 스캐너가 있어야 한다.
+    // 이 클래스를 사용하기 전에 스캐너를 설정하라!
+    public Scanner keyScan;
 
-    public  void service(String menu, String option){
+    Member[] members = new Member[1000];
+    int memberIndex = 0;
 
+    public void service(String menu, String option) {
         if (menu.equals("member/add")) {
             this.onMemberAdd();
         } else if (menu.equals("member/list")) {
@@ -25,13 +24,12 @@ public class MemberController{
             this.onMemberUpdate(option);                
         } else if (menu.equals("member/delete")) {
             this.onMemberDelete(option);                
-        } else {System.out.println("명령어가 올바르지 않습니다.");}
+        } else {
+            System.out.println("명령어가 올바르지 않습니다.");
+        }
     }
 
-
-
-
-     int getMemberIndex(String id) {
+    int getMemberIndex(String id) {
         for (int i = 0; i < this.memberIndex; i++) {
             if (this.members[i] == null) continue;
             if (id.equals(this.members[i].id.toLowerCase())) {
@@ -41,7 +39,7 @@ public class MemberController{
         return -1;
     }
 
-     void onMemberAdd() {
+    void onMemberAdd() {
         System.out.println("[회원 정보 입력]");
         Member member = new Member();
         
@@ -63,8 +61,7 @@ public class MemberController{
         for (int i = 0; i < this.memberIndex; i++) {
             if (this.members[i] == null) continue;
             System.out.printf("%s, %s, %s\n", 
-                    this.members[i].id, this.members[i].email, 
-                    this.members[i].password);
+                    this.members[i].id, this.members[i].email, this.members[i].password);
         }
     }
 
@@ -107,7 +104,7 @@ public class MemberController{
             updateMember.email = this.keyScan.nextLine();
             System.out.printf("암호? ");
             updateMember.password = this.keyScan.nextLine();
-            members[i] = updateMember;
+            this.members[i] = updateMember;
             System.out.println("변경하였습니다.");
         }
     }
@@ -130,6 +127,5 @@ public class MemberController{
             }
         }
     }
-
-
+    
 }

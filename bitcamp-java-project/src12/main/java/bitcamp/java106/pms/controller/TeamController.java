@@ -1,25 +1,24 @@
-//팀관련기능 클래스
+// 팀 관련 기능을 모아 둔 클래스
 package bitcamp.java106.pms.controller;
 
 import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.util.Console;
 import java.util.Scanner;
 
-public class TeamController{
-
-    // 이 클래스를 사용하기 전에 App 클래스에서 준비한 Scanner객체를
-    //  keyScan변수에 저장
-    Scanner keyScan;//외부 접근만 public
+public class TeamController {
+    // 이 클래스를 사용하기 전에 App 클래스에서 준비한 Scanner 객체를
+    // keyScan 변수에 저장하라!
+    Scanner keyScan;
 
     Team[] teams = new Team[1000];
     int teamIndex = 0;
-
+    
     public TeamController(Scanner scanner) {
-
         this.keyScan = scanner;
     }
+    
 
-    public void service(String menu, String option){
+    public void service(String menu, String option) {
         if (menu.equals("team/add")) {
             this.onTeamAdd();
         } else if (menu.equals("team/list")) {
@@ -33,7 +32,6 @@ public class TeamController{
         } else {
             System.out.println("명령어가 올바르지 않습니다.");
         }
-
     }
 
     int getTeamIndex(String name) {
@@ -58,7 +56,7 @@ public class TeamController{
 
         System.out.print("최대인원? ");
         team.maxQty = this.keyScan.nextInt();
-        keyScan.nextLine(); 
+        this.keyScan.nextLine(); 
 
         System.out.print("시작일? ");
         team.startDate = this.keyScan.nextLine();
@@ -85,9 +83,9 @@ public class TeamController{
         if (name == null) {
             System.out.println("팀명을 입력하시기 바랍니다.");
             return; // 값을 리턴하면 안되기 때문에 return 명령만 작성한다.
-            // 의미? 즉시 메서드 실행을 멈추고 이전 위치로 돌아간다.
+                    // 의미? 즉시 메서드 실행을 멈추고 이전 위치로 돌아간다.
         }
-
+        
         int i = this.getTeamIndex(name);
 
         if (i == -1) {
@@ -98,7 +96,7 @@ public class TeamController{
             System.out.printf("설명: %s\n", team.description);
             System.out.printf("최대인원: %d\n", team.maxQty);
             System.out.printf("기간: %s ~ %s\n", 
-                    team.startDate, team.endDate);
+                team.startDate, team.endDate);
         }
     }
 
@@ -108,7 +106,7 @@ public class TeamController{
             System.out.println("팀명을 입력하시기 바랍니다.");
             return;
         }
-
+        
         int i = this.getTeamIndex(name);
 
         if (i == -1) {
@@ -122,7 +120,7 @@ public class TeamController{
             updateTeam.description = this.keyScan.nextLine();
             System.out.printf("최대인원(%d)? ", team.maxQty);
             updateTeam.maxQty = this.keyScan.nextInt();
-            keyScan.nextLine();
+            this.keyScan.nextLine();
             System.out.printf("시작일(%s)? ", team.startDate);
             updateTeam.startDate = this.keyScan.nextLine();
             System.out.printf("종료일(%s)? ", team.endDate);
@@ -138,7 +136,7 @@ public class TeamController{
             System.out.println("팀명을 입력하시기 바랍니다.");
             return; 
         }
-
+        
         int i = this.getTeamIndex(name);
 
         if (i == -1) {
@@ -150,5 +148,5 @@ public class TeamController{
             }
         }
     }
-
+    
 }

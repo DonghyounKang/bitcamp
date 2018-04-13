@@ -1,7 +1,6 @@
 // Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.controller.teamMember;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 import bitcamp.java106.pms.annotation.Component;
@@ -29,7 +28,6 @@ public class TeamMemberAddController implements Controller {
     }
     
     public void service(String menu, String teamName) {
-        
         if (teamName == null) {
             System.out.println("팀명을 입력하시기 바랍니다.");
             return; 
@@ -58,9 +56,9 @@ public class TeamMemberAddController implements Controller {
         
         teamMemberDao.addMember(teamName, memberId);
     }
-
 }
 
+//ver 26 - TeamMemberController에서 add() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 18 - ArrayList가 적용된 TeamMemberDao를 사용한다.
 //ver 17 - TeamMemberDao 클래스를 사용하여 팀 멤버의 아이디를 관리한다.

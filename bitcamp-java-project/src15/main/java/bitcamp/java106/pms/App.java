@@ -74,4 +74,5 @@ public class App {
     }
 }
 
-// ver 15 : TeamDao, MemberDao 객체 추가팀 맴버 를 다루는 메뉴 추가
+// ver 15 - TeamDao와 MemberDao 객체 생성. 
+//          팀 멤버를 다루는 메뉴 추가.

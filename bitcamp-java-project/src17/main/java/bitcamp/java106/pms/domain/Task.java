@@ -5,16 +5,16 @@ import java.sql.Date;
 public class Task {
     public static final int READY = 0;
     public static final int WORKING = 1;
-    public static final int COMPLETE = 9; // 고정된 상수(대문자) 값(static 변수 선언), 바뀌지 않는다(final) , 외부에서 사용가능(public)
+    public static final int COMPLETE = 9;
     
     private int no;
     private String title;
     private Date startDate;
     private Date endDate;
-    private int state; 
+    private int state;
     private Member worker;
     private Team team;
-   
+    
     public Task(Team team) {
         this.team = team;
     }
@@ -30,28 +30,8 @@ public class Task {
     public int getNo() {
         return no;
     }
-
     public void setNo(int no) {
         this.no = no;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public Date getStartDate() {
-        return startDate;
-    }
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-    public Date getEndDate() {
-        return endDate;
-    }
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
     public int getState() {
         return state;
@@ -71,14 +51,34 @@ public class Task {
     public void setTeam(Team team) {
         this.team = team;
     }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public Date getStartDate() {
+        return startDate;
+    }
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+    public Date getEndDate() {
+        return endDate;
+    }
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
     @Override
     public String toString() {
         return "Task [title=" + title + ", startDate=" + startDate + ", endDate=" + endDate + ", state=" + state
                 + ", worker=" + worker + ", team=" + team + "]";
     }
-    
-    
 }
 
 //ver 17 - 사용자 정의 데이터 타입 생성
+
+
+
+

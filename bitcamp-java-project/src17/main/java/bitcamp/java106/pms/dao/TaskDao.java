@@ -14,8 +14,8 @@ public class TaskDao {
     private int count(String teamName) {
         int cnt = 0;
         for (int i = 0; i < taskIndex; i++) {
-            if(tasks[i] == null) continue;
-            if(tasks[i].getTeam().getName().toLowerCase().equals(teamName)) {
+            if (tasks[i] == null) continue;
+            if (tasks[i].getTeam().getName().toLowerCase().equals(teamName)) {
                 cnt++;
             }
         }
@@ -25,8 +25,8 @@ public class TaskDao {
     public Task[] list(String teamName) {
         Task[] arr = new Task[this.count(teamName)];
         for (int i = 0, x = 0; i < taskIndex; i++) {
-            if(tasks[i]== null) continue;
-            if(tasks[i].getTeam().getName().toLowerCase().equals(teamName)) {
+            if (tasks[i] == null) continue;
+            if (tasks[i].getTeam().getName().toLowerCase().equals(teamName)) {
                 arr[x++] = tasks[i];
             }
         }
@@ -35,10 +35,10 @@ public class TaskDao {
     
     public Task get(String teamName, int taskNo) {
         for (int i = 0; i < taskIndex; i++) {
-            if(tasks[i]== null) continue;
-            if(tasks[i].getTeam().getName().toLowerCase().equals(teamName) &&
-                    tasks[i].getNo() == taskNo) {
-                    return tasks[i];
+            if (tasks[i] == null) continue;
+            if (tasks[i].getTeam().getName().toLowerCase().equals(teamName) && 
+                tasks[i].getNo() == taskNo) {
+                return tasks[i];
             }
         }
         return null;
@@ -49,12 +49,11 @@ public class TaskDao {
     }
     
     public void delete(int taskNo) {
-        
         tasks[taskNo] = null;
     }
 }
 
-//ver17 - 클래스 생성
+// ver 17 - 클래스 생성
 
 
 

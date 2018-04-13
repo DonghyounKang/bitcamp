@@ -1,4 +1,4 @@
-// 스태틱 멤버(변수 및 메서드)를 인스턴스 멤버로 변경
+// 스태틱 멤버(변수 및 메서드)를 인스턴스 멤버로 변경한다. 
 package bitcamp.java106.pms.controller;
 
 import java.util.Scanner;
@@ -7,12 +7,10 @@ import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.util.Console;
 
 public class BoardController {
-    // 이 클래스를 사용하기 전에 App 클래스에서 준비한 Scanner 객체를
-    // keyScan 변수에 저장하라!
-    public  Scanner keyScan;
+    public Scanner keyScan;
 
-     Board[] boards = new Board[1000];
-     int boardIndex = 0;
+    Board[] boards = new Board[1000];
+    int boardIndex = 0;
 
     public void service(String menu, String option) {
         if (menu.equals("board/add")) {
@@ -46,7 +44,7 @@ public class BoardController {
         this.boards[this.boardIndex++] = board;
     }
 
-     void onBoardList() {
+    void onBoardList() {
         System.out.println("[게시물 목록]");
         for (int i = 0; i < this.boardIndex; i++) {
             if (this.boards[i] == null) continue;
@@ -93,7 +91,7 @@ public class BoardController {
             System.out.printf("설명(%s)? ", board.content);
             updateBoard.content = this.keyScan.nextLine();
             updateBoard.createdDate = board.createdDate;
-            boards[i] = updateBoard;
+            this.boards[i] = updateBoard;
             System.out.println("변경하였습니다.");
         }
     }
@@ -107,7 +105,7 @@ public class BoardController {
         
         int i = Integer.parseInt(option);
         
-        if (i < 0 || i >= this. boardIndex) {
+        if (i < 0 || i >= this.boardIndex) {
             System.out.println("유효하지 않은 게시물 번호입니다.");
         } else {
             if (Console.confirm("정말 삭제하시겠습니까?")) {
