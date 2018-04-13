@@ -23,7 +23,7 @@ public class Exam05_1 {
     
     public static void main(String[] args) {
         try {
-            m(3);
+            m();
             System.out.println("try ");// 예외가 발생한 순간 실행하지 않고 catch문으로 넘어간다.
         } catch (RuntimeException | IOException | SQLException e ) {
             System.out.println("catch1");

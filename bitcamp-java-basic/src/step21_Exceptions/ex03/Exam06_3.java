@@ -21,7 +21,7 @@ public class Exam06_3 {
 
                 //단 반드시 AutoCloseable 구현체이어야한다.
                 //String s = "Hello";// 컴파일 오류
-                //if(true) {} // 컴파일 오류  ->변수선언만 올수 있다.
+                //if(true) {} // 컴파일 오류  ->변수선언만 올 수 있다.
                 
                 ) {
             

@@ -30,7 +30,7 @@ public class Exam04_3 {
             
         } catch (RuntimeException e) {
             
-        }catch (Exception e) {
+        } catch (Exception e) {
             
         }
     }
