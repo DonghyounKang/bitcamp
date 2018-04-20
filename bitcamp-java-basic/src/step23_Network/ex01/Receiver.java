@@ -1,3 +1,4 @@
+//상대편으로부터 연결요청 받기 - server
 package step23_Network.ex01;
 
 import java.io.PrintStream;
@@ -22,7 +23,7 @@ public class Receiver {
         // => 상대편(서버)이 보낸 한줄의 데이터를 보낼 때까지 리턴하지 않는다.
         // => 이런 메서드를 blocking method라 부른다.
         String str = in.nextLine();
-        System.out.printf("상대편 < %s\n", str);
+        System.out.printf("상대편 > %s\n", str);
         
         // 5) 상대편으로 문자열 을 한줄 보낸다.
         // => 상대편에서 데이터를 읽을 때까지 리턴하지 않는다.

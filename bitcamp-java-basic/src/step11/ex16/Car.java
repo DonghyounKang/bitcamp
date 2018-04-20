@@ -7,15 +7,15 @@ public class Car {
     }
 
     public void start() {
-        System.out.println("시동");
+        System.out.println("시동 건다!");
     }
 
     public void shutdown() {
-        System.out.println("정지");
+        System.out.println("시동 끈다!");
     }
 
     public void run() {
-        System.out.println("달려라 달렷");
+        System.out.println("달린다.");
     }
 
 }

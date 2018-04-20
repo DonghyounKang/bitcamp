@@ -1,16 +1,32 @@
 # 자바 프로젝트
 
-## src27 - serialize/deserialize 기법을 사용하여 객체 데이터를 관리하라!
-학습목표
-    - Serializable 객체를 다룰 수 있다.
-    - Java I/O 스트림 클래스의 사용법을 익힌다.
-    - 파일 입출력에 대한 예외 처리를 방법을 익힌다.
-작업내용
-    - 도메인 클래스에 sirialize 기능을 활성화시킨다.
-    - 객체를 저장하고 읽을 수 있도록 DAO를 변경한다.
 
-## src26 - Command 디자인 패턴을 적용하여 명령어 단위로 클래스를 쪼개라!
+## src30 - multi thread 적용
 학습목표
+	- 멀티 스레드를 적용하여 다중 클라이언트 요청 처리
+	- 스레드 동작을 이해한다.
+	- single thread방식의 문제점을 이해한다.
+작업내용
+	- HTTPServer에 클라이언트 요청을 처리할 때 멀티 스레드를 적용한다.
+
+## src29 - 통신 네트워크 적용(http프로토콜 적용) mini tomcatserver
+학습목표
+	- HTTP 요청 프로토콜과 HTTP 응답 프로토콜을 이해한다.
+	- HTTP 프로토콜에 따라 네트워크 프로그램을 작성할 수 있다.
+작업내용
+	- HTTP 프로토콜에 따라 요청을 처리할 웹서버를 만든다.
+	- AppServer에 웹서버 기능을 추가
+
+## src28 - socket programming을 적용하여 Client/Server 환경 구축
+학습목표
+	- network programming을 익힌다.
+	- client/server 개념을 이해하고 만들수 있다.
+	- protocol의 개념을 이해한다.
+작업내용
+	- pms 프로그램을 서버와 클라이언트로 분리 
+
+## src27 - serialize/deserialize 기법을 사용하여 객체 데이터를 관리하라!
+학습목표 
     - Command 디자인 패턴을 이해하고 적용할 수 있다.
 작업내용
     - 기존의 컨트롤러 클래스를 메서드 단위로 쪽개서 클래스로 분리한다.

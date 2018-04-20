@@ -5,9 +5,7 @@ public class Car {
     public String maker;
     public int capacity;
     
-    public Car() {
-        
-    }
+    public Car() {}
     
     public Car(String model, String maker, int capacity) {
         this.model = model;
@@ -15,3 +13,5 @@ public class Car {
         this.capacity = capacity;
     }
 }
+
+

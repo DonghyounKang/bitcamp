@@ -5,5 +5,4 @@ public class C {
     int defaultVar;
     protected int protectedVar;
     public int publicVar;
-    
 }

@@ -1,26 +1,20 @@
 package step11.ex15;
 
 public class Sedan {
-    
     public void start() {
-        System.out.println("시동");
+        System.out.println("시동 건다!");
     }
-    
     public void shutdown() {
-        System.out.println("정지");
+        System.out.println("시동 끈다!");
     }
-    
     public void run() {
-        System.out.println("달려라 달렷");
+        System.out.println("달린다.");
     }
-    
     public void doSunroof(boolean open) {
-        if(open) {
-            System.out.println("선루프를 연다");
+        if (open) {
+            System.out.println("썬루프를 연다.");
         } else {
-            System.out.println("선루프를 닫는다.");
+            System.out.println("썬루프를 닫는다.");
         }
     }
-    
-    
 }

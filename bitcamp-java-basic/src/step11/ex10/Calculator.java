@@ -1,7 +1,6 @@
 package step11.ex10;
 
 public class Calculator {
-    
     static int plus(int a, int b) {
         return a + b;
     }
@@ -13,10 +12,13 @@ public class Calculator {
     static int plus(String a, String b) {
         int v1 = Integer.parseInt(a);
         int v2 = Integer.parseInt(b);
-        
         return v1 + v2;
     }
     
-
-    
 }
+
+
+
+
+
+

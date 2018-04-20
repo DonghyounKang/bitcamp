@@ -5,5 +5,4 @@ public class A {
     int defaultVar;
     protected int protectedVar;
     public int publicVar;
-    
 }

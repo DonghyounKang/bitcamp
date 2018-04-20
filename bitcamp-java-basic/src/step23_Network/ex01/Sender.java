@@ -1,3 +1,4 @@
+// 상대편의 연결을 요청하기 - client
 package step23_Network.ex01;
 
 import java.io.PrintStream;

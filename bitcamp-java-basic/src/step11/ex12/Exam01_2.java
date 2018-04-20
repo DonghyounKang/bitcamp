@@ -24,12 +24,12 @@ public class Exam01_2 {
         // => 보통 인스턴스의 내부 데이터를 문자열로 리턴하도록 변경한다.
         // => 프로그램을 실행하는 중에 인스턴스의 내부 값을 빠르게 확인하고 싶을 때 
         //    개발자들이 종종 이 메서드를 오버라이딩 한다.
-       /* @Override
+        @Override
         public String toString() {
             return String.format("%s,%d,%d,%d,%d,%.1f",
                     this.name, this.kor, this.eng, this.math, 
                     this.sum, this.aver);
-        }*/
+        }
     }
     
     public static void main(String[] args) {
