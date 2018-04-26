@@ -8,3 +8,17 @@ apply plugin: 'eclipse'
 
 //자바관련 작업을 수행할 명령어가 들어있는 플러그인
 apply plugin: 'java'
+
+
+//의존라이브러리 다운로드 할 서버 지정
+//의존라이브러리 정보
+repositories {
+    mavenCentral() // https://repo.maven.apache.org/maven2/ 서버에서 다운로드 받는다.
+}
+
+//다운로드 할 의존라이브러리 지정
+dependencies {
+// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+
+}

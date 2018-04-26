@@ -20,3 +20,13 @@ sourceSets {
             }
    }
 }            
+
+//의존라이브러리 정보
+dependencies {
+// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+
+}
+repositories {
+    mavenCentral() // https://repo.maven.apache.org/maven2/ 서버에서 다운로드 받는다.
+}

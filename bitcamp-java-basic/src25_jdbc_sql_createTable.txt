@@ -1,0 +1,105 @@
+sql ����
+domain
+
+----board
+	no
+	title
+	content
+	createdDate
+```
+create table ex_board (
+    bno int not null,
+    titl varchar(255) not null,
+    cont text,
+    rdt datetime not null
+);
+```
+
+-----classroom
+	no
+	title(string)
+	startdate(string)
+	enddate(string)
+	roomno(string)
+
+```
+create table ex_classroom (
+    cl_no int not null primary key,
+    cl_titl varchar(255) not null,
+    cl_sdt datetime not null,
+    cl_edt datetime not null,
+    cl_rno varchar(255)
+	modify column cl_no int not null auto increment;
+);
+
+
+----member
+	id(string)
+	email(string)
+	password(string)
+
+```
+create table ex_member (
+    mid varchar(100) not null primary key,
+    memail varchar(100) not null,
+    mpswd varchar(100) not null,
+	
+);
+
+
+task
+	no
+	title(string)
+	startDate(string)
+	endDate(string)
+	state
+	worker(foreign)(string)
+	teamname(foreign)(string)	
+
+```
+create table ex_task (
+    ts_no int not null primary key,
+    ts_titl varchar(255) not null,
+    ts_sdt datetime not null,
+    ts_edt datetime not null,
+    ts_stat int not null default 0,
+    tname varchar(255) not null,
+    mid varchar(100) not null,
+    constraint ts_fk_mi foreign key(mid) references ex_member(mid),
+    constraint ts_fk_tn foreign key(tname) references ex_team(tname)    
+);
+
+
+
+
+----team
+	name(string)
+	description(string)
+	maxQty(string)
+	startDate(string)
+	endDate(string)
+
+```
+create table ex_team (
+    tname varchar(255) not null primary key,
+    tdes varchar(255) not null,
+    tmqty int not null,
+    tsdt datetime not null,
+    tedt datetime not null,
+
+);
+
+		
+----teamMember
+	team.name(string)(foreign)
+	member.id(string)(foreign)
+	
+```
+create table ex_teammember (
+	tname varchar(255) not null,
+	mid varchar(100) not null
+    constraint tm_fk_tn foreign key(tname) references ex_team(tname),
+	constraint tm_fk_mi foreign key(mid) references ex_member(mid),
+	
+); 
+
