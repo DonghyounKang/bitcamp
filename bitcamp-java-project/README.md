@@ -1,5 +1,14 @@
 # 자바 프로젝트
 
+## src33 - Data Persistence Framework MyBatis 적용
+학습목표
+	- JDBC 대신 MyBatis를 사용했을 때의 이점을 이해한다.
+	- MyBatis를 설정하고 코드에 적용할 수 있다.
+작업내용
+	- MyBatis 프레임워크 관련 의존 라이브러리를 가져온다.
+	- SqlSesstionFactory를 준비
+	- DAO에 SqlSessionFactory 의존객체로 주입
+
 ## src32 - DBCoonnectionPool 적용
 학습목표
 	- pooling(일정 수량의 객체 재사용) 기법 이해

@@ -20,13 +20,42 @@ sourceSets {
             }
    }
 }            
+//의존라이브러리 다운받을 서버를 지정
+repositories {
+    mavenCentral() // https://repo.maven.apache.org/maven2/ 서버에서 다운로드 받는다.
+}
 
 //의존라이브러리 정보
 dependencies {
 // https://mvnrepository.com/artifact/mysql/mysql-connector-java
 compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
 
+// https://mvnrepository.com/artifact/org.mybatis/mybatis
+compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
+
 }
-repositories {
-    mavenCentral() // https://repo.maven.apache.org/maven2/ 서버에서 다운로드 받는다.
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

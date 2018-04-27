@@ -12,8 +12,9 @@ import bitcamp.java106.pms.server.ServerResponse;
 
 @Component("/member/view")
 public class MemberViewController implements Controller {
-    MemberDao memberDao;
 
+    MemberDao memberDao;
+    
     public MemberViewController(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
@@ -22,23 +23,26 @@ public class MemberViewController implements Controller {
     public void service(ServerRequest request, ServerResponse response) {
         PrintWriter out = response.getWriter();
         String id = request.getParameter("id");
+        
         try {
             Member member = memberDao.selectOne(id);
-
+    
             if (member == null) {
                 out.println("해당 아이디의 회원이 없습니다.");
             } else {
                 out.printf("아이디: %s\n", member.getId());
                 out.printf("이메일: %s\n", member.getEmail());
-                out.println("암호: -\n");
+                out.printf("암호: -\n");
             }
         } catch (Exception e) {
-            out.println("상세조회 실패");
+            out.println("상세조회 실패!");
             e.printStackTrace(out);
-        }
+        } 
     }
 }
 
+//ver 31 - JDBC API가 적용된 DAO 사용
+//ver 28 - 네트워크 버전으로 변경
 //ver 26 - MemberController에서 view() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - MemberDao 변경 사항에 맞춰 이 클래스를 변경한다.

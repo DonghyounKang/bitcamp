@@ -12,8 +12,9 @@ import bitcamp.java106.pms.server.ServerResponse;
 
 @Component("/member/add")
 public class MemberAddController implements Controller {
-    MemberDao memberDao;
 
+    MemberDao memberDao;
+    
     public MemberAddController(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
@@ -30,13 +31,15 @@ public class MemberAddController implements Controller {
             memberDao.insert(member);
             out.println("등록 성공!");
         } catch (Exception e) {
-            out.println("등록 실패");
+            out.println("등록 실패!");
             e.printStackTrace(out);
         }
     }
 
 }
 
+//ver 31 - JDBC API가 적용된 DAO 사용
+//ver 28 - 네트워크 버전으로 변경
 //ver 26 - MemberController에서 add() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - MemberDao 변경 사항에 맞춰 이 클래스를 변경한다.
