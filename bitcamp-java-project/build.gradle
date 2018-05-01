@@ -18,10 +18,17 @@ repositories {
 
 //다운로드 할 의존라이브러리 지정
 dependencies {
+// MySQL JDBC Driver Library
 // https://mvnrepository.com/artifact/mysql/mysql-connector-java
 compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
 
+// MyBatis Liberary
 // https://mvnrepository.com/artifact/org.mybatis/mybatis
 compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
+
+//Spring IOC container Library
+// https://mvnrepository.com/artifact/org.springframework/spring-context
+compile group: 'org.springframework', name: 'spring-context', version: '5.0.5.RELEASE'
+
 
 }

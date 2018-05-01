@@ -1,5 +1,22 @@
 # 자바 프로젝트
 
+## src35 - Spring Framework IOC container 적용
+-학습목표
+	- Spring IOC container 설정
+	- Spring IOC container 사용하여 객체관리
+-작업내용
+	- Spring IOC container 관련 라이브러리 추가
+	- DefaultApplicationContext를 Spring IOC container로 대체
+
+## src34 - 테이블에 foreign key 적용
+-학습목표
+	- FK용도 이해
+	- 컬럼에 FK 설정
+	- 여러 테이블의 데이터를 join하여 결과를 조회할 수 있다.
+-작업내용
+	- 기존의 테이블에서 FK를 적용한 새 테이블 적용
+	- SQLMapper 파일 변경
+
 ## src33 - Data Persistence Framework MyBatis 적용
 학습목표
 	- JDBC 대신 MyBatis를 사용했을 때의 이점을 이해한다.
