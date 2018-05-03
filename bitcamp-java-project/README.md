@@ -1,5 +1,16 @@
 # 자바 프로젝트
 
+## src36 - Tomcat servlet container 적용
+-학습목표
+	- Tomcat Server 구축 및 실행
+	- Servlet 제작 및 배치
+	- Adapter 설계 패턴의 원리를 이해한다.
+	
+-작업내용
+	- Tomcat Server Install
+	- Servlet Library 가져오기
+	- Generate Dispatch Servlet(클라이언트 요청을 받아 컨트롤러에 전달)
+
 ## src35 - Spring Framework IOC container 적용
 -학습목표
 	- Spring IOC container 설정

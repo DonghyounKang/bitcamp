@@ -9,6 +9,26 @@ apply plugin: 'eclipse'
 //자바관련 작업을 수행할 명령어가 들어있는 플러그인
 apply plugin: 'java'
 
+//Web Archive를 다루는 명령어가 들어있는 프러그인
+apply plugin: 'war'
+
+compileJava {
+	//compile시 소스파일의 인코딩 옵션을 추가
+	options.encoding = 'UTF-8'
+}
+
+
+war {
+	//war 생성시 사용할 파일명 설정
+	//미사용시 프로젝트 명으로 설정
+	archiveName = "pms.war"
+}
+
+//프로젝트에서 사용하는 의존 라이브러리를 외부의 디렉토리로 복사하는 명령 추가
+task copyJars(type: Copy) {
+	from configurations.runtime
+	into "build/libs/deps"
+}
 
 //의존라이브러리 다운로드 할 서버 지정
 //의존라이브러리 정보
@@ -30,5 +50,10 @@ compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
 // https://mvnrepository.com/artifact/org.springframework/spring-context
 compile group: 'org.springframework', name: 'spring-context', version: '5.0.5.RELEASE'
 
+//Java Servlet API Library
+// => 어떤 서블릿 규칙에 따라 만든 서버인지에 따라 해당 버전의 라이브러리를 다운로드 받아야한다.
+//    즉, 서버와 같은 버전의 라이브러리를 다운로드 받아서 사용해야만 그 서버에서 실행할 수 있다.
+// https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
 }

@@ -23,7 +23,7 @@ public class Test {
             System.out.printf("%s=%s\n", key, jvmProps.get(key));
         }
         System.out.println("---------------------------");
-        
+         
         // 3) 프로퍼티 파일에서 읽어 오기 
         Properties fileProps = new Properties();
         fileProps.load(new FileInputStream("jdbc.properties"));
