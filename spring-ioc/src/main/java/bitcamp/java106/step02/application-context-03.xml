@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Bean의 생성 정책 
+		scope 속성에  bean의  생성 정책을 설정할 수 있다.
+		=> singleton : 한개의 객체만 생성, 미지정시 default
+		=> prototype : getBean()호출할 때마다 생성
+		=> request : 웹에서 요청이 들어올 때마다 생성
+		=> session : 웹에서 session이 생성될 때 마다 생성된다.	
+	-->
+	 
+	<!-- scope 속성의 기본값은 singleton -->
+	<!-- singleton 객체는 iocContainer가 생성될 때 미리 준비된다. -->
+	<bean id="c1" class="bitcamp.java106.step02.Car"/>
+	
+	<bean id="c2" class="bitcamp.java106.step02.Car" scope="singleton"/>
+	
+	
+	<!-- prototype객체는 getBean()을 호출시 생성 -->
+	<bean id="c3" class="bitcamp.java106.step02.Car" scope="prototype"/>
+	<!-- Exam03 실행시 생성자 2번 실행(객체는 2개 만들어짐) ; 생성된 bean은 3개 -->
+	
+	
+	
+	
+	
+	
+	
+
+</beans>

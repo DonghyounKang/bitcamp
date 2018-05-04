@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- Factory Method를 통해 객체 만들기 - 응용 -->
+	
+	<!--  "yyyy-mm-dd"의 문자열로 "yyyy-mm-dd" Date 객체 만들기
+		자바코드
+			Date d1 = Date.valueOf("yyyy-mm-dd") -->
+   	<bean id="d1" class="java.sql.Date"
+   		factory-method="valueOf">
+   		<constructor-arg value="2018-05-04"/>
+   		<!-- 클래스 내의 static method를 호출하여 그 리턴 값을 저장하고자 할 때 사용한다 
+   			constructor-arg를 통해 파라미터 값을 넘긴다.-->
+	</bean>
+   	
+</beans>

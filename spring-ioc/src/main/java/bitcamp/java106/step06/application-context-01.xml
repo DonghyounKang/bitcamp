@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- Factory Method를 통해 객체 만들기 -->
+   	<bean id="c1" class="bitcamp.java106.step06.CarFactory"
+   		factory-method="create">
+   		<constructor-arg value="티코"/>
+	</bean>
+	<!-- 
+		속성:
+			factory-method="static method 이름"
+			class="static method가 들어있는 클래스 이름"
+		
+		자바코드:
+			Obect obj = CarFactory.creat("티코");
+			objPool.put("c1",obj);
+	
+	 -->
+	
+   	<bean id="c2" class="bitcamp.java106.step06.CarFactory"
+   		factory-method="create">
+   		<constructor-arg value="소나타"/>
+	</bean>
+	
+   	<bean id="c3" class="bitcamp.java106.step06.CarFactory"
+   		factory-method="create">
+   		<constructor-arg value="오호라"/>
+	</bean>
+   	
+</beans>

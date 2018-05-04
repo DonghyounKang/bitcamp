@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- IOC Container가 생성해야할 객체에 대한 정보 설정
+			=> 다음 테그를 보고 설정된 정보에 따라 객체를 생성한다.
+	 -->
+	 
+	 <!-- bean 테그
+	 	- id: 생성된 객체를 컨테이너에 보관할 때 사용할 key ; 중복되어 사용할 수 없다.
+	 	- class : 생성할 객체의 클래스 정보
+	 		(해당정보를 바탕으로 객체 생성; 반드시 fully qualified class name(FQName, Qname))
+	  -->
+	<bean id="c1" class="bitcamp.java106.step02.Car"></bean>
+	
+	<!-- 시작테그와 끝 테크사이의 내용이 없다면 끝테그 생략 가능. 
+		단, 생략을 표시하기 위해 반드시 시작테그 끝에 '/'표기  -->
+	<bean id="c2" class="bitcamp.java106.step02.Car"/>
+
+</beans>
