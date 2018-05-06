@@ -9,8 +9,8 @@
  	<!--  일반적으로 공장객체는 class="******FactoryBean"으로 규정한다. 
  		클래스 이름이 FactoryBean으로 끝나면 해당 클래스가 FactoryBean구현체임을 쉽게 알 수 있다.-->
    	<bean id="c1" class="bitcamp.java106.step06.CarFactoryBean">
-   	<!-- "c1"으로 저장되는 객체는 Car객체이다. -->
-   		<property name="model" value="SM5"/>
+   	<!-- "c1"으로 저장되는 객체는 Car객체이다. --> 
+   		<property name="model" value="SM5"/>   
 	</bean>
     <!-- 자바코드
     		CarFactoryBean carFactroy = new CarFactoryBean();
