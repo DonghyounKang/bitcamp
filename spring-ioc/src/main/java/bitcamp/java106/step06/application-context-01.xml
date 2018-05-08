@@ -16,7 +16,7 @@
 			class="static method가 들어있는 클래스 이름"
 		
 		자바코드:
-			Obect obj = CarFactory.creat("티코");
+			Obect obj = CarFactory.create("티코");
 			objPool.put("c1",obj);
 	
 	 -->

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"
+        >
+    
+   	<bean id="c1" class="bitcamp.java106.step08.Car6">
+	   	<property name="model" value="티코"/>
+	   	<property name="maker" value="비트자동차"/>
+	   	<property name="cc" value="890"/>
+	   	<property name="auto" value="true"/>
+	</bean>
+	
+		<bean id="e1" class="bitcamp.java106.step08.Engine">
+		<property name="maker" value="비트자동차"/>
+		<property name="valve" value="16"/>
+		<property name="cylinder" value="4"/>
+		
+	</bean>
+	
+		<bean id="e2" class="bitcamp.java106.step08.Engine">
+		<property name="maker" value="캠프자동차"/>
+		<property name="valve" value="32"/>
+		<property name="cylinder" value="8"/>
+		
+	</bean>
+
+	<!-- 클래스에서 정의한 특정 annotation을 처리할 BeanPostProcessor 등록하기
+		@Autowired - AutowiredAnnotationBeanPostProcessor
+		@Qualifier -
+		@resource - 
+		위와같이 특정 annotation을 처리하고 싶다면 그 에노테이션을 처리할 객체를 등록해야한다.
+		문제는
+		각각의 에노테이션에 대해 어떤 클래스가 처리하는지 암기해야하고 
+		<bean>태그를 이용하여 객체를 등록해야한다.
+		
+		결론
+		매우 번거롭고 불편하다
+		그래서 Spring Framework는 이런 개발자의 어려움을 덜어주고자 
+		annotation을 처리할 클래스를 등록하는 특별한 단축 태그를 제공
+		-->
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
+	<context:annotation-config/>
+	<!-- 위의 태그를 추가하면 개발자가 매번 beanPostProcessor를 등록할 필요가 없다.
+		내부적으로 관련된 BeanPostPorcessor를 자동 등록한다. 
+		개발자가 신경 쓸 필요 없다
+		@Qualifier에 해당하는 processor도 자동 등록한다.  -->
+</beans>
