@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/step04/exam01</title>
+</head>
+<body>
+<h1>GET 요청 </h1>
+<p>
+a 태그의 링크를 클릭하면 GET요청을 하게 된다.<br/>
+http://localhost:8888/bitcamp-web01/step04/exam01?name=aaa&age=20<br/>
+<a href="http://localhost:8888/bitcamp-web01/step04/exam01?name=aaa&age=20">GET 요청</a>
+</p>
+
+<p>
+URL에서 '/'는 웹서버 루트를 의미한다.<br/>
+/bitcamp-web01/step04/exam01?name=aaa&age=20<br/>
+<a href="/bitcamp-web01/step04/exam01?name=aaa&age=20">GET 요청</a>
+</p>
+
+<p>
+실무에서 URL 지정시 주로 상대경로('/' 없이) 지정. 즉, 현재 경로를 기준으로 요청경로를 지정한다.<br/>
+exam01?name=aaa&age=20<br/>
+<a href="exam01?name=aaa&age=20">GET 요청</a>
+</p>
+
+<p>
+form 태그의 URL 지정시 상대경로를 사용하는것이 유지보수에 좋다.
+<form action="exam01" method="get">
+이름: <input type ="text" name="name"><br>
+나이: <input type ="text" name="age"><br>
+<button>전송</button>
+</form>
+</p>
+
+<p>
+form 태그의 method의 속성을 지정하지 않으면 기본이 GET이다.
+<form action="exam01">
+이름: <input type ="text" name="name"><br>
+나이: <input type ="text" name="age"><br>
+<button>전송</button>
+</form>
+</p>
+
+<h1>POST 요청 </h1>
+<p>
+form 태그의 method 속성값을 POST로 지정한다.<br/>
+a 태그로 post설정 불가
+
+<form action="exam01" method="post">
+이름: <input type ="text" name="name"><br>
+나이: <input type ="text" name="age"><br>
+<button>전송</button>
+</form>
+</p>
+
+
+</body>
+</html>

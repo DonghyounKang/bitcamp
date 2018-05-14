@@ -21,7 +21,7 @@ public class Exam02 extends GenericServlet {
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
         PrintWriter out = res.getWriter();
-        out.println("step02.Exam01.service()");
+        out.println("step02.Exam02.service()");
     }
     
 }
