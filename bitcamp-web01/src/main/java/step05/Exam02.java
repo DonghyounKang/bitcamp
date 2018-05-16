@@ -1,4 +1,4 @@
-//파일 업로드 - 멀티파트 파라미터 값 추출하기
+//파일 업로드 - 멀티파트 파라미터 값 추출하기 I
 package step05;
 
 import java.io.File;
@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
@@ -103,6 +102,9 @@ public class Exam02 extends HttpServlet{
                     out.println(savedPath);
                     
                     //=>FileItem.write(저장할 경로) 호출하여 클라이언트가 보낼 파일을 저장한다.
+                    // 업로드한 파일은 임시 폴더에 저장되어있다.
+                    // 이 파일을 우리가 원하는 경로에 옮기는 것이다.
+                    
                     item.write(new File(savedPath + "/" + item.getName()));
                     
                 }

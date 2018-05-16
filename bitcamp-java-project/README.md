@@ -1,5 +1,12 @@
 # 자바 프로젝트
 
+## src37 - 서블릿 기술 적용
+- 학습목표
+	- 서블릿을 만들고 배치할 수 있다.
+	- HTML 페이지를 만들 수 있다.
+- 작업내용
+	- 기존의 Controller들을 Servlet으로 전환한다.
+
 ## src36 - Tomcat servlet container 적용
 -학습목표
 	- Tomcat Server 구축 및 실행

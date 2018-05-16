@@ -4,7 +4,7 @@
 
 // 1) gradle 빌드 도구가 사용할 플러그인 추가
 //  이클립스 관련 파일을 생성하고 제거하는 명령어가 들어있는 플러그인
-apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
 
 //자바관련 작업을 수행할 명령어가 들어있는 플러그인
 apply plugin: 'java'
@@ -54,6 +54,6 @@ compile group: 'org.springframework', name: 'spring-context', version: '5.0.5.RE
 // => 어떤 서블릿 규칙에 따라 만든 서버인지에 따라 해당 버전의 라이브러리를 다운로드 받아야한다.
 //    즉, 서버와 같은 버전의 라이브러리를 다운로드 받아서 사용해야만 그 서버에서 실행할 수 있다.
 // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
-compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
 }

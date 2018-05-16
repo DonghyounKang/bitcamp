@@ -9,6 +9,10 @@ plugins {
     id 'war'
 }
 
+compileJava {
+    //compile시 소스파일의 인코딩 옵션을 추가
+    options.encoding = 'UTF-8'
+}
 
 dependencies {
     //[providedCompile 라이브러리]
