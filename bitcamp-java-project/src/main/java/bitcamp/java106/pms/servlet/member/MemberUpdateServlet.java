@@ -1,8 +1,8 @@
+// Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.servlet.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +15,8 @@ import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.servlet.InitServlet;
 
 @SuppressWarnings("serial")
-@WebServlet("/member/list")
-public class MemberListServlet extends HttpServlet {
+@WebServlet("/member/update")
+public class MemberUpdateServlet extends HttpServlet {
 
     MemberDao memberDao;
     
@@ -26,9 +26,17 @@ public class MemberListServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(
+    protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
+        
+        Member member = new Member();
+        member.setId(request.getParameter("id"));
+        member.setEmail(request.getParameter("email"));
+        member.setPassword(request.getParameter("password"));
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
@@ -36,42 +44,33 @@ public class MemberListServlet extends HttpServlet {
         out.println("<html>");
         out.println("<head>");
         out.println("<meta charset='UTF-8'>");
-        out.println("<title>멤버 목록</title>");
+        out.println("<meta http-equiv='Refresh' content='1;url=list'>");
+        out.println("<title>회원 변경</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>멤버 목록</h1>");
+        out.println("<h1>회원 변경 결과</h1>");
         
         try {
-            List<Member> list = memberDao.selectList();
-            
-            out.println("<p><a href='form.html'>새회원</a></p>");
-            out.println("<table border='1'>");
-            out.println("<tr>");
-            out.println("    <th>아이디</th><th>이메일</th>");
-            out.println("</tr>");
-            
-            for (Member member : list) {
-                out.println("<tr>");
-                out.printf("    <td><a href='view?id=%s'>%s</a></td><td>%s</td>\n",
-                    member.getId(),
-                    member.getId(),
-                    member.getEmail());
-                out.println("</tr>");
+            int count = memberDao.update(member);
+            if (count == 0) {
+                out.println("<p>해당 회원이 존재하지 않습니다.</p>");
+            } else {
+                out.println("<p>변경하였습니다.</p>");
             }
-            out.println("</table>");
         } catch (Exception e) {
-            out.println("<p>목록 가져오기 실패!</p>");
+            out.println("<p>변경 실패!</p>");
             e.printStackTrace(out);
         }
         out.println("</body>");
         out.println("</html>");
     }
+
 }
 
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
-//ver 26 - MemberController에서 list() 메서드를 추출하여 클래스로 정의.
+//ver 26 - MemberController에서 update() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - MemberDao 변경 사항에 맞춰 이 클래스를 변경한다.
 //ver 18 - ArrayList가 적용된 MemberDao를 사용한다.

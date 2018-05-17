@@ -1,5 +1,4 @@
-//다른 서블릿들이 사용할 자원을 미리 준비시키는 역할을 수행
-// => 다른 어떤 서블릿보다 가장 먼저 실행되어야 한다!
+// 다른 서블릿들이 사용할 자원을 미리 준비시키는 역할을 수행한다.
 package bitcamp.java106.pms.servlet;
 
 import javax.servlet.ServletException;
@@ -11,12 +10,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import bitcamp.java106.pms.AppConfig;
 
-//역할
-//- Spring IOCContainer(Bean Container)를 준비.
-
+// 하는 일:
+// => Spring IoC 컨테이너(bean container)를 준비한다. 
+// 
 @WebServlet(
-        urlPatterns = "/initServlet", // value 는 urlPatterns와 같다
-        loadOnStartup = 1) 
+        urlPatterns="/initServlet", // value 는 urlPatterns 와 같다. 
+        loadOnStartup=1) 
 @SuppressWarnings("serial")
 public class InitServlet extends HttpServlet {
     
@@ -30,7 +29,13 @@ public class InitServlet extends HttpServlet {
     public void init() throws ServletException {
         iocContainer = new AnnotationConfigApplicationContext(AppConfig.class);
     }
-    //다른 서블릿이 사용할 자원을 준비하는 일만 하기 때문에
-    // 굳이 클라이언트의 요청을 처리할 service()메서드를 구현할 필요가 없다.
+    
+    // 다른 서블릿이 사용할 자원을 준비하는 일만 하기 때문에 
+    // 굳이 클라이언트의 요청을 처리할 service() 메서드를 구현할 필요가 없다.
 }
+
+
+
+
+
 

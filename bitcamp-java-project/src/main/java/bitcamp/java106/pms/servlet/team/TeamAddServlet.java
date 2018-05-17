@@ -2,7 +2,7 @@ package bitcamp.java106.pms.servlet.team;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +15,8 @@ import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.servlet.InitServlet;
 
 @SuppressWarnings("serial")
-@WebServlet("/team/list")
-public class TeamListServlet extends HttpServlet {
+@WebServlet("/team/add")
+public class TeamAddServlet extends HttpServlet {
 
     TeamDao teamDao;
     
@@ -25,11 +25,20 @@ public class TeamListServlet extends HttpServlet {
         teamDao = InitServlet.getApplicationContext().getBean(TeamDao.class);
     }
 
-
     @Override
-    protected void doGet(
+    protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
+
+        Team team = new Team();
+        team.setName(request.getParameter("name"));
+        team.setDescription(request.getParameter("description"));
+        team.setMaxQty(Integer.parseInt(request.getParameter("maxQty")));
+        team.setStartDate(Date.valueOf(request.getParameter("startDate")));
+        team.setEndDate(Date.valueOf(request.getParameter("endDate")));
+
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
@@ -37,33 +46,18 @@ public class TeamListServlet extends HttpServlet {
         out.println("<html>");
         out.println("<head>");
         out.println("<meta charset='UTF-8'>");
-        out.println("<title>멤버 목록</title>");
+        out.println("<meta http-equiv='Refresh' content='1;url=list'>");
+        
+        out.println("<title>팀 등록</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>멤버 목록</h1>");
+        out.println("<h1>팀 등록 결과</h1>");
         
         try {
-            List<Team> list = teamDao.selectList();
-            
-            out.println("<p><a href='form.html'>새 팀</a></p>");
-            out.println("<table border='1'>");
-            out.println("<tr>");
-            out.println("    <th>팀명</th><th>최대인원</th><th>기간</th>");
-            out.println("</tr>");
-            
-            for (Team team : list) {
-                out.println("<tr>");
-                out.printf("    <td><a href='view?name=%s'>%s</a></td><td>%d</td><td>%s~%s</td>\n",
-                        team.getName(),
-                        team.getName(),
-                        team.getMaxQty(), 
-                        team.getStartDate(), 
-                        team.getEndDate());
-                out.println("</tr>");
-            }
-            out.println("</table>");
+            teamDao.insert(team);
+            out.println("<p>등록 성공!</p>");
         } catch (Exception e) {
-            out.println("<p>목록 가져오기 실패!</p>");
+            out.println("<p>등록 실패!</p>");
             e.printStackTrace(out);
         }
         out.println("</body>");
@@ -74,7 +68,7 @@ public class TeamListServlet extends HttpServlet {
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
-//ver 26 - TeamController에서 list() 메서드를 추출하여 클래스로 정의.
+//ver 26 - TeamController에서 add() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - TaskDao 변경 사항에 맞춰 이 클래스를 변경한다.
 //ver 18 - ArrayList가 적용된 TeamDao를 사용한다.
