@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Component;
 
+import bitcamp.java106.pms.domain.Member;
+
 @Component
 public class TeamMemberDao {
 
@@ -41,11 +43,31 @@ public class TeamMemberDao {
             return count;
         } 
     }
+
+    //위의 메서드와 조건에 따라 다른 SQL을 적용시키기위해 TeamMemberMapper에 DynamicSQL 사용
+    public int delete(String teamName) {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
+            HashMap<String,Object> paramMap = new HashMap<>();
+            paramMap.put("teamName", teamName);
+            
+            int count = sqlSession.delete(
+                    "bitcamp.java106.pms.dao.TeamMemberDao.delete", paramMap);
+            sqlSession.commit();
+            return count;
+        } 
+    }
     
     public List<String> selectList(String teamName) throws Exception {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
             return sqlSession.selectList(
                     "bitcamp.java106.pms.dao.TeamMemberDao.selectList", teamName);
+        }
+    }
+    
+    public List<Member> selectListWithEmail(String teamName) throws Exception {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
+            return sqlSession.selectList(
+                    "bitcamp.java106.pms.dao.TeamMemberDao.selectListWithEmail", teamName);
         }
     }
     
@@ -63,6 +85,7 @@ public class TeamMemberDao {
                 return false;
         }
     }
+
 }
 
 //ver 33 - Mybatis 적용
