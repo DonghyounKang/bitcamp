@@ -1,123 +1,51 @@
 // Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.servlet.team;
 
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Component;
 
+import bitcamp.java106.pms.controller.Controller;
 import bitcamp.java106.pms.dao.TeamDao;
-import bitcamp.java106.pms.dao.TeamMemberDao;
-import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
-import bitcamp.java106.pms.servlet.InitServlet;
+import bitcamp.java106.pms.server.ServerRequest;
+import bitcamp.java106.pms.server.ServerResponse;
 
-@SuppressWarnings("serial")
-@WebServlet("/team/view")
-public class TeamViewServlet extends HttpServlet {
+@Component("/team/view")
+public class TeamViewServlet implements Controller {
 
     TeamDao teamDao;
-    TeamMemberDao teamMemberDao;
     
-    @Override
-    public void init() throws ServletException {
-        teamDao = InitServlet.getApplicationContext().getBean(TeamDao.class);
-        teamMemberDao = InitServlet.getApplicationContext().getBean(TeamMemberDao.class);
+    public TeamViewServlet(TeamDao teamDao) {
+        this.teamDao = teamDao;
     }
+
     
     @Override
-    protected void doGet(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws ServletException, IOException {
-
-        request.setCharacterEncoding("UTF-8");
-        String name = request.getParameter("name");
-        
-        response.setContentType("text/html;charset=UTF-8");
+    public void service(ServerRequest request, ServerResponse response) {
         PrintWriter out = response.getWriter();
         
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title>팀 보기</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>팀 보기</h1>");
+        String name = request.getParameter("name");
         
         try {
             Team team = teamDao.selectOne(name);
     
             if (team == null) {
-                throw new Exception("유효하지 않은 팀입니다.");
+                out.println("해당 이름의 팀이 없습니다.");
+            } else {
+                out.printf("팀명: %s\n", team.getName());
+                out.printf("설명: %s\n", team.getDescription());
+                out.printf("최대인원: %d\n", team.getMaxQty());
+                out.printf("기간: %s ~ %s\n", 
+                    team.getStartDate(), team.getEndDate());
             }
-            
-            out.println("<form action='update' method='post'>");
-            out.println("<table border='1'>");
-            out.println("<tr>");
-            out.printf("    <th>팀명</th><td><input type=\"text\" name=\"name\" value='%s' readonly></td>\n",
-                    team.getName());
-            out.println("</tr>");
-            out.println("<tr>");
-            out.println("    <th>설명</th><td><textarea name=\"description\" ");
-            out.printf("        rows=\"6\" cols=\"60\">%s</textarea></td>\n",
-                    team.getDescription());
-            out.println("</tr>");
-            out.println("<tr>");
-            out.printf("    <th>최대인원</th><td><input type=\"number\" name=\"maxQty\" value='%d'></td>\n",
-                    team.getMaxQty());
-            out.println("</tr>");
-            out.println("<tr>");
-            out.printf("    <th>시작일</th><td><input type=\"date\" name=\"startDate\" value='%s'></td>\n", 
-                    team.getStartDate());
-            out.println("</tr>");
-            out.println("<tr>");
-            out.printf("    <th>종료일</th><td><input type=\"date\" name=\"endDate\" value='%s'></td>\n", 
-                    team.getEndDate());
-            out.println("</tr>");
-            out.println("</table>");
-            out.println("<p>");
-            out.println("<a href='list'>목록</a>");
-            out.println("<button>변경</button>");
-            out.printf("<a href='delete?name=%s'>삭제</a>\n", name);
-            out.printf("<a href='../task/list?teamName=%s'>작업 목록</a>\n", name);
-            out.println("</p>");
-            out.println("</form>");
-            
-            List<Member> members = teamMemberDao.selectListWithEmail(name);
-            
-            out.println("<h2>회원 목록</h2>");
-            out.println("<form action='member/add' method='post'>");
-            out.printf("<input type='hidden' name='teamName' value='%s'>\n", name);
-            out.println("<input type='text' name='memberId' placeholder='회원 아이디'>");
-            out.println("<button>추가</button>");
-            out.println("</form>");
-            out.println("<table border='1'>");
-            out.println("<tr><th>아이디</th><th>이메일</th><th> </th></tr>");
-            for (Member member : members) {
-                out.printf("<tr>"
-                        + "<td>%s</td>"
-                        + "<td>%s</td>"
-                        + "<td><a href='member/delete?teamName=%s&memberId=%s'>[삭제]</a></td></tr>",
-                        member.getId(), member.getEmail(), name, member.getId());
-            }
-            out.println("</table>");
-               
         } catch (Exception e) {
-            out.printf("<p>%s</p>\n", e.getMessage());
+            out.println("상세조회 실패!");
             e.printStackTrace(out);
         }
-        out.println("</body>");
-        out.println("</html>");
     }
 }
 
-//ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
 //ver 26 - TeamController에서 view() 메서드를 추출하여 클래스로 정의.
