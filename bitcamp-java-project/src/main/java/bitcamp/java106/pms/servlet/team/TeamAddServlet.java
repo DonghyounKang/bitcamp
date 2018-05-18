@@ -1,4 +1,3 @@
-// Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.servlet.team;
 
 import java.io.IOException;
@@ -13,10 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.domain.Team;
-import bitcamp.java106.pms.server.ServerRequest;
-import bitcamp.java106.pms.server.ServerResponse;
 import bitcamp.java106.pms.servlet.InitServlet;
 
+@SuppressWarnings("serial")
 @WebServlet("/team/add")
 public class TeamAddServlet extends HttpServlet {
 
@@ -25,15 +23,15 @@ public class TeamAddServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         teamDao = InitServlet.getApplicationContext().getBean(TeamDao.class);
-        
     }
-    
+
     @Override
     protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
-
+        
         request.setCharacterEncoding("UTF-8");
+
         Team team = new Team();
         team.setName(request.getParameter("name"));
         team.setDescription(request.getParameter("description"));
@@ -67,6 +65,7 @@ public class TeamAddServlet extends HttpServlet {
     }
 }
 
+//ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
 //ver 26 - TeamController에서 add() 메서드를 추출하여 클래스로 정의.
