@@ -53,7 +53,7 @@ public class Exam01 extends GenericServlet {
 *(빈줄) <== empty line ; 서버에 보낸 데이터가 끝났음을 의미한다.
 */
 
-//HTTP 프로토콜 : GET요청
+//HTTP 프로토콜 : POST요청
 //- message-body(entity-body)에 데이터를 포함해서 보낸다.
 //- post 요청 할 때 보내는 데이터의 정보를 추가한다.
 //  즉 content-Length와 content-Type를 추가하여 보낸다.

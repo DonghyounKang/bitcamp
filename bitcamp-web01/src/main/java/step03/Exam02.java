@@ -18,7 +18,7 @@ public class Exam02 extends GenericServlet {
             ServletRequest request, 
             ServletResponse response) throws ServletException, IOException {
         //출력할 컨텐츠의 type(MIME Type)과 charset을 선언한다.
-        response.setContentType("text/plan; charset=UTF-8");
+        response.setContentType("text/plain; charset=UTF-8");
 
         
         //출력스트림을 꺼낼 때 문자를 출력할 때 사용할 문자표를 지정하지 않으면 
@@ -40,7 +40,7 @@ public class Exam02 extends GenericServlet {
         //=> ServletResponse객체에서 출력스트림을 꺼내기 전에 사용할 문자표를 설정한다.
     }
 }
-//MIME(multi-pupose Internet Mail Extension)type
+//MIME(multi-purpose Internet Mail Extension)type
 // 원래는 메일을 보낼 때 콘텐츠의 타입을 알려주기 위해 만들었다.
 // 지금은 메일 뿐만 아니라 다방면에서 콘텐츠 타입을 지정하는 용도로 사용하고 있다.
 // ex) text/html, text/plain, application/excel 등
