@@ -30,8 +30,6 @@ public class BoardUpdateServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
-        request.setCharacterEncoding("UTF-8");
-        
         try {
             Board board = new Board();
             board.setNo(Integer.parseInt(request.getParameter("no")));
@@ -52,7 +50,7 @@ public class BoardUpdateServlet extends HttpServlet {
         }
     }
 }
-
+//ver 40 - Filter 적용
 //ver 38 - redirect 적용
 //ver 37 - BoardUpdateController를 서블릿으로 변경
 //         결과를 HTML로 출력

@@ -1,6 +1,7 @@
 package bitcamp.java106.pms.servlet.teammember;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -54,7 +55,8 @@ public class TeamMemberAddServlet extends HttpServlet {
                 throw new Exception("이미 등록된 회원입니다.");
             }
             teamMemberDao.insert(teamName, memberId);
-            response.sendRedirect("../view?name=" + teamName);
+            response.sendRedirect("../view?name=" + 
+            URLEncoder.encode(teamName, "UTF-8"));
             
         } catch (Exception e) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");

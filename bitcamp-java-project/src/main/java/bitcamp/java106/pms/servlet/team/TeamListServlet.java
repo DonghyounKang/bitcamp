@@ -75,6 +75,7 @@ public class TeamListServlet extends HttpServlet {
     }
 }
 
+//ver 40 - Filter 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경

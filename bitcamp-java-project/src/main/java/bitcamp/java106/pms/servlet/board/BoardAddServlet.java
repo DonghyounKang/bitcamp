@@ -21,9 +21,6 @@ public class BoardAddServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        // 스프링 IoC 컨테이너에서 서블릿 객체를 관리하는 것이 아니기 때문에
-        // 스프링 IoC 컨테이너에 들어 있는 DAO 객체를 자동으로 주입 받을 수 없다.
-        // 서블릿을 생성할 때 스프링 IoC 컨테이너에서 직접 DAO를 꺼내와야 한다.
         boardDao = InitServlet.getApplicationContext().getBean(BoardDao.class);
     }
     
@@ -32,7 +29,6 @@ public class BoardAddServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
-        request.setCharacterEncoding("UTF-8");
         
         try {
             Board board = new Board();
@@ -43,22 +39,18 @@ public class BoardAddServlet extends HttpServlet {
             response.sendRedirect("list");
             
         } catch (Exception e) {
-            //예외 발생시 ErrorServlet으로 예외 내용을 출력하도록 실행을 위임한다.
-            //1)실행을 위임할 객체를 준비
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
             
-            //2)다른 서블릿에게 실행을 위임하기 전에 그 서블릿에 전달할 데이터가있다면
-            //  ServletRequest 보관소에 담을 것
             request.setAttribute("error", e);
             request.setAttribute("title", "게시물 등록 실패!");
             
-            //3)다른 서블릿으로 실행을 위임한다.
             requestDispatcher.forward(request, response);
         }
     }
 
 }
 
+//ver 40 - Filter 적용
 //ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - BoardAddController 클래스를 서블릿으로 변경

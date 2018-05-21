@@ -31,7 +31,6 @@ public class ClassroomAddServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
-        request.setCharacterEncoding("UTF-8");
         
         try {
             Classroom classroom = new Classroom();
@@ -52,6 +51,7 @@ public class ClassroomAddServlet extends HttpServlet {
     }
 }
 
+//ver 40 - Filter 적용
 //ver 38 - redirect 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용

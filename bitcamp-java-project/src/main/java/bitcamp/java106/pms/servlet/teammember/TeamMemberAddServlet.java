@@ -1,6 +1,7 @@
 package bitcamp.java106.pms.servlet.teammember;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,8 +37,6 @@ public class TeamMemberAddServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
-        request.setCharacterEncoding("UTF-8");
-        
         String teamName = request.getParameter("teamName");
         String memberId = request.getParameter("memberId");
         
@@ -54,7 +53,8 @@ public class TeamMemberAddServlet extends HttpServlet {
                 throw new Exception("이미 등록된 회원입니다.");
             }
             teamMemberDao.insert(teamName, memberId);
-            response.sendRedirect("../view?name=" + teamName);
+            response.sendRedirect("../view?name=" + 
+            URLEncoder.encode(teamName, "UTF-8"));
             
         } catch (Exception e) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
@@ -67,6 +67,7 @@ public class TeamMemberAddServlet extends HttpServlet {
     }
 }
 
+//ver 40 - Filter 적용
 //ver 38 - redirect 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용

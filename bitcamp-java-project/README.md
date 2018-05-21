@@ -1,5 +1,15 @@
 # 자바 프로젝트
 
+
+## src40 - Filter Listener기술적용
+- 학습목표
+	- Filter의 구동원리를 이해하고 적용할 수 있다
+	- FilterConfig 객체를 사용하여 web.xml에 설정된 init-param 태그 값을 사용할 수 있다.
+	- Listener의 구동원리를 이해하고 적용할 수 있다
+- 작업내용
+	- servlet이 공통으로 수행하는 작업(ex: 클라이언트 data encoding)을 Filter로  옮긴다.
+	- 모든 클라이언트들이 사용할 도구 (Spring IOC Container) 준비
+	
 ## src39 - forward include기술적용
 - 학습목표
 	- forward와 include의 용도를 이해하고 적용할 수 있다.
