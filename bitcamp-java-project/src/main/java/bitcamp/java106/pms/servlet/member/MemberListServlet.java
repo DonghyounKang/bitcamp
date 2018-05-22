@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bitcamp.java106.pms.dao.MemberDao;
 import bitcamp.java106.pms.domain.Member;
-import bitcamp.java106.pms.servlet.InitServlet;
+import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
 @SuppressWarnings("serial")
 @WebServlet("/member/list")
@@ -23,7 +23,8 @@ public class MemberListServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        memberDao = InitServlet.getApplicationContext().getBean(MemberDao.class);
+        memberDao = WebApplicationContextUtils.getWebApplicationContext(
+                this.getServletContext()).getBean(MemberDao.class);
     }
 
     @Override

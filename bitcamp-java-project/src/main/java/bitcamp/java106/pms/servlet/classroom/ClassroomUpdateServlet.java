@@ -1,7 +1,6 @@
 package bitcamp.java106.pms.servlet.classroom;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bitcamp.java106.pms.dao.ClassroomDao;
 import bitcamp.java106.pms.domain.Classroom;
-import bitcamp.java106.pms.servlet.InitServlet;
+import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
 @SuppressWarnings("serial")
 @WebServlet("/classroom/update")
@@ -22,7 +21,8 @@ public class ClassroomUpdateServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        classroomDao = InitServlet.getApplicationContext().getBean(ClassroomDao.class);
+        classroomDao = WebApplicationContextUtils.getWebApplicationContext(
+                this.getServletContext()).getBean(ClassroomDao.class);
     }
     
     @Override

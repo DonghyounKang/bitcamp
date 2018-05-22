@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bitcamp.java106.pms.dao.ClassroomDao;
 import bitcamp.java106.pms.domain.Classroom;
-import bitcamp.java106.pms.servlet.InitServlet;
+import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
 @SuppressWarnings("serial")
 @WebServlet("/classroom/view")
@@ -22,7 +22,8 @@ public class ClassroomViewServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        classroomDao = InitServlet.getApplicationContext().getBean(ClassroomDao.class);
+        classroomDao = WebApplicationContextUtils.getWebApplicationContext(
+                this.getServletContext()).getBean(ClassroomDao.class);
     }
     
     @Override

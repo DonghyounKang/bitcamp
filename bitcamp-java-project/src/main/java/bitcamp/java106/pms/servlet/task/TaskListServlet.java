@@ -15,7 +15,7 @@ import bitcamp.java106.pms.dao.TaskDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.domain.Task;
 import bitcamp.java106.pms.domain.Team;
-import bitcamp.java106.pms.servlet.InitServlet;
+import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
 @SuppressWarnings("serial")
 @WebServlet("/task/list")
@@ -26,8 +26,10 @@ public class TaskListServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        teamDao = InitServlet.getApplicationContext().getBean(TeamDao.class);
-        taskDao = InitServlet.getApplicationContext().getBean(TaskDao.class);
+        teamDao = WebApplicationContextUtils.getWebApplicationContext(
+                this.getServletContext()).getBean(TeamDao.class);
+        taskDao = WebApplicationContextUtils.getWebApplicationContext(
+                this.getServletContext()).getBean(TaskDao.class);
     }
     
     @Override

@@ -1,7 +1,6 @@
 package bitcamp.java106.pms.servlet.team;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.domain.Team;
-import bitcamp.java106.pms.servlet.InitServlet;
+import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
 @SuppressWarnings("serial")
 @WebServlet("/team/update")
@@ -23,7 +22,8 @@ public class TeamUpdateServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        teamDao = InitServlet.getApplicationContext().getBean(TeamDao.class);
+        teamDao = WebApplicationContextUtils.getWebApplicationContext(
+                this.getServletContext()).getBean(TeamDao.class);
     }
 
     @Override

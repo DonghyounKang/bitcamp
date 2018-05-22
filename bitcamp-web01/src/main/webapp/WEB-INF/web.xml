@@ -21,6 +21,14 @@
     <request-character-encoding>UTF-8</request-character-encoding>
  	-->
  	
+ 	<!-- Listener 배치 -->
+ 	<!-- 
+ 	<listener>
+ 		<listener-class>step09.ex2.Listener1</listener-class>
+ 	</listener>
+ 	 -->
+ 	
+ 	
  	<!-- Filter 배치하기 -->
  	<!-- Filter 등록 -->
  	<filter>
