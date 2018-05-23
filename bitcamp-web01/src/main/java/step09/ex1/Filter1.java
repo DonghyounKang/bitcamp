@@ -77,7 +77,7 @@ public class Filter1 implements Filter{
         //만약 다음 필터가 없으면 원래 목적지인 Servlet을 실행
         chain.doFilter(request, response);
         
-        //servlet을 실행한 후에 수행할 작업이 있다면 바로 ch ain.doFilter() 다음에 두어라
+        //servlet을 실행한 후에 수행할 작업이 있다면 바로 chain.doFilter() 다음에 두어라
         System.out.println("Filter1.doFilter() : after");
     }
     
