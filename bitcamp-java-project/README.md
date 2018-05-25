@@ -1,124 +1,159 @@
 # 자바 프로젝트
 
+## src44 - EL과 JSTL 적용
+학습목표
+    - EL과 JSTL을 사용할 수 있다.
+작업내용
+    - JSP 페이지에서 자바 코드를 JSTL 태그와 EL 코드로 대체한다.
+
+## src43 - JSP 전용 태그 적용 
+학습목표
+    - JSP 전용 태그(JSP action tag)를 사용할 수 있다.
+작업내용
+    - include, forward를 JSP 전용 태그로 처리한다.
+    - ServletRequest 에서 값을 꺼내는 부분을 JSP 전용 태그로 처리한다. 
+    
+## src42 - JSP 적용
+학습목표
+    - JSP를 적용하여 MVC 아키텍처를 완성한다.
+    - JSP를 활용할 수 있다.
+작업내용
+    - 서블릿에서 수행하던 UI 출력을 JSP로 옮긴다.
+
 ## src41 - 쿠키와 세션 기술 적용
 학습목표
     - 쿠키와 세션을 이용하여 로그인을 처리할 수 있다.
+    - Referer 헤더의 용도를 이해한다.
 작업내용
     - 쿠키를 이용하여 아이디를 기억하는 로그인 폼 만들기
     - 세션을 이용하여 로그인 사용자 정보를 보관하고 사용하기
+    - 로그인 후 Referer 헤더 값을 참조하여 이전 페이지로 이동하게 한다.
+    
+## src40 - Filter, Listener 기술 적용
+학습목표
+    - 필터의 구동 원리를 이해하고 적용할 수 있다.
+    - FilterConfig 객체를 사용하여 web.xml에 있는 init-param 값을 사용할 수 있다.
+    - 리스너의 구동 원리를 이해하고 적용할 수 있다.
+    - 컨텍스트 파라미터를 설정하고 사용할 수 있다.
+작업내용
+    - Filter에서 클라이언트 데이터 인코딩 지정을 수행한다.
+      (CharacterEncodingFilter)
+    - ServletContextListener 구현체에서 스프링 IoC 컨테이너 준비
+      (ContextLoaderListener, WebApplicationContextUtils)
 
-## src40 - Filter Listener기술적용
-- 학습목표
-	- Filter의 구동원리를 이해하고 적용할 수 있다
-	- FilterConfig 객체를 사용하여 web.xml에 설정된 init-param 태그 값을 사용할 수 있다.
-	- Listener의 구동원리를 이해하고 적용할 수 있다
-	- ContextParameter를 적용할 수있다.
-- 작업내용
-	- servlet이 공통으로 수행하는 작업(ex: 클라이언트 data encoding)을 Filter로  옮긴다.
-	- 모든 클라이언트들이 사용할 도구 (Spring IOC Container) 준비
-	
-## src39 - forward include기술적용
-- 학습목표
-	- forward와 include의 용도를 이해하고 적용할 수 있다.
-- 작업내용
-	- 오류 처리 코드를 별도의 서블릿으로 분리하여 forward 시킨다.
-	- 팀 상세보기 화면을 여러 서블릿으로 분리하여 include 한다.
+## src39 - forward, include 기술 적용 
+학습목표
+    - forward와 include의 용도를 이해하고 적용할 수 있다.
+작업내용
+    - 오류 처리 코드를 별도의 서블릿으로 분리하여 forward 한다.
+    - 팀 상세보기 화면을 여러 서블릿으로 분리하여 include 한다.
 
-## src38 - refresh, redirect 기술적용
-- 학습목표
-	- refresh와 redirect의 동작을 이해하고 사용할 수  있다.
-- 작업내용
-	- 등록 변경 삭제 후 refresh와 redirect 적용
+## src38 - refresh, redirect 기술 적용
+학습목표
+    - refresh와 redirect의 동작을 이해하고 사용할 수 있다.
+작업내용
+    - 등록, 변경, 삭제 후 refresh와 redirect를 적용하기
 
 ## src37 - 서블릿 기술 적용
-- 학습목표
-	- 서블릿을 만들고 배치할 수 있다.
-	- HTML 페이지를 만들 수 있다.
-- 작업내용
-	- 기존의 Controller들을 Servlet으로 전환한다.
-
-## src36 - Tomcat servlet container 적용
--학습목표
-	- Tomcat Server 구축 및 실행
-	- Servlet 제작 및 배치
-	- Adapter 설계 패턴의 원리를 이해한다.
-	
--작업내용
-	- Tomcat Server Install
-	- Servlet Library 가져오기
-	- Generate Dispatch Servlet(클라이언트 요청을 받아 컨트롤러에 전달)
-
-## src35 - Spring Framework IOC container 적용
--학습목표
-	- Spring IOC container 설정
-	- Spring IOC container 사용하여 객체관리
--작업내용
-	- Spring IOC container 관련 라이브러리 추가
-	- DefaultApplicationContext를 Spring IOC container로 대체
-
-## src34 - 테이블에 foreign key 적용
--학습목표
-	- FK용도 이해
-	- 컬럼에 FK 설정
-	- 여러 테이블의 데이터를 join하여 결과를 조회할 수 있다.
--작업내용
-	- 기존의 테이블에서 FK를 적용한 새 테이블 적용
-	- SQLMapper 파일 변경
-
-## src33 - Data Persistence Framework MyBatis 적용
 학습목표
-	- JDBC 대신 MyBatis를 사용했을 때의 이점을 이해한다.
-	- MyBatis를 설정하고 코드에 적용할 수 있다.
-작업내용
-	- MyBatis 프레임워크 관련 의존 라이브러리를 가져온다.
-	- SqlSesstionFactory를 준비
-	- DAO에 SqlSessionFactory 의존객체로 주입
-
-## src32 - DBCoonnectionPool 적용
+    - 서블릿을 만들고 배치할 수 있다.
+    - HTML 페이지를 만들 수 있다.
+작업내용 
+    - 기존의 컨트롤러를 서블릿으로 전환한다.
+    
+## src36 - Tomcat 서블릿 컨테이너 적용 
 학습목표
-	- pooling(일정 수량의 객체 재사용) 기법 이해
-	- flyweight 디자인 패턴을 이해한다.
-	- proxy 디자인 패턴을 이해한다.
-	- DB Connection Pool 개념을 이해
+    - 톰캣 서버를 구축하고 실행할 수 있다.
+    - 서블릿을 만들고 배치할 수 있다.
+    - Adapter 설계 패턴의 원리를 이해한다.
 작업내용
-	- DB 커넥션에 대해 pooling 기법을 저용하여 DB Connection Pool을 만든다.
-	- Connection 객체의 close() 메서드를 재정의하기위해 proxy pattern을 적용한다.
+    - 톰캣 서버를 설치한다.
+    - 서블릿 관련 라이브러리를 가져온다.
+    - 클라이언트 요청을 받아서 컨트롤러에게 전달할 DispatchServlet을 만든다.
 
-## src31 - DAO에 jdbc 적용
+## src35 - Spring 프레임워크의 IoC 컨테이너 적용
 학습목표
-	- JDBC API 적용
-	- gradle 이용하여 dependent library 관리
+    - Spring IoC 컨테이너를 설정할 수 있다.
+    - Spring IoC 컨테이너를 사용하여 객체를 관리할 수 있다.
+    - URL Encoding과 URL Decoding의 원리를 이해한다.
 작업내용
-	- DAO class에 JDBC API 적용
-	- gradle 이용하여 JDBC드라이버 설치 및 설정
+    - Spring IoC 컨테이너 관련 라이브러리 추가 
+    - 기존의 ApplicationContext를 Spring IoC 컨테이너로 대체한다.
+    - 클라이언트가 보낸 데이터를 리턴할 때 URL Decoding 한다. 
 
-
-## src30 - multi thread 적용
+## src34 - 테이블에 Foreign Key 적용하기
 학습목표
-	- 멀티 스레드를 적용하여 다중 클라이언트 요청 처리
-	- 스레드 동작을 이해한다.
-	- single thread방식의 문제점을 이해한다.
-작업내용
-	- HTTPServer에 클라이언트 요청을 처리할 때 멀티 스레드를 적용한다.
+    - FK의 용도를 이해한다.
+    - 컬럼에 FK를 설정할 수 있다.
+    - 여러 테이블의 데이터를 조인하여 결과를 조회할 수 있다.
+작업내용 
+    - 기존의 테이블에서 FK를 적용한 새 테이블을 만든다.
+    - SQL 맵퍼 파일을 변경한다.
 
-## src29 - 통신 네트워크 적용(http프로토콜 적용) mini tomcatserver
+## src33 - Data Persistence Framework인 Mybatis를 적용하라!
 학습목표
-	- HTTP 요청 프로토콜과 HTTP 응답 프로토콜을 이해한다.
-	- HTTP 프로토콜에 따라 네트워크 프로그램을 작성할 수 있다.
+    - JDBC 대신 Mybatis를 사용했을 때 이점을 이해한다.
+    - Mybatis를 설정하고 코드에 적용할 수 있다.
 작업내용
-	- HTTP 프로토콜에 따라 요청을 처리할 웹서버를 만든다.
-	- AppServer에 웹서버 기능을 추가
+    - Mybatis 프레임워크 관련 의존 라이브러리 가져온다.
+    - Mybatis 설정 파일을 준비한다.
+    - SqlSessionFactory를 준비한다.
+    - DAO에 SqlSessionFactory를 의존 객체로 주입한다.
+    - DAO는 JDBC 코드 대신 SqlSession을 사용하여 데이터를 처리한다.
 
-## src28 - socket programming을 적용하여 Client/Server 환경 구축
+## src32 - DB 커넥션 풀을 적용하여 DB 연결 객체를 효율적으로 관리하라.
 학습목표
-	- network programming을 익힌다.
-	- client/server 개념을 이해하고 만들수 있다.
-	- protocol의 개념을 이해한다.
+    - "pooling 기법(일정 수량의 객체를 만들어 놓고 재사용하는 방법)"을 이해한다.
+    - "flyweight 디자인 패턴"을 이해하고 구현할 수 있다.
+    - "proxy 디자인 패턴"을 이해하고 구현할 수 있다.
+    - DB 커넥션 풀 개념을 이해하고 구현할 수 있다.
 작업내용
-	- pms 프로그램을 서버와 클라이언트로 분리 
+    - DB 커넥션에 대해 "pooling 기법"을 적용하여 DB 커넥션 풀을 만든다.
+    - Connection 객체의 close() 메서드를 재정의하기 위해 proxy 패턴을 적용한다.
+
+## src31 - DAO에 JDBC 적용
+학습목표
+    - JDBC API 사용을 익힌다.
+    - gradle을 이용하여 의존 라이브러리를 관리하는 방법을 익힌다.
+작업내용
+    - gradle을 이용하여 JDBC driver를 자동으로 다운로드하고 classpath에 등록한다.
+    - DAO 클래스에 JDBC API를 적용한다.
+
+## src30 - 멀티스레드 적용
+학습목표
+    - 멀티스레드를 적용하여 다중 클라이언트 요청을 처리할 수 있다.
+    - 스레드의 동작을 이해한다.
+    - 싱글스레드 방식의 문제점을 안다.
+작업내용
+    - HTTPServer에서 클라이언트 요청을 처리할 때 멀티스레드를 적용한다.
+
+## src29 - HTTP 프로토콜 적용
+학습목표
+    - HTTP 요청 프로토콜과 HTTP 응답 프로토콜을 이해한다.
+    - HTTP 프로토콜에 따라 네트워크 프로그램을 작성할 수 있다.
+작업내용
+    - HTTP 프로토콜에 따라 요청을 처리할 웹서버를 만든다.
+    - AppSever에 웹 서버 기능을 추가한다.
+
+## src28 - 소켓 프로그래밍을 적용하여 Client/Server 환경을 구축하라!
+학습목표
+    - 네트워크 프로그래밍을 익힌다.
+    - 클라이언트/서버 개념을 이해하고 만들 수 있다.
+    - 프로토콜의 개념을 이해한다.
+작업내용
+    - PMS 프로그램을 서버와 클라이언트로 분리한다.
 
 ## src27 - serialize/deserialize 기법을 사용하여 객체 데이터를 관리하라!
-학습목표 
+학습목표
+    - Serializable 객체를 다룰 수 있다.
+    - Java I/O 스트림 클래스의 사용법을 익힌다.
+    - 파일 입출력에 대한 예외 처리를 방법을 익힌다.
+작업내용
+    - 도메인 클래스에 sirialize 기능을 활성화시킨다.
+    - 객체를 저장하고 읽을 수 있도록 DAO를 변경한다.
+
+## src26 - Command 디자인 패턴을 적용하여 명령어 단위로 클래스를 쪼개라!
+학습목표
     - Command 디자인 패턴을 이해하고 적용할 수 있다.
 작업내용
     - 기존의 컨트롤러 클래스를 메서드 단위로 쪽개서 클래스로 분리한다.
