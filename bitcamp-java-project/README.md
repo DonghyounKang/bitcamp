@@ -1,5 +1,29 @@
 # 자바 프로젝트
 
+## src47 - PageController 인터페이스 대신 에노테이션을 사용하여 호출할 메서드를 지정하기
+학습목표
+	- ReflectionAPI를 활용하여 클래스의 애노테이션 및 메서드 정보를 다룰 수 있다.
+작업내용
+	- Front Controller는 페이지 컨트롤러의 메서드를 찾을 때 
+		@RequestMapping 애노테이션이 붙은 메서드를 찾아 호출하게 한다.
+	- 즉 PageController 인터페이스를 구현하는 제약으로부터 탈출!
+
+## src46 - 페이지 컨트롤러를 POJO로 변경
+학습목표
+	- POJO의 의미 이해
+	- Spring IOC Container를 사용하여 PageController를 관리할 수 있다.
+작업내용
+	- 기존의 페이지 컨트롤러인 서블릿 클래스 들을 POJO 클래스로 변경 
+## src45 - Facade 패턴을 적용하여 Front Controller를 구현한다.
+학습목표
+    - Facade 패턴을 이해
+    - Front Controller 도입하고 적용
+    - 서블릿 오류에 대한 전용페이지
+작업내용
+    - 컨트롤러의 공통기능을 모아 Front Controller에 위임
+    
+
+
 ## src44 - EL과 JSTL 적용
 학습목표
     - EL과 JSTL을 사용할 수 있다.

@@ -50,6 +50,9 @@ compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
 // https://mvnrepository.com/artifact/org.springframework/spring-context
 compile group: 'org.springframework', name: 'spring-context', version: '5.0.5.RELEASE'
 
+// JSP 확장 태그 JSTL 라이브러리
+compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+
 //Java Servlet API Library
 // => 어떤 서블릿 규칙에 따라 만든 서버인지에 따라 해당 버전의 라이브러리를 다운로드 받아야한다.
 //    즉, 서버와 같은 버전의 라이브러리를 다운로드 받아서 사용해야만 그 서버에서 실행할 수 있다.
