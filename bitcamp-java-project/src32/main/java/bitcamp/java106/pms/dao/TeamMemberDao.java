@@ -11,42 +11,43 @@ import bitcamp.java106.pms.jdbc.DataSource;
 
 @Component
 public class TeamMemberDao {
-    DataSource dataSource;
 
+    DataSource dataSource;
+    
     public TeamMemberDao(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
+    
     public int insert(String teamName, String memberId) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "insert into pms_team_member(tnm,mid) values(?,?)");) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "insert into pms_team_member(tnm,mid) values(?,?)");) {
+            
             stmt.setString(1, teamName);
             stmt.setString(2, memberId);
             return stmt.executeUpdate();
         }
     }
-
+    
     public int delete(String teamName, String memberId) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "delete from pms_team_member where tnm=? and mid=?");) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "delete from pms_team_member where tnm=? and mid=?");) {
+            
             stmt.setString(1, teamName);
             stmt.setString(2, memberId);
             return stmt.executeUpdate();
         } 
     }
-
+    
     public List<String> selectList(String teamName) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "select mid from pms_team_member where tnm=?");) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "select mid from pms_team_member where tnm=?");) {
+            
             stmt.setString(1, teamName);    
             try (ResultSet rs = stmt.executeQuery()) {
                 ArrayList<String> arr = new ArrayList<>();
@@ -57,13 +58,13 @@ public class TeamMemberDao {
             }
         }
     }
-
+    
     public boolean isExist(String teamName, String memberId) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "select mid from pms_team_member where tnm=? and mid=?");) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "select mid from pms_team_member where tnm=? and mid=?");) {
+            
             stmt.setString(1, teamName);
             stmt.setString(2, memberId);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -76,10 +77,7 @@ public class TeamMemberDao {
     }
 }
 
-// 용어 정리!
-// 메서드 시그너처(method signature) = 함수 프로토타입(function prototype)
-// => 메서드의 이름과 파라미터 형식, 리턴 타입에 대한 정보를 말한다.
-
+//ver 32 - DB 커넥션 풀 적용
 //ver 31 - JDBC API 적용
 //ver 24 - File I/O 적용
 //ver 23 - @Component 애노테이션을 붙인다.

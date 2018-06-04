@@ -52,7 +52,7 @@ public class MemberController {
     public String list(
             HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
-         
+        
         List<Member> list = memberDao.selectList();
         request.setAttribute("list", list);
         return "/member/list.jsp";
@@ -89,9 +89,10 @@ public class MemberController {
         request.setAttribute("member", member);
         return "/member/view.jsp";
     }
-    
 }
 
+//ver 48 - CRUD 기능을 한 클래스에 합치기
+//ver 47 - 애노테이션을 적용하여 요청 핸들러 다루기
 //ver 46 - 페이지 컨트롤러를 POJO를 변경
 //ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java106.pms.dao.BoardDao;
 import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
@@ -20,8 +22,10 @@ public class BoardDeleteServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        boardDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(BoardDao.class);
+        ApplicationContext iocContainer = 
+                WebApplicationContextUtils.getWebApplicationContext(
+                        this.getServletContext()); 
+        boardDao = iocContainer.getBean(BoardDao.class);
     }
 
     @Override
@@ -38,15 +42,16 @@ public class BoardDeleteServlet extends HttpServlet {
             response.sendRedirect("list");
             
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
             request.setAttribute("title", "게시물 삭제 실패!");
-            requestDispatcher.forward(request, response);
+            요청배달자.forward(request, response);
         }
     }
     
 }
 
+//ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - BoardDeleteController를 서블릿으로 변경
 //         결과를 HTML로 출력

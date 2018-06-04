@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java106.pms.dao.TaskDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.dao.TeamMemberDao;
@@ -28,12 +30,12 @@ public class TaskViewServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        teamDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(TeamDao.class);
-        taskDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(TaskDao.class);
-        teamMemberDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(TeamMemberDao.class);
+        ApplicationContext iocContainer = 
+                WebApplicationContextUtils.getWebApplicationContext(
+                        this.getServletContext()); 
+        teamDao = iocContainer.getBean(TeamDao.class);
+        taskDao = iocContainer.getBean(TaskDao.class);
+        teamMemberDao = iocContainer.getBean(TeamMemberDao.class);
     }
     
     @Override
@@ -120,16 +122,19 @@ public class TaskViewServlet extends HttpServlet {
             out.println("</form>");
 
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
-            request.setAttribute("title", "작업 상세 조회 실패!");
-            requestDispatcher.forward(request, response);
+            request.setAttribute("title", "작업 상세조회 실패!");
+            // 다른 서블릿으로 실행을 위임할 때,
+            // 이전까지 버퍼로 출력한 데이터는 버린다.
+            요청배달자.forward(request, response);
         }
         out.println("</body>");
         out.println("</html>");
     }
 }
 
+//ver 39 - forward 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경

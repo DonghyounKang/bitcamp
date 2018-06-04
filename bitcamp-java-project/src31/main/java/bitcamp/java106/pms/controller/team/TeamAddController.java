@@ -3,7 +3,6 @@ package bitcamp.java106.pms.controller.team;
 
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.util.Scanner;
 
 import bitcamp.java106.pms.annotation.Component;
 import bitcamp.java106.pms.controller.Controller;
@@ -20,27 +19,30 @@ public class TeamAddController implements Controller {
     public TeamAddController(TeamDao teamDao) {
         this.teamDao = teamDao;
     }
-    
+
     @Override
     public void service(ServerRequest request, ServerResponse response) {
-        Team team = new Team();
+        PrintWriter out = response.getWriter();
 
+        Team team = new Team();
         team.setName(request.getParameter("name"));
         team.setDescription(request.getParameter("description"));
         team.setMaxQty(Integer.parseInt(request.getParameter("maxQty")));
         team.setStartDate(Date.valueOf(request.getParameter("startDate")));
         team.setEndDate(Date.valueOf(request.getParameter("endDate")));
-        PrintWriter out = response.getWriter();
+
         try {
             teamDao.insert(team);
             out.println("등록 성공!");
         } catch (Exception e) {
-            out.println("등록 실패");
+            out.println("등록 실패!");
             e.printStackTrace(out);
         }
     }
 }
 
+//ver 31 - JDBC API가 적용된 DAO 사용
+//ver 28 - 네트워크 버전으로 변경
 //ver 26 - TeamController에서 add() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - TaskDao 변경 사항에 맞춰 이 클래스를 변경한다.

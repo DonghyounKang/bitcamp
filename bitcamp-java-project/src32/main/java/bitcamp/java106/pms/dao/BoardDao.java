@@ -11,31 +11,32 @@ import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.jdbc.DataSource;
 
 @Component
-public class BoardDao  {
-
+public class BoardDao {
+    
     DataSource dataSource;
-
+    
     public BoardDao(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
+    
     public int delete(int no) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement("delete from pms_board where bno=?")) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "delete from pms_board where bno=?");) {
+            
             stmt.setInt(1, no);
             return stmt.executeUpdate();
         } 
     }
-
-    public List<Board> selectList () throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "select bno,titl,cdt from pms_board");
-                ResultSet rs = stmt.executeQuery();) {
-
+    
+    public List<Board> selectList() throws Exception {
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "select bno,titl,cdt from pms_board");
+            ResultSet rs = stmt.executeQuery();) {
+            
             ArrayList<Board> arr = new ArrayList<>();
             while (rs.next()) {
                 Board board = new Board();
@@ -49,46 +50,43 @@ public class BoardDao  {
     }
 
     public int insert(Board board) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "insert into pms_board(titl,cont,cdt) values(?, ?,now())")) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "insert into pms_board(titl,cont,cdt) values(?,?,now())");) {
+            
             stmt.setString(1, board.getTitle());
             stmt.setString(2, board.getContent());
+        
             return stmt.executeUpdate();
         }
-
     }
 
     public int update(Board board) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-
-                PreparedStatement stmt = con.prepareStatement(
-                        "update pms_board set titl=?, cont=?, cdt=now() where bno=?");) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "update pms_board set titl=?, cont=?, cdt=now() where bno=?");) {
+            
             stmt.setString(1, board.getTitle());
             stmt.setString(2, board.getContent());
             stmt.setInt(3, board.getNo());
             return stmt.executeUpdate();
         }
-
     }
 
     public Board selectOne(int no) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "select bno,titl,cont, cdt from pms_board where bno=?");) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "select bno,titl,cont,cdt from pms_board where bno=?");) {
+            
             stmt.setInt(1, no);
-
-            try(ResultSet rs = stmt.executeQuery();) {
-                if(!rs.next()) 
+            
+            try (ResultSet rs = stmt.executeQuery();) {
+                if (!rs.next()) 
                     return null;
-
+                
                 Board board = new Board();
                 board.setNo(rs.getInt("bno"));
                 board.setTitle(rs.getString("titl"));
@@ -96,11 +94,12 @@ public class BoardDao  {
                 board.setCreatedDate(rs.getDate("cdt"));
                 return board;
             }
-        }
+        }  
     }
 }
 
-//ver 31 - jdbc API 적용
+//ver 32 - DB 커넥션 풀 적용
+//ver 31 - JDBC API 적용
 //ver 24 - File I/O 적용
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - 추상 클래스 AbstractDao를 상속 받는다.

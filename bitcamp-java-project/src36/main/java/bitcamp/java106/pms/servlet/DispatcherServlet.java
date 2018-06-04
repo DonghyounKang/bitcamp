@@ -1,4 +1,4 @@
-//Servlet Container가 실행하는 서버프로그램
+// 서블릿 컨테이너가 실행하는 서버 프로그램
 package bitcamp.java106.pms.servlet;
 
 import java.io.IOException;
@@ -19,104 +19,115 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import bitcamp.java106.pms.AppConfig;
 import bitcamp.java106.pms.controller.Controller;
 
-//역할
-//- 클라이언트로부터 요청이 들어오면 해당 요청을 컨트롤러에게 위임하는 역할을 수행한다.
-//- Spring IOCContainer를 사용하여 컨트롤러 및 DAO 등을 관리한다.
-//
-@WebServlet("/*") //클라이언트의 모든 요청을 이 servlet이 처리하겠다는 선언
+// 하는 일:
+// => 클라이언트가 요청이 들어오면 그 요청을 컨트롤러에게 위임하는 역할
+// => 스프링 IoC 컨테이너를 사용하여 컨트롤러 및 DAO 등을 관리한다.
+// 
+@WebServlet("/*") // 클라이언트의 모든 요청을 이 서블릿이 처리하겠다는 선언이다. 
 public class DispatcherServlet implements Servlet {
-
+    
     ApplicationContext iocContainer;
     ServletConfig config;
     
     @Override
     public void init(ServletConfig config) throws ServletException {
-        // 클라이언트로부터 최초로 요청이 들어올 때 딱 한번 실행한다.
-        // Servlet 실행에 필요한 자원을 준비하는 코드를 작성한다.
+        // 최초의 요청이 들어오면 딱 한 번 실행한다.
+        // 그래서 서블릿이 실행하는데 필요한 자원을 준비하는 코드를 여기에 두면 된다.
         this.config = config;
         
-        //Spring IOC Conatainer 객체 생성
-        // => 파라미터로 넘기는 값은 IOC Container 관련 설정작업을 수행하는 클래스 정보이다.
+        // 스프링 IoC 컨테이너 객체 생성
+        // => 파라미터로 넘기는 값은 스프링 IoC 컨테이너 관련 설정작업을 수행하는 클래스 정보이다.
         iocContainer = new AnnotationConfigApplicationContext(AppConfig.class);
-        
     }
 
     @Override
     public ServletConfig getServletConfig() {
-        // Servlet 설정정보를 리턴하는 일을 수행 
-        // => init()에서 받은 값을 보관하고 있다가 리턴
+        // 서블릿 설정 정보를 리턴하는 일을 한다.
+        // => init()에서 넘겨 받은 값을 잘 보관하고 있다가 리턴하면 된다.
         return this.config;
     }
 
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        // 클라이언트로부터 요청이 들어올 때마다 Servlet Container가 호출하는 메서드
-        // => 클라이언트의 요청을 처리하는 코드를 작성한다.
+        // 클라이언트 요청이 들어올 때 마다 서블릿 컨테이너가 호출하는 메서드
+        // => 여기에 클라이언트의 요청을 처리하는 코드를 두면 된다. 
         
-        //파라미터의 값을 원래의 객체로 형변환한다.
-        HttpServletRequest request = (HttpServletRequest)req;
-        HttpServletResponse response = (HttpServletResponse)res;
-
+        // 파라미터의 값을 원래의 객체로 형변환 한다.
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
+        
         response.setHeader("Content-Type", "text/plain;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        //ServletPath(): 클라이언트가 요청한 자원의 이름을 알아낸다.
-        // 클라이언트가 보낸 명령어를 처리할 컨트롤러를 찾는다.
+        // 클라이언트가 요청한 자원의 이름을 알아낸다.
         String path = request.getPathInfo();
         Controller controller = (Controller) iocContainer.getBean(path);
-                
-                if (controller != null) {
-                    controller.service(
-                            new ServerRequestAdapter(request), 
-                            new ServerResponseAdapter(response));
-                } else {
-                    out.println("해당 명령을 처리할 수 없습니다.");
-                }
-
         
+        if (controller != null) {
+            controller.service(
+                    new ServerRequestAdapter(request), 
+                    new ServerResponseAdapter(response));
+        } else {
+            out.println("해당 명령을 처리할 수 없습니다.");
+        }
+        
+
     }
 
     @Override
     public String getServletInfo() {
-        // Servlet에 대한 정보를 간단한 문자열로 리턴
-        return "DispatcherServlet: 요청처리를 중계하는 servlet";
+        // 서블릿에 대한 정보를 간단한 문자열로 리턴한다.
+        return "요청 처리를 중계하는 서블릿";
     }
 
     @Override
     public void destroy() {
-        // 서버 종료 전에 ServletContainer가 호출한다.
-        // => Servlet이 실행되는 동안 만들었던 자원을 해제하는 코드를 작성한다.
-        //    ex) file, DBConnection, socket 등의 자원을 해제한다.
-        
+        // 서버를 종료하기 전에 서블릿 컨테이너가 호출한다.
+        // => 여기에는 서블릿이 실행되는 동안 만들었던 자원을 해제하는 코드를 두면 된다.
+        //    예를 들어, 파일이나 DB 커넥션, 소켓 등의 자원을 해제한다.
         
     }
 
 }
 
-// ** Tomcat Server에 프로그램 배치하기 **
-// 1) 프로그램 폴더 생성
-//  > 톰켓홈/webapps/pms 폴더 생성
+// 톰캣 서버에 프로그램 배치하기 
+// 1) 프로그램 폴더를 만든다. 
+//    => $톰캣홈/webapps/pms 폴더 생성
 // 2) 자바 클래스 파일을 둘 폴더를 만든다.
-//  > 톰켓홈/webapps/pms/WEB-INF/classes 폴더 생성
+//    => $톰캣홈/webapp/pms/WEB-INF/classes 폴더 생성
 // 3) 컴파일된 클래스 파일 및 패키지를 배치한다.
-//  > *project/bin/main/* --> WEB-INF/classes로 복사
-// 4) 외부 라이브러리 배치
-//  > *.jar --> WEB-INF/lib/*.jar로 복사
-//**주의
-//*.jar 파일 복사하는 방법
-// gradle을 이요하여 이클립스 설정파일을 만든경우 
-// 이클립스에서 컴파일하거나 실행할 때 사용하는 외부 라이브러리는
-// gradle에서 관리하는 라이브러리이다. 
-//=> 이 라이브러리를 배포하려면 gradle을 통해 라이브러리를 복사해야한다.
-//   > gradle build
+//    => 프로젝트/bin/main/* --> WEB-INF/classes/* 복사한다.
+// 4) 외부 라이브러리를 배치한다.
+//    => *.jar --> WEB-INF/lib/*.jar 복사한다.
+//
+// *.jar 파일을 복사하는 방법
+// => gradle을 이용하여 이클립스 설정파일을 만든 경우
+//    이클립스에서 컴파일하거나 실행할 때 사용하는 외부 라이브러리는 
+//    gradle이 관리하는 라이브러리이다. 
+// => 이 라이브러리를 배포하려면 gradle 을 통해 라이브러리를 복사해야 한다.
+//    > gradle build 실행!
+//   그러면 build/
+//
+// .war 파일 만들기 
+// => build.gradle 파일에 war 파일을 다루는 플러그인을 장착한다.
+// => "gradle build"를 실행하여 .war 파일을 만든다.
+// 
+// .war 파일 배치
+// => war 파일을 배치할 때는 그냥 $톰캣홈/webapps/ 폴더에 복사하면 된다.
+// => 그러면 톰캣 서버를 실행할 때 압축 파일이 자동으로 풀려서 배치될 것이다.
+//
+// 애플리케이션 실행
+// 1) 톰캣 서버를 실행 또는 재실행
+// 2) 웹브라우저에서 요청
+//    => localhost:8888/pms/board/list
 
-//.war 파일
-// => build.gradle에 war파일을 다루는 플러그인 장착
-// => gradle build 실행하여 war 파일 생성
-//.war 파일 배치
-//=> war파일을 배치할 때는 그냥 >톰켓홈/webapps/폴더에 저장하면된다.
 
-//Application 실행
-//  1) TomcatServer 실행 or 재실행
-//  2) webBrowser 요청
-//     http://localhost:8888/pms/board/list
+
+
+
+
+
+
+
+
+

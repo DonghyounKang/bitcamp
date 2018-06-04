@@ -93,10 +93,8 @@ public class TaskAddServlet extends HttpServlet {
             out.println("</form>");
 
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
-            request.setAttribute("error", e);
-            request.setAttribute("title", "작업 등록 조회 실패!");
-            requestDispatcher.forward(request, response);
+            out.printf("<p>%s</p>\n", e.getMessage());
+            e.printStackTrace(out);
         }
         out.println("</body>");
         out.println("</html>");
@@ -138,14 +136,16 @@ public class TaskAddServlet extends HttpServlet {
             // 위와 같이 개발자가 직접 URL 인코딩 해야 한다.
             
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
             request.setAttribute("title", "작업 등록 실패!");
-            requestDispatcher.forward(request, response);
+            요청배달자.forward(request, response);
         }
     }
+    
 }
 
+//ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용

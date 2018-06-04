@@ -41,12 +41,12 @@ public class TeamListServlet extends HttpServlet {
             request.setAttribute("viewUrl", "/team/list.jsp");
             
         } catch (Exception e) {
-            throw new ServletException(e);
-
+            throw new ServletException(e); 
         }
     }
 }
 
+//ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 39 - forward 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경

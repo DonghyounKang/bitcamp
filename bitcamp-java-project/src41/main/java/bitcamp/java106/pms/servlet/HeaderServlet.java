@@ -1,4 +1,4 @@
-//모든 페이지에 공통 헤더를 출력하는 서블릿
+// 모든 페이지에 삽입될 공통 헤더를 출력하는 서블릿
 package bitcamp.java106.pms.servlet;
 
 import java.io.IOException;
@@ -16,27 +16,47 @@ import bitcamp.java106.pms.domain.Member;
 @SuppressWarnings("serial")
 @WebServlet("/header")
 public class HeaderServlet extends HttpServlet {
-    
-     @Override
+    @Override
     protected void service(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
-         
-         //이미 include하는 서블릿에서 출력 스트림의 content type을 설정하기 때문에
-         //이 서브릿에서 별도의 설정은 불필요하다.
-         //response.setContentType("text/html;charset=UTF-8");
-         PrintWriter out = response.getWriter();
-         
-         HttpSession session = request.getSession();
-         Member loginUser = (Member)session.getAttribute("loginUser");
-         out.println("<div id='header'>");
-         if(loginUser != null) {
-             out.printf("    %s\n", loginUser.getId());
-             out.printf("<a href='%s/auth/logout'>로그아웃</a>", request.getContextPath());
-         }else {
-             out.printf("<a href='%s/auth/login'>로그인</a>", request.getContextPath());
-         }
-         out.println("</div>");
-         
+        
+        // 이 서블릿을 include하는 쪽에서 출력스트림의 콘텐트 타입을 설정하기 때문에
+        // 이 서블릿에서는 콘텐트 타입을 설정할 필요가 없다.
+        //response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        HttpSession session = request.getSession();
+        Member loginUser = (Member)session.getAttribute("loginUser");
+        
+        out.println("<div id='header'>");
+        if (loginUser != null) {
+            out.printf("    %s", loginUser.getId());
+            out.printf(" <a href='%s/auth/logout'>로그아웃</a>", 
+                    request.getContextPath());
+        } else {
+            out.printf("<a href='%s/auth/login'>로그인</a>",
+                    request.getContextPath());
+        }
+        out.println("</div>");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

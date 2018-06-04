@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java106.pms.dao.MemberDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.dao.TeamMemberDao;
@@ -27,12 +29,12 @@ public class TeamMemberAddServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        teamDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(TeamDao.class);
-        memberDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(MemberDao.class);
-        teamMemberDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(TeamMemberDao.class);
+        ApplicationContext iocContainer = 
+                WebApplicationContextUtils.getWebApplicationContext(
+                        this.getServletContext()); 
+        teamDao = iocContainer.getBean(TeamDao.class);
+        memberDao = iocContainer.getBean(MemberDao.class);
+        teamMemberDao = iocContainer.getBean(TeamMemberDao.class);
     }
     
     @Override
@@ -57,20 +59,23 @@ public class TeamMemberAddServlet extends HttpServlet {
             }
             teamMemberDao.insert(teamName, memberId);
             response.sendRedirect("../view?name=" + 
-            URLEncoder.encode(teamName, "UTF-8"));
+                    URLEncoder.encode(teamName, "UTF-8"));
+            // 개발자가 요청이나 응답헤더를 직접 작성하여 값을 주고 받으로 한다면,
+            // URL 인코딩과 URL 디코딩을 손수 해 줘야 한다.
             
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
-            request.setAttribute("title", "팀 회원 추가 실패!");
-            // 다른 서블릿으로 실행을 위임할 때,
-            // 이전까지 버퍼로 출력한 데이터는 버린다.
-            requestDispatcher.forward(request, response);
+            request.setAttribute("title", "팀 회원 등록 실패!");
+            요청배달자.forward(request, response);
         }
     }
+    
 }
 
-//ver 40 - Filter 적용
+//ver 40 - CharacterEncodingFilter 필터 적용.
+//         request.setCharacterEncoding("UTF-8") 제거
+//ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용

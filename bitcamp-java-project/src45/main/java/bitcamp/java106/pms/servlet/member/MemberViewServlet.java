@@ -44,12 +44,12 @@ public class MemberViewServlet extends HttpServlet {
             request.setAttribute("viewUrl", "/member/view.jsp");
                
         } catch (Exception e) {
-            throw new ServletException(e);
-
+            throw new ServletException(e); 
         }
     }
 }
 
+//ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 40 - CharacterEncodingFilter 필터 적용.
 //         request.setCharacterEncoding("UTF-8") 제거

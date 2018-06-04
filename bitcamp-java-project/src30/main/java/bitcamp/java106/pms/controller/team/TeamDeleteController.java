@@ -2,7 +2,6 @@
 package bitcamp.java106.pms.controller.team;
 
 import java.io.PrintWriter;
-import java.util.Scanner;
 
 import bitcamp.java106.pms.annotation.Component;
 import bitcamp.java106.pms.controller.Controller;
@@ -10,7 +9,6 @@ import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.server.ServerRequest;
 import bitcamp.java106.pms.server.ServerResponse;
-import bitcamp.java106.pms.util.Console;
 
 @Component("/team/delete")
 public class TeamDeleteController implements Controller {
@@ -20,24 +18,25 @@ public class TeamDeleteController implements Controller {
     public TeamDeleteController(TeamDao teamDao) {
         this.teamDao = teamDao;
     }
-    
+
     @Override
     public void service(ServerRequest request, ServerResponse response) {
         PrintWriter out = response.getWriter();
         String name = request.getParameter("name");
         
         Team team = teamDao.get(name);
-        
+
         if (team == null) {
             out.println("해당 이름의 팀이 없습니다.");
         } else {
-                teamDao.delete(name);
-                out.println("삭제하였습니다.");
+            teamDao.delete(name);
+            out.println("삭제하였습니다.");
         }
     }
     
 }
 
+//ver 28 - 네트워크 버전으로 변경
 //ver 26 - TeamController에서 delete() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - TaskDao 변경 사항에 맞춰 이 클래스를 변경한다.

@@ -12,18 +12,22 @@ import bitcamp.java106.pms.dao.TaskDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.dao.TeamMemberDao;
 import bitcamp.java106.pms.domain.Team;
+import bitcamp.java106.pms.web.RequestMapping;
 
 @Component("/team")
 public class TeamController {
 
     TeamDao teamDao;
-    TaskDao taskDao;
     TeamMemberDao teamMemberDao;
+    TaskDao taskDao;
     
-    public TeamController(TeamDao teamDao, TaskDao taskDao, TeamMemberDao teamMemberDao) {
+    public TeamController(
+            TeamDao teamDao, 
+            TeamMemberDao teamMemberDao,
+            TaskDao taskDao) {
         this.teamDao = teamDao;
-        this.taskDao = taskDao;
         this.teamMemberDao = teamMemberDao;
+        this.taskDao = taskDao;
     }
     
     @RequestMapping("/add")
@@ -101,9 +105,10 @@ public class TeamController {
         request.setAttribute("team", team);
         return "/team/view.jsp";
     }
-    
 }
 
+//ver 48 - CRUD 기능을 한 클래스에 합치기
+//ver 47 - 애노테이션을 적용하여 요청 핸들러 다루기
 //ver 46 - 페이지 컨트롤러를 POJO를 변경
 //ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용

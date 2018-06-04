@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java106.pms.dao.ClassroomDao;
 import bitcamp.java106.pms.domain.Classroom;
 import bitcamp.java106.pms.support.WebApplicationContextUtils;
@@ -22,15 +24,16 @@ public class ClassroomAddServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        classroomDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(ClassroomDao.class);
+        ApplicationContext iocContainer = 
+                WebApplicationContextUtils.getWebApplicationContext(
+                        this.getServletContext()); 
+        classroomDao = iocContainer.getBean(ClassroomDao.class);
     }
     
     @Override
     protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
-        
         
         try {
             Classroom classroom = new Classroom();
@@ -43,15 +46,17 @@ public class ClassroomAddServlet extends HttpServlet {
             response.sendRedirect("list");
             
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
-            request.setAttribute("title", "수업 등록 실패!");
-            requestDispatcher.forward(request, response);
+            request.setAttribute("title", "강의 등록 실패!");
+            요청배달자.forward(request, response);
         }
     }
+    
 }
 
-//ver 40 - Filter 적용
+//ver 40 - 필터 적용
+//ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용

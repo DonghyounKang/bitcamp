@@ -1,4 +1,3 @@
-// Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.servlet.classroom;
 
 import java.io.IOException;
@@ -16,6 +15,7 @@ import bitcamp.java106.pms.servlet.InitServlet;
 @SuppressWarnings("serial")
 @WebServlet("/classroom/delete")
 public class ClassroomDeleteServlet extends HttpServlet {
+    
     ClassroomDao classroomDao;
     
     @Override
@@ -27,8 +27,7 @@ public class ClassroomDeleteServlet extends HttpServlet {
     protected void doGet(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
-        
-        request.setCharacterEncoding("UTF-8");
+
         int no = Integer.parseInt(request.getParameter("no"));
         
         response.setContentType("text/html;charset=UTF-8");
@@ -46,9 +45,9 @@ public class ClassroomDeleteServlet extends HttpServlet {
         
         try {
             int count = classroomDao.delete(no);
-
+            
             if (count == 0) {
-                out.println("<p>해당 강의 없습니다.</p>");
+                out.println("<p>해당 강의가 없습니다.</p>");
             } else {
                 out.println("<p>삭제하였습니다.</p>");
             }
@@ -62,6 +61,7 @@ public class ClassroomDeleteServlet extends HttpServlet {
     
 }
 
+//ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
 //ver 26 - ClassroomController에서 delete() 메서드를 추출하여 클래스로 정의.

@@ -28,11 +28,13 @@ public class TaskDao extends AbstractDao<Task> {
         
             while (true) {
                 try {
-                    //작업데이터를 읽을 때 작업 번호가 가장 큰 것을 count값을 설정한다.
+                    // 작업 데이터를 읽을 때 작업 번호가 가장 큰 것으로 
+                    // 카운트 값을 설정한다.
                     Task task = (Task) in.readObject();
-                    if(task.getNo() >= Task.count)
-                        Task.count = task.getNo()+1;
-                    // 다음에 새로 추가할 작업의 번호는 현재 읽은 작업 번호보다 1이 큰 값이 되게 한다.
+                    if (task.getNo() >= Task.count)
+                        Task.count = task.getNo() + 1; 
+                        // 다음에 새로 추가할 작업의 번호는 현재 읽은 작업 번호 보다 
+                        // 1 큰 값이 되게 한다.
                     this.insert(task);
                 } catch (Exception e) { // 데이터를 모두 읽었거나 파일 형식에 문제가 있다면,
                     //e.printStackTrace();

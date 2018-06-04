@@ -13,17 +13,16 @@ import bitcamp.java106.pms.server.ServerResponse;
 
 @Component("/member/list")
 public class MemberListController implements Controller {
+
     MemberDao memberDao;
     
     public MemberListController(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
-    
+
     @Override
     public void service(ServerRequest request, ServerResponse response) {
         PrintWriter out = response.getWriter();
-        
-        
         Iterator<Member> iterator = memberDao.list();
         while (iterator.hasNext()) {
             Member member = iterator.next();
@@ -33,6 +32,7 @@ public class MemberListController implements Controller {
     }
 }
 
+//ver 28 - 네트워크 버전으로 변경
 //ver 26 - MemberController에서 list() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - MemberDao 변경 사항에 맞춰 이 클래스를 변경한다.

@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+}
+
+compileJava {
+    //compile시 소스파일의 인코딩 옵션을 추가
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    compile 'com.google.guava:guava:23.0'
+    testCompile 'junit:junit:4.12'
+}
+
+repositories {
+    jcenter()
+}

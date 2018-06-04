@@ -20,7 +20,7 @@ public class ServerRequest {
         }
     }
     
-    private void toParamMap(String queryString)  {
+    private void toParamMap(String queryString) {
         // queryString 예) title=aaa&content=bbb
         // 데이터는 key와 value로 분리하여 맵에 저장한다.
         String[] entryArr = queryString.split("&");
@@ -28,15 +28,15 @@ public class ServerRequest {
         for (String entry : entryArr) {
             String[] keyValue = entry.split("=");
             try {
-            this.paramMap.put(
+                this.paramMap.put(
                     keyValue[0], 
-                    // keyValue[1]은 UTF-8코드를 ASCII문자화 시킨 것이다.
-                    // 즉, UTF-8코드를 URLEncoding 한 것이다.
-                    // 그러니 원래의 UTF-8로 만든 후(URLDecoding)에 
-                    // 이것을 다시 UTF-16으로 만들어 자바 String 객체를 리턴
+                    // keyValue[1]는 UTF-8 코드를 ASCII 문자화시킨 것이다.
+                    // 즉 UTF-8 코드를 URL인코딩 한 것이다.
+                    // 그러니 원래 UTF-8로 만든 후(다시 URL디코딩 하여)에
+                    // 이것을 다시 UTF-16으로 만들어 자바 String 객체를 리턴하라!
                     URLDecoder.decode(keyValue[1], "UTF-8"));
             } catch (Exception e) {
-                System.out.println("URLDecoding Error");
+                System.out.println("URL 디코딩 오류!");
             }
         }
     }

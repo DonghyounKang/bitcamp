@@ -1,7 +1,6 @@
 package bitcamp.java106.pms.servlet.task;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.sql.Date;
 import java.util.List;
@@ -57,8 +56,7 @@ public class TaskAddServlet extends HttpServlet {
             request.setAttribute("viewUrl", "/task/form.jsp");
 
         } catch (Exception e) {
-            throw new ServletException(e);
-
+            throw new ServletException(e); 
         }
     }
     
@@ -89,18 +87,23 @@ public class TaskAddServlet extends HttpServlet {
             }
             
             taskDao.insert(task);
-            
-            request.setAttribute("viewUrl", "redirect:list.do?teamName=" + 
+            request.setAttribute("viewUrl", 
+                    "redirect:list.do?teamName=" + 
                     URLEncoder.encode(teamName, "UTF-8"));
+            // 응답 헤더의 값으로 한글을 포함할 때는 
+            // 서블릿 컨테이너가 자동으로 URL 인코딩 하지 않는다.
+            // 위와 같이 개발자가 직접 URL 인코딩 해야 한다.
             
         } catch (Exception e) {
-            throw new ServletException(e);
-
+            request.setAttribute("error", e);
+            request.setAttribute("title", "작업 등록 실패!");
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
     
 }
 
+//ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 40 - CharacterEncodingFilter 필터 적용.
 //         request.setCharacterEncoding("UTF-8") 제거

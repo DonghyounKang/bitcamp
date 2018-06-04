@@ -1,7 +1,6 @@
 package bitcamp.java106.pms.servlet.board;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,15 +37,16 @@ public class BoardDeleteServlet extends HttpServlet {
             response.sendRedirect("list");
             
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
             request.setAttribute("title", "게시물 삭제 실패!");
-            requestDispatcher.forward(request, response);
+            요청배달자.forward(request, response);
         }
     }
     
 }
 
+//ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - BoardDeleteController를 서블릿으로 변경
 //         결과를 HTML로 출력

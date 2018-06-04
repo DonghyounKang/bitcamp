@@ -41,17 +41,16 @@ public class BoardListServlet extends HttpServlet {
             // JSP가 게시물 목록을 사용할 수 있도록 ServletRequest 보관소에 저장한다.
             request.setAttribute("list", list);
             
-            //FrontController에게 전달할 JSP URL을 설정한다.
+            // 프론트 컨트롤러에게 전달할 JSP URL을 설정한다.
             request.setAttribute("viewUrl", "/board/list.jsp");
             
         } catch (Exception e) {
-            throw new ServletException(e);
-
+            throw new ServletException(e); 
         }
     }
 }
 
-//ver 45 - FrontController 적용
+//ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 39 - forward 적용
 //ver 37 - BoardListController를 서블릿으로 변경

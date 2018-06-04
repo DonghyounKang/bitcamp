@@ -21,6 +21,7 @@ public class BoardListController implements Controller {
     @Override
     public void service(ServerRequest request, ServerResponse response) {
         PrintWriter out = response.getWriter();
+        
         try {
             List<Board> list = boardDao.selectList();
             for (Board board : list) {
@@ -28,12 +29,12 @@ public class BoardListController implements Controller {
                     board.getNo(), board.getTitle(), board.getCreatedDate());
             }
         } catch (Exception e) {
-            out.println("목록가져오기 실패");
+            out.println("목록 가져오기 실패!");
             e.printStackTrace(out);
         }
     }
 }
 
-//ver 31 - jdbc API가 적용된 DAO 사용
+//ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
 //ver 26 - BoardController에서 list() 메서드를 추출하여 클래스로 정의. 

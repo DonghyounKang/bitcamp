@@ -3,7 +3,6 @@ package bitcamp.java106.pms.controller.classroom;
 
 import java.io.PrintWriter;
 import java.util.Iterator;
-import java.util.Scanner;
 
 import bitcamp.java106.pms.annotation.Component;
 import bitcamp.java106.pms.controller.Controller;
@@ -19,11 +18,10 @@ public class ClassroomListController implements Controller {
     public ClassroomListController(ClassroomDao classroomDao) {
         this.classroomDao = classroomDao;
     }
-    
+
     @Override
     public void service(ServerRequest request, ServerResponse response) {
         PrintWriter out = response.getWriter();
-        
         Iterator<Classroom> iterator = classroomDao.list();
         while (iterator.hasNext()) {
             Classroom classroom = iterator.next();
@@ -35,5 +33,6 @@ public class ClassroomListController implements Controller {
     }
 }
 
+//ver 28 - 네트워크 버전으로 변경
 //ver 26 - ClassroomController에서 list() 메서드를 추출하여 클래스로 정의.
 

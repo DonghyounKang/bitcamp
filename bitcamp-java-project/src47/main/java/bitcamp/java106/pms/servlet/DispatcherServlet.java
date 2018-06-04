@@ -57,20 +57,20 @@ public class DispatcherServlet extends HttpServlet {
 
         // 클라이언트가 요청한 서블릿의 경로를 알아내기
         String servletPath = request.getServletPath().replace(".do", "");
-         
         
         // 페이지 컨트롤러 실행
         try {
             // 클라이언트 요청을 처리할 페이지 컨트롤러를 얻기
             Object pageController = iocContainer.getBean(servletPath);
             
-            //클라이언트 요청을 처리하는 메서드(requestHandler)를 알아낸다.
+            // 클라이언트 요청을 처리하는 메서드(request handler)를 알아낸다.
             Method requestHandler = findRequestHandler(pageController);
-            if(requestHandler == null)
-                throw new ServletException("요청을 처리할 requestHandler가 없습니다.");
 
+            if (requestHandler == null)
+                throw new ServletException("요청을 처리할 요청 핸들러가 없습니다.");
+            
             String viewUrl = (String)requestHandler.invoke(
-                                        pageController, request, response);
+                                    pageController, request, response);
             if (viewUrl.startsWith("redirect:")) {
                 response.sendRedirect(viewUrl.substring(9));
             } else {
@@ -84,9 +84,9 @@ public class DispatcherServlet extends HttpServlet {
     private Method findRequestHandler(Object pageController) throws Exception {
         Class<?> clazz = pageController.getClass();
         Method[] methods = clazz.getDeclaredMethods();
-        for(Method m : methods) {
+        for (Method m : methods) {
             RequestMapping anno = m.getAnnotation(RequestMapping.class);
-            if(anno != null)
+            if (anno != null)
                 return m;
         }
         return null;

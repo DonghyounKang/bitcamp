@@ -23,16 +23,12 @@ public class BoardAddController implements Controller {
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
         board.setCreatedDate(new Date(System.currentTimeMillis()));
-        
-        // 처리시간 강제 연장 - singlethread의 문제점 확인 
-        // => 순서대로 명령을 처리하기 때문에 다른 연결 요청을 받으려면
-        // 현재 명령요청을 완전히 처리해야한다.
-//        for (int i = 0; i < 300000000; i++) {
-//            double d = Math.asin(34.8);
-//        }
-        
+        /* 스레드 테스트 용 코드 
+        for (int i = 0; i < 300000000; i++) {
+            Math.asin(34.8);
+        }
+        */
         boardDao.insert(board);
-        
         
         PrintWriter out = response.getWriter();
         out.println("등록 성공!");

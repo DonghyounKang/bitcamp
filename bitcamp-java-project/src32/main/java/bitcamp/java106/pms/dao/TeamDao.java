@@ -16,36 +16,36 @@ import bitcamp.java106.pms.jdbc.DataSource;
 public class TeamDao {
 
     DataSource dataSource;
-
+    
     public TeamDao(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
+    
     public int delete(String name) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement("delete from pms_team where name=?")) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "delete from pms_team where name=?");) {
+            
             stmt.setString(1, name);
             return stmt.executeUpdate();
         } 
     }
-
-    public List<Team> selectList () throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "select name,dscrt,max_qty,sdt,edt from pms_team");
-                ResultSet rs = stmt.executeQuery();) {
-
+    
+    public List<Team> selectList() throws Exception {
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "select name, sdt, edt, max_qty from pms_team");
+            ResultSet rs = stmt.executeQuery();) {
+            
             ArrayList<Team> arr = new ArrayList<>();
             while (rs.next()) {
                 Team team = new Team();
                 team.setName(rs.getString("name"));
-                team.setDescription(rs.getString("dscrt"));
-                team.setMaxQty(rs.getInt("max_qty"));
                 team.setStartDate(rs.getDate("sdt"));
                 team.setEndDate(rs.getDate("edt"));
+                team.setMaxQty(rs.getInt("max_qty"));
                 arr.add(team);
             }
             return arr;
@@ -53,11 +53,11 @@ public class TeamDao {
     }
 
     public int insert(Team team) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "insert into pms_team(name,dscrt,max_qty,sdt,edt) values(?, ?, ?, ?, ?)")) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "insert into pms_team(name,dscrt,max_qty,sdt,edt) values(?,?,?,?,?)");) {
+            
             stmt.setString(1, team.getName());
             stmt.setString(2, team.getDescription());
             stmt.setInt(3, team.getMaxQty());
@@ -65,15 +65,14 @@ public class TeamDao {
             stmt.setDate(5, team.getEndDate(), Calendar.getInstance(Locale.KOREAN));
             return stmt.executeUpdate();
         }
-
     }
 
     public int update(Team team) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "update pms_team set dscrt=?, max_qty=?, sdt=?, edt=? where name=?");) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "update pms_team set dscrt=?, max_qty=?, sdt=?, edt=? where name=?");) {
+            
             stmt.setString(1, team.getDescription());
             stmt.setInt(2, team.getMaxQty());
             stmt.setDate(3, team.getStartDate(), Calendar.getInstance(Locale.KOREAN));
@@ -81,33 +80,34 @@ public class TeamDao {
             stmt.setString(5, team.getName());
             return stmt.executeUpdate();
         }
-
     }
 
     public Team selectOne(String name) throws Exception {
-        try(
-                Connection con = dataSource.getConnection();
-                PreparedStatement stmt = con.prepareStatement(
-                        "select * from pms_team where name=?");) {
-
+        try (
+            Connection con = dataSource.getConnection();
+            PreparedStatement stmt = con.prepareStatement(
+                "select dscrt, sdt, edt, max_qty from pms_team where name=?");) {
+            
             stmt.setString(1, name);
-
-            try(ResultSet rs = stmt.executeQuery();) {
-                if(!rs.next()) 
+            
+            try (ResultSet rs = stmt.executeQuery();) {
+                if (!rs.next()) 
                     return null;
-
+                
                 Team team = new Team();
-                team.setName(rs.getString("name"));
+                team.setName(name);
                 team.setDescription(rs.getString("dscrt"));
-                team.setMaxQty(rs.getInt("max_qty"));
                 team.setStartDate(rs.getDate("sdt"));
                 team.setEndDate(rs.getDate("edt"));
+                team.setMaxQty(rs.getInt("max_qty"));
                 return team;
             }
-        }
-    }
+        }  
+    }    
 }
 
+//ver 32 - DB 커넥션 풀 적용
+//ver 31 - JDBC API 적용
 //ver 24 - File I/O 적용
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - 추상 클래스 AbstractDao를 상속 받는다.

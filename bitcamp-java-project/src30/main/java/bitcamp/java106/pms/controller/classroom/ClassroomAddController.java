@@ -19,6 +19,7 @@ public class ClassroomAddController implements Controller {
         this.classroomDao = classroomDao;
     }
     
+    @Override
     public void service(ServerRequest request, ServerResponse response) {
         Classroom classroom = new Classroom();
         classroom.setTitle(request.getParameter("title"));
@@ -32,4 +33,5 @@ public class ClassroomAddController implements Controller {
     }
 }
 
+//ver 28 - 네트워크 버전으로 변경
 //ver 26 - ClassroomController에서 add() 메서드를 추출하여 클래스로 정의.

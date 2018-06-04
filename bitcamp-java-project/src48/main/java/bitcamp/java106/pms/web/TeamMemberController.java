@@ -22,7 +22,9 @@ public class TeamMemberController {
     MemberDao memberDao;
     TeamMemberDao teamMemberDao;
     
-    public TeamMemberController(TeamDao teamDao, MemberDao memberDao, TeamMemberDao teamMemberDao) {
+    public TeamMemberController(TeamDao teamDao, 
+            MemberDao memberDao,
+            TeamMemberDao teamMemberDao) {
         this.teamDao = teamDao;
         this.memberDao = memberDao;
         this.teamMemberDao = teamMemberDao;
@@ -81,9 +83,10 @@ public class TeamMemberController {
         request.setAttribute("members", members);
         return "/team/member/list.jsp";
     }
-    
 }
 
+//ver 48 - CRUD 기능을 한 클래스에 합치기
+//ver 47 - 애노테이션을 적용하여 요청 핸들러 다루기
 //ver 46 - 페이지 컨트롤러를 POJO를 변경
 //ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용

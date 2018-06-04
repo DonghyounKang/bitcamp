@@ -18,12 +18,12 @@ import bitcamp.java106.pms.server.ServerResponse;
 
 @Component("/task/add")
 public class TaskAddController implements Controller {
-
+    
     TeamDao teamDao;
     TaskDao taskDao;
     MemberDao memberDao;
     TeamMemberDao teamMemberDao;
-
+    
     public TaskAddController(TeamDao teamDao, 
             TaskDao taskDao, TeamMemberDao teamMemberDao, MemberDao memberDao) {
         this.teamDao = teamDao;
@@ -31,17 +31,17 @@ public class TaskAddController implements Controller {
         this.teamMemberDao = teamMemberDao;
         this.memberDao = memberDao;
     }
-
+    
     @Override
     public void service(ServerRequest request, ServerResponse response) {
         PrintWriter out = response.getWriter();
         Task task = new Task();
         task.setTitle(request.getParameter("title"));
-        task.setStartDate(Date.valueOf(request.getParameter("startDate")));  //유효한 값만 받도록하고 오류 작업은 front-end에서 처리할 수 있도록한다.
+        task.setStartDate(Date.valueOf(request.getParameter("startDate")));
         task.setEndDate(Date.valueOf(request.getParameter("endDate")));
         task.setTeam(new Team().setName(request.getParameter("teamName")));
         task.setWorker(new Member().setId(request.getParameter("memberId")));
-     
+        
         try {
             Team team = teamDao.selectOne(task.getTeam().getName());
             if (team == null) {
@@ -54,17 +54,19 @@ public class TaskAddController implements Controller {
                 out.printf("'%s' 회원은 존재하지 않습니다.\n", task.getWorker().getId());
                 return;
             }
-
+            
             taskDao.insert(task);
             out.println("등록 성공!");
         } catch (Exception e) {
-            out.println("등록실패");
+            out.println("등록 실패!");
             e.printStackTrace(out);
         }
     }
 
 }
 
+//ver 31 - JDBC API가 적용된 DAO 사용
+//ver 28 - 네트워크 버전으로 변경
 //ver 26 - TaskController에서 add() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - TaskDao 변경 사항에 맞춰 이 클래스를 변경한다.

@@ -1,7 +1,7 @@
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +16,11 @@
 <tr>
     <th>팀명</th><th>최대인원</th><th>기간</th>
 </tr>
-<c:forEach items="${list }" var="team">
+<c:forEach items="${list}" var="team">
 <tr>
-    <td><a href='view?name=${team.name }'>${team.name }</a></td>
-    <td>${team.maxQty }</td>
-    <td>${team.startDate }>~${team.endDate }</td>
+    <td><a href='view?name=${team.name}'>${team.name}</a></td>
+    <td>${team.maxQty}</td>
+    <td>${team.startDate}~${team.endDate}</td>
 </tr>
 </c:forEach>
 </table>

@@ -1,7 +1,6 @@
 package bitcamp.java106.pms.servlet.task;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
@@ -50,14 +49,16 @@ public class TaskDeleteServlet extends HttpServlet {
             
             
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
             request.setAttribute("title", "작업 삭제 실패!");
-            requestDispatcher.forward(request, response);
+            요청배달자.forward(request, response);
         }
     }
+    
 }
 
+//ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용

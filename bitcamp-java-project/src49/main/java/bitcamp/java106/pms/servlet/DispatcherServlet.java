@@ -93,7 +93,8 @@ public class DispatcherServlet extends HttpServlet {
                              requestHandler, request, response, resultMap);
             
             // 준비한 파라미터 값을 가지고 요청 핸들러를 호출한다. 
-            String viewUrl = (String)requestHandler.invoke(pageController, paramValues);
+            String viewUrl = (String)requestHandler.invoke(
+                                    pageController, paramValues);
             
             // 요청 핸들러를 실행한 후,
             // 요청 핸들러 저장한 작업 결과가 담겨 있는 resultMap의 값들을 ServletRequest로 옮긴다.

@@ -12,18 +12,20 @@ import bitcamp.java106.pms.server.ServerResponse;
 
 @Component("/member/add")
 public class MemberAddController implements Controller {
+
     MemberDao memberDao;
     
     public MemberAddController(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
-    
+
     @Override
     public void service(ServerRequest request, ServerResponse response) {
         Member member = new Member();
         member.setId(request.getParameter("id"));
         member.setEmail(request.getParameter("email"));
         member.setPassword(request.getParameter("password"));
+
         memberDao.insert(member);
         
         PrintWriter out = response.getWriter();
@@ -32,6 +34,7 @@ public class MemberAddController implements Controller {
 
 }
 
+//ver 28 - 네트워크 버전으로 변경
 //ver 26 - MemberController에서 add() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - MemberDao 변경 사항에 맞춰 이 클래스를 변경한다.

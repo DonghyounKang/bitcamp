@@ -16,9 +16,8 @@ public class DefaultApplicationContainer implements ApplicationContainer {
     ApplicationContext iocContainer;
     
     public DefaultApplicationContainer() throws Exception {
-        
-        //Spring IOC Conatainer 객체 생성
-        // => 파라미터로 넘기는 값은 IOC Container 관련 설정작업을 수행하는 클래스 정보이다.
+        // 스프링 IoC 컨테이너 객체 생성
+        // => 파라미터로 넘기는 값은 스프링 IoC 컨테이너 관련 설정작업을 수행하는 클래스 정보이다.
         iocContainer = new AnnotationConfigApplicationContext(AppConfig.class);
     }
     

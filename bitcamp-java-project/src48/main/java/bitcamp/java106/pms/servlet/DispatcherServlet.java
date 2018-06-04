@@ -59,25 +59,25 @@ public class DispatcherServlet extends HttpServlet {
         String servletPath = request.getServletPath().replace(".do", "");
         
         // servletPath에서 객체명 추출하기
-        //=> 즉 맨 끝 '/'이후의 문자열을 제외한 이름
-        //=> 예) board/add ===> /board
+        // => 즉 맨 끝 / 이후의 문자열을 제외한 이름
+        // => 예) /board/add  ===> /board
         int index = servletPath.lastIndexOf('/');
         String objName = servletPath.substring(0, index);
         String handlerPath = servletPath.substring(index);
-        
         
         // 페이지 컨트롤러 실행
         try {
             // 클라이언트 요청을 처리할 페이지 컨트롤러를 얻기
             Object pageController = iocContainer.getBean(objName);
             
-            //클라이언트 요청을 처리하는 메서드(requestHandler)를 알아낸다.
+            // 클라이언트 요청을 처리하는 메서드(request handler)를 알아낸다.
             Method requestHandler = findRequestHandler(pageController, handlerPath);
-            if(requestHandler == null)
-                throw new ServletException("요청을 처리할 requestHandler가 없습니다.");
 
+            if (requestHandler == null)
+                throw new ServletException("요청을 처리할 요청 핸들러가 없습니다.");
+            
             String viewUrl = (String)requestHandler.invoke(
-                                        pageController, request, response);
+                                    pageController, request, response);
             if (viewUrl.startsWith("redirect:")) {
                 response.sendRedirect(viewUrl.substring(9));
             } else {
@@ -91,15 +91,17 @@ public class DispatcherServlet extends HttpServlet {
     private Method findRequestHandler(Object pageController, String handlerPath) throws Exception {
         Class<?> clazz = pageController.getClass();
         Method[] methods = clazz.getDeclaredMethods();
-        for(Method m : methods) {
+        for (Method m : methods) {
             RequestMapping anno = m.getAnnotation(RequestMapping.class);
-            if(anno != null && anno.value().equals(handlerPath))
+            if (anno != null && anno.value().equals(handlerPath))
                 return m;
         }
         return null;
     }
 }
 
+//ver 48 - CRUD 기능이 합쳐진 클래스에서 요청 핸들러 찾기
+//ver 47 - @RequestMapping으로 요청 핸들러 찾기
 //ver 46 - POJO 페이지 컨트롤러를 사용하여 클라이언트 요청 처리
 //         이 프론트 컨트롤러가 사용할 페이지 컨트롤러는 
 //         이 클래스에서 Spring IoC 컨테이너를 사용하여 관리할 것이다.

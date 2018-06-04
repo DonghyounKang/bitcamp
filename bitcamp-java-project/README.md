@@ -1,54 +1,68 @@
 # 자바 프로젝트
 
-## src 50 - mybatis와 springngioc 컨테이너 연동하기
+## src51 - Spring WebMVC 기본 적용
 학습목표
-	- mybatis를 springioc 컨테이너와 연동할 수있다.
-	- spring 설정파일에 mybatis 객체와 관련된 정보를 설정하고 구동원리를 이해한다.
+    - Spring WebMVC를 사용하여 웹 애플리케이션을 만들 수 있다.
+    - Spring WebMVC의 구동 원리를 이해한다.
 작업내용
-	- mybatis spring 연동라이브러리를 가져온다.
-	- spring 설정파일에 mybatis 설정을 추가한다.
-	- DAO 클래스를 인터페이스로 전환한다.
-	- SQL 맵퍼파일을 DAO인터페이스에 맞춰 변경한다.
-
-## src 49 - 요청핸들러의 파라미터값을자동주입하기
+    - 기존에 작성했던 프론트 컨트롤러인 DispatcherServlet을 Spring WebMVC 클래스로 대체한다.
+    - 기존에 작성했던 필터인 CharacterEncodingFilter를 Spring WebMVC 클래스로 대체한다.
+    - @RequestParam, @RequestMapping 애노테이션을 Spring WebMVC 애노테이션으로 대체한다.
+    - 문자열 파라미터 값을 java.sql.Date 객체로 변환시키는 커스텀 프로퍼티 에디터를 등록한다.
 학습목표
-	- Reflection API를 사용하여 메서드의 파라미터값을 다룰수 있다.
-	- 스프링 WebMVC 구동원리를 이해한다.
-작업내용
-	- 요청핸들러의 파라미터를 분석하여 그 값을 자동으로 주입시킨다.
-
-
-## src48 - CRUD 페이지 컨트롤러들을 한개의 클래스로 묶기
-학습목표
-	- CRUD 기능을 한개의 클래스로 묶을 수 있다.
-	- Reflection API를 사용하여 메서드를 찾고 호출할 수 있다.
-작업내용
-	- CRUD 각기능별로 분류되어있는 클래스들을 한개의 클래스로 묶는다.
-	
-	
-## src47 - PageController 인터페이스 대신 에노테이션을 사용하여 호출할 메서드를 지정하기
-학습목표
-	- ReflectionAPI를 활용하여 클래스의 애노테이션 및 메서드 정보를 다룰 수 있다.
-작업내용
-	- Front Controller는 페이지 컨트롤러의 메서드를 찾을 때 
-		@RequestMapping 애노테이션이 붙은 메서드를 찾아 호출하게 한다.
-	- 즉 PageController 인터페이스를 구현하는 제약으로부터 탈출!
-
-## src46 - 페이지 컨트롤러를 POJO로 변경
-학습목표
-	- POJO의 의미 이해
-	- Spring IOC Container를 사용하여 PageController를 관리할 수 있다.
-작업내용
-	- 기존의 페이지 컨트롤러인 서블릿 클래스 들을 POJO 클래스로 변경 
-## src45 - Facade 패턴을 적용하여 Front Controller를 구현한다.
-학습목표
-    - Facade 패턴을 이해
-    - Front Controller 도입하고 적용
-    - 서블릿 오류에 대한 전용페이지
-작업내용
-    - 컨트롤러의 공통기능을 모아 Front Controller에 위임
+    - 스프링 WebMVC의 프론트 컨트롤러를 프로젝트에 적용할 수 있다.
+    - 스프링 WebMVC의 규칙에 따라 페이지 컨트롤러를 만들 수 있다.
+    - @InitBinder 애노테이션을 사용할 수 있다.
+    - 커스텀 프로퍼티 에디터를 사용하여 클라이언트 파라미터 값을 요청 핸들러의 파라미터 값으로 변환할 수 있다.
+    - @ControllerAdvice 애노테이션을 사용할 수 있다.
     
+## src50 - mybatis와 Spring IoC 컨테이너 연동하기
+학습목표 
+    - mybatis를 Spring IoC 컨테이너와 연동할 수 있다.
+    - Spring 설정 파일에 mybatis 객체와 관련된 정보를 설정하고 구동원리를 이해한다.
+작업내용
+    - mybatis 스프링 연동 라이브러리를 가져온다.
+    - 스프링 설정 파일에 mybatis 설정을 추가한다.
+    - DAO 클래스를 인터페이스로 전환한다.
+    - SQL 맵퍼 파일을 DAO 인터페이스에 맞춰 변경한다. 
 
+## src49 - 요청 핸들러의 파라미터 값을 자동 주입하기
+학습목표
+    - Reflection API를 사용하여 메서드의 파라미터 값을 다룰 수 있다.
+    - 스프링 WebMVC 구동 원리를 이해한다.
+작업내용
+    - 요청 핸들러의 파라미터를 분석하여 그 값을 자동으로 주입시킨다.
+
+## src48 - CRUD 페이지 컨트롤러들을 한 개의 클래스로 묶기
+학습목표
+    - CRUD 기능을 한 개의 클래스로 묶어서 다룰 수 있다.
+    - Reflection API를 사용하여 메서드를 찾고 호출할 수 있다.
+작업내용
+    - CRUD 각 기능 별로 나뉘어져 있는 클래스들을 한 개의 클래스로 묶는다. 
+
+## src47 - PageController 인터페이스 대신 애노테이션을 사용하여 호출할 메서드를 지정하기
+학습목표
+    - Reflection API를 사용하여 클래스의 애노테이션 및 메서드 정보를 다룰 수 있다.
+작업내용
+    - 프론트 컨트롤러는 페이지 컨트롤러의 메서드를 찾을 때 @RequestMapping 애노테이션이 붙은 
+      메서드를 찾아 호출하게 한다.
+    - 즉 PageController 인터페이스를 구현하는 제약으로부터 탈출!
+
+## src46 - 페이지 컨트롤러를 POJO로 변경한다.
+학습목표
+    - POJO의 의미를 이해한다.
+    - 스프링 IoC 컨테이너를 사용하여 페이지 컨트롤러를 관리할 수 있다.
+작업내용
+    - 기존의 페이지 컨트롤러인 서블릿 클래스들을 POJO 클래스로 변경한다.
+
+## src45 - Facade 패턴을 적용하여 Front Controller를 구현한다.
+학습목표 
+    - Facade 패턴을 이해한다.
+    - Front Controller를 도입하고 적용할 수 있다.
+    - 서블릿 오류에 대한 전용 페이지 설정할 수 있다.
+작업내용
+    - 컨트롤러들의 공통 기능을 모아 프론트 컨트롤러에게 위임한다.
+     
 
 ## src44 - EL과 JSTL 적용
 학습목표

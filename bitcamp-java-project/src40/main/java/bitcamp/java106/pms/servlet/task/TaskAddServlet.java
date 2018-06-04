@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java106.pms.dao.TaskDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.dao.TeamMemberDao;
@@ -31,12 +33,12 @@ public class TaskAddServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        teamDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(TeamDao.class);
-        taskDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(TaskDao.class);
-        teamMemberDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(TeamMemberDao.class);
+        ApplicationContext iocContainer = 
+                WebApplicationContextUtils.getWebApplicationContext(
+                        this.getServletContext()); 
+        teamDao = iocContainer.getBean(TeamDao.class);
+        taskDao = iocContainer.getBean(TaskDao.class);
+        teamMemberDao = iocContainer.getBean(TeamMemberDao.class);
     }
     
     @Override
@@ -95,10 +97,8 @@ public class TaskAddServlet extends HttpServlet {
             out.println("</form>");
 
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
-            request.setAttribute("error", e);
-            request.setAttribute("title", "작업 등록 조회 실패!");
-            requestDispatcher.forward(request, response);
+            out.printf("<p>%s</p>\n", e.getMessage());
+            e.printStackTrace(out);
         }
         out.println("</body>");
         out.println("</html>");
@@ -109,7 +109,6 @@ public class TaskAddServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
-
         String teamName = request.getParameter("teamName");
         
         try {
@@ -139,16 +138,18 @@ public class TaskAddServlet extends HttpServlet {
             // 위와 같이 개발자가 직접 URL 인코딩 해야 한다.
             
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
             request.setAttribute("title", "작업 등록 실패!");
-            requestDispatcher.forward(request, response);
+            요청배달자.forward(request, response);
         }
     }
+    
 }
 
-
-//ver 40 - Filter 적용
+//ver 40 - CharacterEncodingFilter 필터 적용.
+//         request.setCharacterEncoding("UTF-8") 제거
+//ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용

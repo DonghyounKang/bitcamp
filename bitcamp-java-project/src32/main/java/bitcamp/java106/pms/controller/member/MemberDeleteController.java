@@ -6,16 +6,14 @@ import java.io.PrintWriter;
 import bitcamp.java106.pms.annotation.Component;
 import bitcamp.java106.pms.controller.Controller;
 import bitcamp.java106.pms.dao.MemberDao;
-import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.server.ServerRequest;
 import bitcamp.java106.pms.server.ServerResponse;
-import bitcamp.java106.pms.util.Console;
 
 @Component("/member/delete")
 public class MemberDeleteController implements Controller {
 
     MemberDao memberDao;
-
+    
     public MemberDeleteController(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
@@ -24,22 +22,25 @@ public class MemberDeleteController implements Controller {
     public void service(ServerRequest request, ServerResponse response) {
         PrintWriter out = response.getWriter();
         String id = request.getParameter("id");
-
+        
         try {
             int count = memberDao.delete(id);
-
+    
             if (count == 0) {
-                out.println("회원이 아닙니다..");
+                out.println("해당 아이디의 회원이 없습니다.");
             } else {
-                out.println("삭제 완료");
+                out.println("삭제하였습니다.");
             }
-        }catch (Exception e) {
-            out.println("삭제 실패");
+        } catch (Exception e) {
+            out.println("삭제 실패!");
             e.printStackTrace(out);
         }
     }
+    
 }
 
+//ver 31 - JDBC API가 적용된 DAO 사용
+//ver 28 - 네트워크 버전으로 변경
 //ver 26 - MemberController에서 delete() 메서드를 추출하여 클래스로 정의.
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - MemberDao 변경 사항에 맞춰 이 클래스를 변경한다.

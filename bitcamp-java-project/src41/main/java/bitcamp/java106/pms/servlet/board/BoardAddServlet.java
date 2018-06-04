@@ -37,20 +37,16 @@ public class BoardAddServlet extends HttpServlet {
         //    이런 스프링 방식을 모방하기 위해 우리는 WebApplicationContextUtils라는 
         //    클래스를 만들었고 그 클래스로부터 스프링 IoC 컨테이너를 꺼내게 하였다.
         //    복잡하더라도 이해하라!
-        
-        /*ApplicationContext iocContainer =  WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext());
-        boardDao = iocContainer.getBean(BoardDao.class);*/
-        
-        boardDao = WebApplicationContextUtils.getWebApplicationContext(
-                this.getServletContext()).getBean(BoardDao.class);
+        ApplicationContext iocContainer = 
+                WebApplicationContextUtils.getWebApplicationContext(
+                        this.getServletContext()); 
+        boardDao = iocContainer.getBean(BoardDao.class);
     }
     
     @Override
     protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
-        
         
         try {
             Board board = new Board();
@@ -61,18 +57,16 @@ public class BoardAddServlet extends HttpServlet {
             response.sendRedirect("list");
             
         } catch (Exception e) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error");
-            
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
             request.setAttribute("title", "게시물 등록 실패!");
-            
-            requestDispatcher.forward(request, response);
+            요청배달자.forward(request, response);
         }
     }
 
 }
 
-//ver 40 - Filter 적용
+//ver 40 - 필터 적용
 //ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - BoardAddController 클래스를 서블릿으로 변경

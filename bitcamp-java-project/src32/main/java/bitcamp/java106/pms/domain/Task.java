@@ -10,7 +10,6 @@ public class Task implements Serializable {
     public static final int WORKING = 1;
     public static final int COMPLETE = 9;
     
-
     private int no;
     private String title;
     private Date startDate;
@@ -18,7 +17,6 @@ public class Task implements Serializable {
     private int state;
     private Member worker;
     private Team team;
-    
     
     public int getNo() {
         return no;
