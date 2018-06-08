@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <context:component-scan base-package="bitcamp.mvc.web"/>
+    
+    <!-- 클라이언트가 multi-part 형식으로 전송한 데이터를 처리할 객체를 등록한다. 
+    	=> spring의 CommonsMultipartResolver 클래스는 내부적으로
+    	   아파치의 commons-fileupload 라이브러리를 사용하기 때문에
+    	   이 라이브러리도 추가로 등록해야한다.
+    	   
+   	   만약 servlet 3.0에서 제공하는 멀티파트 데이터 처리기능을 이용한다면
+   	   아래의 bean(MultipartResolver)을 등록할 필요가 없다.
+   	   대신에 web.xml에 선언된 frontcontrollerservlet 설정 부분에 <multipart-config 태그 추가>
+    -->
+	<!-- <bean id="multipartResolver"
+	    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	
+	    one of the properties available; the maximum file size in bytes
+	    <property name="maxUploadSize" value="50000000"/>
+	</bean> -->
+</beans>
+
+
+
+
+
+

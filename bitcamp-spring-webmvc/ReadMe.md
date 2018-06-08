@@ -1,10 +1,20 @@
  # 버전 별 주제
 
+ ## src08 - view resolver다루기
+ - spring web MVC에 설정된 view resolver대신에 다른 종류의 view resolver로 대체할 수 있다.
+ - 작업
+ 	- 프론트 컨트롤러의 spring 설정파일 변경
+ - 학습
+ 	- view resolver를 다루는 방법
+ 	- PathVariable
+ 	- MatrixVariable
+
  ## src07 - 페이지 컨트롤러의 요청핸들러를 정의하는 방법
  - 프론트 컨트롤러가 인식할 수 있는 페이지 컨트롤러를 만들기
  - 작업
  	- XML기반 프론트 컨트롤러 설정
- 	
+ - 학습
+ 	- 페이지컨트롤러의 요청핸들러를 정의하는 다양한 방법
 
  # 결론
  전체를 XML 방식으로 설정하던지(src04)
