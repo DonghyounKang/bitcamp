@@ -26,6 +26,19 @@
 	    <property name="prefix" value="/WEB-INF/jsp/"/>
 	    <property name="suffix" value=".jsp"/>
 	</bean>
+	
+	<!-- interceptor 꽂기 -->
+	<mvc:interceptors>
+		<!-- 모든 요청에 대해 interceptor를 적용한다. -->
+		<!-- <bean class="bitcamp.mvc.web.Exam09_1_interceptor"/> -->
+		
+		<!-- 특정 url에 대해서만 interceptor 적용하기 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/exam09_1/**"/>
+			<mvc:exclude-mapping path="/exam09_1/bbb/**"/>
+			<bean class="bitcamp.mvc.web.Exam09_1_interceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>
 
 

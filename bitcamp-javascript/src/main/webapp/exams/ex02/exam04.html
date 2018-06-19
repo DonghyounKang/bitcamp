@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex2</title>
+</head>
+<body>
+<h1>변수 - strict 모드 사용</h1>
+<script>
+//javascript는 변수선언없이 바로사용가능 
+v1 = "문자열";
+console.log(v1);
+</script>
+
+<script>
+//그러나 유지보수를 위해 선언후 사용할 것을 권장
+//변수를 선언하지 않고 사용할 때 오류를 띄우게 하려면 strict 모드를 사요하라고 
+//javascript 엔진에 알려줘야한다.
+//어떻게? 다음 문자열을 단순히 선언하라
+"use strict";
+
+var v2 
+
+v2 = 100;// ok
+console.log(v2);
+//strict 모드에서는 변수를 선언하지 않고 사용하면 실행오류가 발생한다
+
+v3 = 100;
+console.log(v3);
+
+</script>
+
+<script>
+v4 = true;
+console.log(v4);
+
+</script>
+</body>
+</html>

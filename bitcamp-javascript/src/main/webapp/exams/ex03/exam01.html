@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex03</title>
+</head>
+<body>
+<h1>함수 - 정의</h1>
+<script>
+//자바스크립트 함수
+//1) 데이터 타입이 없기 때문에 함수의 리턴타입을 지정하지 않는다.
+//2) function 키워드로 시작
+//3) 파라미터가 없을 때는 빈괄호를 지정
+//4) 값을 리터할 때는 return 키워드 사용
+//5) 파라미터는 var을 붙이면 안된다.
+
+function f1() {
+	console.log("안녕");
+}
+
+function f2() {
+	return "안녕2!";
+}
+
+function f3(a, b) {//파라미터가 있는 함수
+	//파라미터도 로컬변수이기 때문에 함수 호출이 끝나면 제거
+	console.log(a, "+", b, "=",(a+b));
+}
+
+function f4(a, b) { // 파라미터도 있고 리턴값도 있는 함수
+	return a+b;
+}
+f1();
+console.log(f2());
+f3(10, 20);
+console.log(f4(10,20));
+
+</script>
+</body>
+</html>

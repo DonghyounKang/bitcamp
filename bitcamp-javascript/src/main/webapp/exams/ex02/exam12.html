@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex02</title>
+</head>
+<body>
+<h1>변수 - 로컬변수</h1>
+<script>
+"use strict"
+
+var v1 = "홍길동";
+
+function f1() {
+	//자바 스크립트에서 로컬변수는 함수안에 선언된 변수를 이야기한다.
+	var v1 = "임꺽정" // f1()함수에서만 사용하는 로컬변수
+	var v2 = 100; // f1()함수에서만 사용하는 로컬 변수
+	console.log("f1():", v1, v2);
+	//로컬변수는 함수호출이 끝나면 제거(Stack 메모리에서 관리하기 때문이다.)
+}
+
+f1();
+console.log("==> : ", v1);
+console.log("==> : ", v2); //v2는 함수호출이 끝나면 제거
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

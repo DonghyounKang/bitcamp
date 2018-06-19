@@ -1,13 +1,29 @@
 # 자바 프로젝트
 
+## src54 - 트랜젝션 적용
+학습목표
+	- JAVA config(Annotation) 혹은 xml기반으로 트랜젝션을  설정하고 사용할 수 있다.
+	- 트랜젝션의 전파정책을 이해한다.
+작업내용
+	- xml에 트랜젝션관리자 및 정책을 설정한다. 
+	-
+
+## src53 - Service Component 적용
+학습목표
+	- 서비스 컴포넌트의 역할을 이해하고 만들 수 있다.
+작업내용
+	- 페이지 컨트롤러는 서비스 컴포넌트를 경유하여 DAO를 사용한다.
+
 ## src52 - Spring WebMVC 기타 설정
 학습목표
 	- view resolver의 역할을 이해하고 설정할 수 있다.
 	- PathVariable을 사용할 수 있다.
+	- interceptor를 사용할 수있다.
 작업내용
 	- 프론트 컨트롤러의 스프링 설정에 view resolver설정을 추가한다.
 	- 프론트 컨트롤러의 url mapping을 *.do에서 /app으로 변경한다.
 	- PathVariable을 처리할 객체를 등록한다.
+	- interceptor를 사용하여 로그인 제어
 
 ## src51 - Spring WebMVC 기본 적용
 학습목표

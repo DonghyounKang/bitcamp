@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex02</title>
+</head>
+<body>
+<h1>변수 - 로컬변수와 블록</h1>
+<script>
+"use strict"
+
+var v1 = "홍길동";
+
+function f1() {
+	//자바 스크립트에서 일반 블록을 구분하지 않는다.
+	var v1 = "임꺽정";//f1()함수에서 사용하는 로컬변수
+	{
+		var v1 = "유관순"; //위에 선언된 로컬변수를 가리킨다.
+		var v2 = 100; 	//f1()의 로컬변수이다. 블록은 무시
+	}
+	var v2 = 100; 
+	
+	console.log("f1():", v1, v2);
+}
+
+f1();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

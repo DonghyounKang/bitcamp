@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex01</title>
+<script>
+  function f1() {
+	  //f1()을 호출하기 전에는 이 함수의 오류가 있는지 모른다.
+	  //즉 javascript는 소스를 직접 실행하는 인터프리팅(interpreting) 방식으로 동작한다.
+	  // 그래서 소스코드에 오류가 있다 하더라도 실행하기 전까지는 모른다.
+	  console.lag("hello");
+  }
+</script>
+</head>
+<body>
+<h1>javascript를 실행하기 전까지는 오류발생여부를 알 수 없다. </h1>
+
+<script>
+  	console.log("오류를 포함하는 함수 호출");
+  	f1(); //이 때 f1() 코드실행 , 오류 확인 가능
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
