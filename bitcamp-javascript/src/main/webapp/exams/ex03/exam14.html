@@ -5,34 +5,32 @@
 <title>ex03</title>
 </head>
 <body>
-<h1>함수 - arrow 함수 리턴하기</h1>
+<h1>함수 - 애로우(arrow) 함수를 리턴하기</h1>
 <script>
 "use strict"
-// arrow function이나 익명 함수나 같다.
-//
-//
-
-function closureMaker(fnType, count) { //파라미터도 로컬변수임을 명심할 것
+// arrow function이나 익명 함수나 같다. 
+// 
+function closureMaker(fnType, count) { 
 	switch (fnType) {
 	case "sum":
-		return () => { 
-			var sum = 0;
-			for(var i = 1; i <= count; i++) {
-				sum += i;
-			}
-			console.log("합계 = ", sum);
-		};
+	    return () => { 
+	        var sum = 0;     
+	        for (var i = 1; i <= count; i++) {
+	            sum += i;
+	        }
+	        console.log("합계 =", sum);
+	    };
 	case "factorial":
-		return () => {
-			var mutliple = 1;
-			for(var i = 1; i <= count; i++) {
-				mutliple *= i;
-			}
-		console.log("팩토리얼 = ", multiple);
-	};
+        return () => {
+	        var sum = 1;
+	        for (var i = 1; i <= count; i++) {
+	            sum *= i;
+	        }
+	        console.log("팩토리얼 =", sum);
+	    };
 	default:
-		return () => {
-			console.log("해당 연산 지원 안함");
+	    return () => {
+		    console.log("해당 연산을 지원하지 않습니다.");
 		};
 	}
 }
@@ -43,8 +41,12 @@ var fn2 = closureMaker("sum", 100);
 fn1();
 fn2();
 
-
-
 </script>
+
 </body>
 </html>
+
+
+
+
+

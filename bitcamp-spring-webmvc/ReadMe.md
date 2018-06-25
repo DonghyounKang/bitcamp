@@ -1,5 +1,8 @@
  # 버전 별 주제
 
+ ## src09 - JSON 응답하기
+ - jsp에서 만든 HTML을 응답하느 대신에 JSON 데이터를 출력해보자
+
  ## src08 - view resolver다루기
  - spring web MVC에 설정된 view resolver대신에 다른 종류의 view resolver로 대체할 수 있다.
  - 작업
