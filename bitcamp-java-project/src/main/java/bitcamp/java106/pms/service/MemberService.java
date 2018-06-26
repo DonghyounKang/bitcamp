@@ -14,7 +14,6 @@ public interface MemberService {
     int add(Member member);
     int update(Member member);
     int delete(String id);
-    
 }
 
 //ver 53 - 인터페이스 추가

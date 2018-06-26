@@ -21,8 +21,9 @@ public class TaskController {
     TaskService taskService;
     TeamService teamService;
 
-
-    public TaskController(TaskService taskService, TeamService teamService) {
+    public TaskController(
+            TaskService taskService,
+            TeamService teamService) {
         this.taskService = taskService;
         this.teamService = teamService;
     }
@@ -39,12 +40,9 @@ public class TaskController {
         if (teamService.get(teamName) == null) {
             throw new Exception(task.getTeam().getName() + " 팀은 존재하지 않습니다.");
         }
-        //
+        
         taskService.add(task);
         return "redirect:list";
-        // 응답 헤더의 값으로 한글을 포함할 때는 
-        // 서블릿 컨테이너가 자동으로 URL 인코딩 하지 않는다.
-        // 위와 같이 개발자가 직접 URL 인코딩 해야 한다.
     }
     
     @RequestMapping("delete")
@@ -52,14 +50,10 @@ public class TaskController {
             @RequestParam("no") int no,
             @PathVariable String teamName) throws Exception {
         
-        int count = taskService.delete(no);
-        if (count == 0) {
+        if (taskService.delete(no) == 0) {
             throw new Exception("해당 작업이 존재하지 않습니다.");
         }
         return "redirect:list";
-        // 응답 헤더의 값으로 한글을 포함할 때는 
-        // 서블릿 컨테이너가 자동으로 URL 인코딩 하지 않는다.
-        // 위와 같이 개발자가 직접 URL 인코딩 해야 한다.
     }
     
     @RequestMapping("form")
@@ -70,9 +64,10 @@ public class TaskController {
         if (teamService.get(teamName) == null) {
             throw new Exception(teamName + " 팀은 존재하지 않습니다.");
         }
-        
-        map.put("members", teamService.getMembersWithEmail(teamName));
+
         map.put("teamName", teamName);
+        map.put("members", teamService.getMembersWithEmail(teamName));
+        
         return "task/form";
     }
     
@@ -106,9 +101,6 @@ public class TaskController {
             throw new Exception("<p>해당 작업이 없습니다.</p>");
         }
         return "redirect:list";
-            // 응답 헤더의 값으로 한글을 포함할 때는 
-            // 서블릿 컨테이너가 자동으로 URL 인코딩 하지 않는다.
-            // 위와 같이 개발자가 직접 URL 인코딩 해야 한다.
     }
     
     @RequestMapping("{no}")
@@ -145,6 +137,7 @@ public class TaskController {
     */
 }
 
+//ver 53 - DAO 대신 Service 객체 사용
 //ver 52 - InternalResourceViewResolver 적용
 //         *.do 대신 /app/* 을 기준으로 URL 변경
 //         페이지 관련 파라미터에 matrix variable 적용

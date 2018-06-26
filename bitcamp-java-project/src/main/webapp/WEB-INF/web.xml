@@ -18,10 +18,10 @@
     <display-name>
       서버 관리자 화면에서 출력될 웹 애플리케이션 이름을 적는 태그이다.
     </display-name>
-
+      
     <context-param>
+        <!-- 이 IoC 컨테이너 설정 파일의 정보는 ContextLoaderListener가 사용한다. -->
         <param-name>contextConfigLocation</param-name>
-        <!-- 다음 IOC 컨테이넌 설정파일의 정보는 ContextLoaderListener가 사용한다. -->
         <param-value>/WEB-INF/spring/application-context.xml</param-value>
     </context-param>
     

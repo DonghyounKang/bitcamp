@@ -32,14 +32,14 @@ public class MemberServiceImpl implements MemberService {
     public Member get(String id) {
         return memberDao.selectOne(id);
     }
-
+    
     @Override
     public boolean isExist(String id, String password) {
-        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String,Object> params = new HashMap<>();
         params.put("id", id);
         params.put("password", password);
         
-        return memberDao.count(params)> 0 ? true : false ;
+        return memberDao.count(params) > 0 ? true : false;
     }
     
     @Override
@@ -56,7 +56,6 @@ public class MemberServiceImpl implements MemberService {
     public int delete(String id) {
         return memberDao.delete(id);
     }
-    
 }
 
 //ver 53 - 클래스 추가

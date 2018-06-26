@@ -11,10 +11,9 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     
-    <!-- contextLoaderListener의 등장으로 dispatcherServlet은  web과 관련된 파일만 다루도록 한다. -->
     <context:component-scan base-package="bitcamp.java106.pms.web">
-       	<context:exclude-filter type="regex" expression = "bitcamp.java106.pms.web.json.*"/>
-   	</context:component-scan>
+        <context:exclude-filter type="regex" expression="bitcamp.java106.pms.web.json.*"/>
+    </context:component-scan>
     
     <mvc:annotation-driven enable-matrix-variables="true"/>
     

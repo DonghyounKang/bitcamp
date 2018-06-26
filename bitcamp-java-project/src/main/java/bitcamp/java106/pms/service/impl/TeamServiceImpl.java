@@ -64,11 +64,14 @@ public class TeamServiceImpl implements TeamService {
         params.put("teamName", name);
         
         teamMemberDao.delete(params);
-        //팀회원과 팀작업을ㄴ 삭제한 다음에예외가 발생한다면 이전에 삭제한 작업은 취소(rollback)이 되어야한다.
-        // 트겐잭션을 사요ㅕㅇ하지 않는다면 auto commit이기 때문에 롤백되지 않는다.
-        //텍스트를 하려면 다음 문장을 주석 풀고 팀삭제 실행할것
-        //int result =100/0;
         taskDao.deleteByTeam(name);
+        
+        // 팀 회원과 팀 작업을 삭제한 다음에 예외가 발생한다면 
+        // 이전에 삭제한 작업은 취소(rollback)되어야 한다.
+        // 트랜잭션을 사용하지 않는다면 auto commit이기 때문에 롤백되지 않는다.
+        // 테스트를 하려면 다음 문장을 주석 풀고 팀을 삭제해봐라!
+        //int result = 100 / 0;
+        
         return teamDao.delete(name);
     }
     

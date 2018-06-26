@@ -24,7 +24,7 @@ public class TaskServiceImpl implements TaskService {
         HashMap<String,Object> params = new HashMap<>();
         params.put("startRowNo", (pageNo - 1) * pageSize);
         params.put("pageSize", pageSize);
-        params.put("teamName",teamName);
+        params.put("teamName", teamName);
         
         return taskDao.selectList(params);
     }

@@ -1,4 +1,4 @@
-// 서비스 컴포넌트 - 회원관리 업무를 처리할 객체
+// 서비스 컴포넌트 - 작업관리 업무를 처리할 객체
 package bitcamp.java106.pms.service;
 
 import java.util.List;
