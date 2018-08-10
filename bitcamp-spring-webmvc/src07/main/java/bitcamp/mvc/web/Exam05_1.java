@@ -1,4 +1,4 @@
-// 요청핸들러의 파라미터 - 파라미터로 받을 수 있는 객체
+// 요청 핸들러의 파라미터 - 파라미터로 받을 수 있는 객체
 package bitcamp.mvc.web;
 
 import javax.servlet.ServletContext;
@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/exam05_1") 
 public class Exam05_1 {
     
-    
-    //프론트 컨트롤러로부터 SeveltRequest, ServletResponse 객체를 받을 수 있다.
+    // 프론트 컨트롤러로부터 ServletRequest와 ServletResponse 객체를 받을 수 있다.
     // => 그냥 해당 타입의 파라미터를 선언만 하면 된다.
     @GetMapping(value="m1")  
     @ResponseBody  
@@ -39,21 +38,22 @@ public class Exam05_1 {
     
     @GetMapping(value="m3")  
     @ResponseBody  
-    public String m3(
-            HttpSession session) {
+    public String m3(HttpSession session) {
         return "Exam05_1.m3()";
     }
-
-    // * 주의 !! * 
-    // ServletContext는 요청핸들러의 파라미터로 받을 수 없다!!
-    // 대신에 의존객체로 주입받아야 한다.
-    /*@GetMapping(value="m4")  
+    
+    // 주의!
+    // => ServletContext는 요청 핸들러의 파라미터로 받을 수 없다.
+    // => 대신에 의존 객체로 주입 받아야 한다.
+    /*
+    @GetMapping(value="m4")  
     @ResponseBody  
     public String m4(ServletContext servletContext) {
         return "Exam05_1.m4()";
-    }*/
+    }
+    */
     @Autowired ServletContext servletContext;
-
+    
     
 }
 

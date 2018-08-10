@@ -3,7 +3,7 @@ package bitcamp.mvc.web.json;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("json.HelloController")
+@Controller("web.json.HelloController")
 public class HelloController {
     
     @RequestMapping("/hello2")

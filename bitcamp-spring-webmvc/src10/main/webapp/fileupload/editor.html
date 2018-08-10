@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+<textarea name="content" id="editor">
+    <p>Here goes the initial content of the editor.</p>
+</textarea>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+    <script src="node_modules/@ckeditor/ckeditor5-build-classic/build/translations/ko.js"></script>
+<script>
+ClassicEditor
+.create( document.querySelector( '#editor' ) )
+.then( editor => {
+    console.log( editor );
+} )
+.catch( error => {
+    console.error( error );
+} );
+</script>
+</body>
+</html>

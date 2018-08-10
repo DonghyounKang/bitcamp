@@ -8,7 +8,6 @@ public class Board {
     String content;
     Date createdDate;
     
-    
     public int getNo() {
         return no;
     }

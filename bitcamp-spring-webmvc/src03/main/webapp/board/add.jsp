@@ -8,6 +8,6 @@
 <title>add</title>
 </head>
 <body>
-<h1>입력완료</h1>
+<h1>입력했습니다!</h1>
 </body>
 </html>

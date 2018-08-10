@@ -9,9 +9,10 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
     
     <context:component-scan base-package="bitcamp.mvc.web">
-    <!--  bitcamp.mvc.web.json 패키지에있는 클래스는 이 ioc Container에서 생성하지 말도록 설정 -->
-    	<context:exclude-filter type="regex" expression="bitcamp.mvc.web.json.*"/>
+        <!-- bitcamp.mvc.web.json 패키지에 있는 클래스는 이 IoC 컨테이너에서 만들지 말라! -->
+        <context:exclude-filter type="regex" expression="bitcamp.mvc.web.json.*"/>
     </context:component-scan>
+    
 </beans>
 
 

@@ -1,13 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page
+    language="java" 
+    contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Exam05_7의 결과</title>
+<meta charset="UTF-8">
+<title>main</title>
 </head>
 <body>
-이름: ${requestScope.name}<br>
-나이: ${requestScope.age}<br>
+<h1>Exam05_7의 실행 결과</h1>
+이름: ${requestScope.name}<br>
+나이: ${requestScope.age}<br> 
+
 </body>
 </html>
+
+
+
+
+
+

@@ -10,8 +10,8 @@
 </head>
 <body>
 <h1>목록</h1>
-<c:forEach items="${list }" var="board">
-	${board.title } <br>
+<c:forEach items="${list}" var="board">
+    ${board.title} <br>
 </c:forEach>
 </body>
 </html>

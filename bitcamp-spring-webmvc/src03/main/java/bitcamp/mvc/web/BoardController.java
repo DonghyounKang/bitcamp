@@ -18,11 +18,17 @@ public class BoardController {
     @RequestMapping("/board/add")
     public String add() {
         Board board = new Board();
-        board.setTitle("제목");
-        board.setContent("내용");
+        board.setTitle("제목입니다");
+        board.setContent("내용입니다");
         
         boardDao.insert(board);
         
         return "/board/add.jsp";
     }
 }
+
+
+
+
+
+

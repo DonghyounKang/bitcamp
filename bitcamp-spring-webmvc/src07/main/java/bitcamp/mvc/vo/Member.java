@@ -5,12 +5,10 @@ public class Member {
     String email;
     String password;
     
-    
     @Override
     public String toString() {
         return "Member [id=" + id + ", email=" + email + ", password=" + password + "]";
     }
-    
     
     public String getId() {
         return id;

@@ -14,7 +14,6 @@ public class Board {
         return "Board [no=" + no + ", title=" + title + ", content=" + content + ", createdDate=" + createdDate
                 + ", user=" + user + "]";
     }
-    
     public Member getUser() {
         return user;
     }
