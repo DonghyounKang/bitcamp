@@ -35,7 +35,7 @@ const
 //app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 var options = {
 		key: fs.readFileSync('/home/ec2-user/custom.key')
-		crt: fs.readFileSync('/home/ec2-user/www_donghyounkang_xyz.crt')
+		cert: fs.readFileSync('/home/ec2-user/www_donghyounkang_xyz.crt')
 };
 
 https.createServer(options, app).listen(1337,() => {
